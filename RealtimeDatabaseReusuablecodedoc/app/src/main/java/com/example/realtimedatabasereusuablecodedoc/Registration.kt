@@ -1,9 +1,9 @@
 package com.example.realtimedatabasereusuablecodedoc
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import com.example.realtimedatabasereusuablecodedoc.databinding.ActivityMainBinding
 import com.example.realtimedatabasereusuablecodedoc.databinding.ActivityRegistrationBinding
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -40,6 +40,12 @@ class Registration : AppCompatActivity() {
             }.addOnFailureListener(){
                 Toast.makeText(this, "Failure to create and register account.  Please try again.", Toast.LENGTH_SHORT).show()
             }
+        }
+
+        binding.tvAdmin.setOnClickListener()
+        {
+            val intent = Intent(this, AdminDatabaseManipulator::class.java)
+            startActivity(intent)
         }
 
 
