@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/design_default_color_background"
-    tools:context=".MainActivity">
+    tools:context=".Registration">
 
     <ImageView
         android:id="@+id/shape"
@@ -19,70 +19,64 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Welcome Back!"
+        android:text="Register!"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"/>
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/login_draw"
-        android:layout_marginTop="30dp"
-        android:layout_gravity="center_horizontal"/>
-
 
     <EditText
+        android:id="@+id/firstName"
         android:layout_width="360dp"
         android:layout_height="50dp"
         android:layout_gravity="center_horizontal"
         android:paddingLeft="20dp"
-        android:hint="UserName"
+        android:hint="First Name"
         android:layout_marginTop="30dp"
         android:background="@drawable/input"/>
 
     <EditText
+        android:id="@+id/lastName"
         android:layout_width="360dp"
         android:layout_height="50dp"
         android:layout_gravity="center_horizontal"
         android:paddingLeft="20dp"
-        android:hint="Password"
+        android:hint="Last Name"
         android:layout_marginTop="30dp"
         android:background="@drawable/input"/>
+
+    <EditText
+        android:id="@+id/age"
+        android:layout_width="360dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:paddingLeft="20dp"
+        android:hint="Age"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/input"/>
+
+    <EditText
+        android:id="@+id/userName"
+        android:layout_width="360dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:paddingLeft="20dp"
+        android:hint="User Name"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/input"/>
+
 
     <Button
+        android:id="@+id/btnRegister"
         android:layout_width="360dp"
         android:layout_height="60dp"
         android:background="@drawable/login_btn"
         android:layout_marginTop="15dp"
-        android:text="Login"
+        android:text="Register"
         android:layout_gravity="center_horizontal"/>
 
 
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:text="Don't have an Account?"/>
-
-        <TextView
-            android:id="@+id/tvSignUp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/signup"
-            android:textStyle="bold"
-            android:text="Sign Up!"/>
-
-    </LinearLayout>
 
 
 
