@@ -34,15 +34,17 @@
 
 
     <EditText
+        android:id="@+id/etEmail"
         android:layout_width="360dp"
         android:layout_height="50dp"
         android:layout_gravity="center_horizontal"
         android:paddingLeft="20dp"
-        android:hint="UserName"
+        android:hint="Email"
         android:layout_marginTop="30dp"
         android:background="@drawable/input"/>
 
     <EditText
+        android:id="@+id/etPassWord"
         android:layout_width="360dp"
         android:layout_height="50dp"
         android:layout_gravity="center_horizontal"
@@ -52,6 +54,7 @@
         android:background="@drawable/input"/>
 
     <Button
+        android:id="@+id/btnLogin"
         android:layout_width="360dp"
         android:layout_height="60dp"
         android:background="@drawable/login_btn"

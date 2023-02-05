@@ -22,18 +22,22 @@ class Registration : AppCompatActivity() {
         binding.btnRegister.setOnClickListener(){
             val fName = binding.firstName.text.toString()
             val lName = binding.lastName.text.toString()
-            val age = binding.age.text.toString()
+            val email = binding.Email.text.toString()
             val uName = binding.userName.text.toString()
+            val pWord = binding.passWord.text.toString()
+
 
             dbase = FirebaseDatabase.getInstance().getReference("Users")
-            val UserDC = UserDC(fName, lName, age, uName)
+            val UserDC = UserDC(fName, lName, pWord, uName, email)
             dbase.child(uName).setValue(UserDC).addOnSuccessListener {
                 //The (registering) User successfully registered (valid inputs)
                 //Thus we clear the input text provided to sanitize (confused EXACTLY why)
                 binding.firstName.text.clear()
                 binding.lastName.text.clear()
-                binding.age.text.clear()
+                binding.Email.text.clear()
                 binding.userName.text.clear()
+                binding.passWord.text.clear()
+
 
                 Toast.makeText(this, "Your account has been successfully created and registered.", Toast.LENGTH_SHORT).show()
 

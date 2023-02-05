@@ -15,7 +15,6 @@
         android:src="@drawable/shape"/>
 
 
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -23,7 +22,17 @@
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="18sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/etEmail"
+        android:layout_width="360dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:paddingLeft="20dp"
+        android:hint="Email"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/input"/>
 
 
     <EditText
@@ -36,6 +45,39 @@
         android:layout_marginTop="30dp"
         android:background="@drawable/input"/>
 
+    <EditText
+        android:id="@+id/etPassWord"
+        android:layout_width="360dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:paddingLeft="20dp"
+        android:hint="Password"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/input"/>
+
+    <EditText
+        android:id="@+id/etFirstName"
+        android:layout_width="360dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:paddingLeft="20dp"
+        android:hint="First Name"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/input"/>
+
+    <EditText
+        android:id="@+id/etLastName"
+        android:layout_width="360dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:paddingLeft="20dp"
+        android:hint="Last Name"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/input"/>
+
+
+
+
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -45,44 +87,52 @@
         android:layout_marginTop="10dp">
 
         <Button
-            android:id="@+id/btnRead"
-            android:layout_width="120dp"
-            android:layout_height="60dp"
-            android:background="@drawable/login_btn"
-            android:layout_marginTop="15dp"
-            android:text="Read"
-            android:layout_gravity="center_horizontal"/>
+        android:id="@+id/btnRead"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:background="@drawable/login_btn"
+        android:layout_marginTop="15dp"
+        android:text="Read"
+        android:layout_gravity="center_horizontal"/>
+
 
         <Button
-            android:id="@+id/btnDelete"
-            android:layout_width="120dp"
-            android:layout_height="60dp"
-            android:background="@drawable/login_btn"
-            android:layout_marginTop="15dp"
-            android:text="Delete"
-            android:layout_gravity="center_horizontal"/>
+        android:id="@+id/btnEdit"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:background="@drawable/login_btn"
+        android:layout_marginTop="15dp"
+        android:text="Edit"
+        android:layout_gravity="center_horizontal"/>
 
-    </LinearLayout>
+        <Button
+        android:id="@+id/btnDelete"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:background="@drawable/login_btn"
+        android:layout_marginTop="15dp"
+        android:text="Delete"
+        android:layout_gravity="center_horizontal"/>
 
-    <TextView
-        android:id="@+id/tvFirstName"
-        android:layout_width="360dp"
-        android:layout_height="50dp"
-        android:text="First Name: "/>
+        </LinearLayout>
 
-    <TextView
-        android:id="@+id/tvLastName"
-        android:layout_width="360dp"
-        android:layout_height="50dp"
-        android:text="Last Name: "/>
+            <TextView
+            android:id="@+id/tvFirstName"
+            android:layout_width="360dp"
+            android:layout_height="50dp"
+            android:text="First Name: "/>
 
-    <TextView
-        android:id="@+id/tvAge"
-        android:layout_width="360dp"
-        android:layout_height="50dp"
-        android:text="Age: "/>
+            <TextView
+            android:id="@+id/tvLastName"
+            android:layout_width="360dp"
+            android:layout_height="50dp"
+            android:text="Last Name: "/>
 
+            <TextView
+            android:id="@+id/tvPassWord"
+            android:layout_width="360dp"
+            android:layout_height="50dp"
+            android:text="Password: "/>
 
+            </LinearLayout>
 
-
-</LinearLayout>
