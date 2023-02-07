@@ -7,11 +7,13 @@ import android.widget.Toast
 import com.example.realtimedatabasereusuablecodedoc.databinding.ActivityRegistrationBinding
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.auth.FirebaseAuth
 
 class Registration : AppCompatActivity() {
 
     private lateinit var binding: ActivityRegistrationBinding
     private lateinit var dbase: DatabaseReference
+    private lateinit var firebaseAuth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registration)
@@ -37,9 +39,17 @@ class Registration : AppCompatActivity() {
                 binding.Email.text.clear()
                 binding.userName.text.clear()
                 binding.passWord.text.clear()
+                firebaseAuth.createUserWithEmailAndPassword(email, pWord).addOnSuccessListener {
+                    Toast.makeText(this, "Your account has been successfully created and registered.", Toast.LENGTH_SHORT).show()
+                }.addOnFailureListener(){
+                    //The account should be made in the RealTime Database but NOT able to login due to the authentication issue.
+                    Toast.makeText(this, "Failure in creating an account with Authentication Functionality.", Toast.LENGTH_SHORT).show()
+                }
 
 
-                Toast.makeText(this, "Your account has been successfully created and registered.", Toast.LENGTH_SHORT).show()
+
+
+
 
             }.addOnFailureListener(){
                 Toast.makeText(this, "Failure to create and register account.  Please try again.", Toast.LENGTH_SHORT).show()
