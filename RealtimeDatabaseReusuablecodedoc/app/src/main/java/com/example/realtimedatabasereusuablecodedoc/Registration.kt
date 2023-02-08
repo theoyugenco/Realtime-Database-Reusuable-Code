@@ -9,6 +9,8 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.auth.FirebaseAuth
 
+
+
 class Registration : AppCompatActivity() {
 
     private lateinit var binding: ActivityRegistrationBinding
@@ -20,6 +22,8 @@ class Registration : AppCompatActivity() {
 
         binding = ActivityRegistrationBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        firebaseAuth = FirebaseAuth.getInstance()
 
         binding.btnRegister.setOnClickListener(){
             val fName = binding.firstName.text.toString()
@@ -45,6 +49,7 @@ class Registration : AppCompatActivity() {
                     //The account should be made in the RealTime Database but NOT able to login due to the authentication issue.
                     Toast.makeText(this, "Failure in creating an account with Authentication Functionality.", Toast.LENGTH_SHORT).show()
                 }
+
 
 
 
