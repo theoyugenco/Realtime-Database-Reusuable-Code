@@ -27,9 +27,16 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:hint="Type your message here!"
-            android:layout_weight="20">
+            android:layout_marginLeft="10dp"
+            android:layout_weight="85">
 
         </EditText>
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/sendbuttonsample"
+            android:layout_weight="90"/>
 
     </LinearLayout>
 </RelativeLayout>
