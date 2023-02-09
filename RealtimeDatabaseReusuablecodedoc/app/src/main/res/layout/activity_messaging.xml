@@ -6,4 +6,30 @@
     android:layout_height="match_parent"
     tools:context=".Messaging">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/messageRecyclerView"
+        android:layout_above="@id/messageLinearLayout"
+        android:layout_alignParentTop="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+    <LinearLayout
+        android:id="@+id/messageLinearLayout"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="100">
+
+        <EditText
+            android:id="@+id/messageBox"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Type your message here!"
+            android:layout_weight="20">
+
+        </EditText>
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
