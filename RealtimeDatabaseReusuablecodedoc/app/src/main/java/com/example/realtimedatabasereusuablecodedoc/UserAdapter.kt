@@ -1,6 +1,7 @@
 package com.example.realtimedatabasereusuablecodedoc
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import androidx.recyclerview.widget.RecyclerView
 import android.view.View
@@ -31,5 +32,12 @@ class UserAdapter (val context: Context, var userList: ArrayList<UserDC>): Recyc
         val currentUser = userList[position]
 
         holder.name.text = currentUser.uName
+
+        holder.itemView.setOnClickListener {
+            val intent = Intent(context, Messaging::class.java)
+            intent.putExtra("name", currentUser.uName)
+            intent.putExtra("email", currentUser.email)
+            context.startActivity(intent)
+        }
     }
 }
