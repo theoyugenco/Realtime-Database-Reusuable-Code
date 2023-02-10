@@ -54,7 +54,7 @@ class Registration : AppCompatActivity() {
 
 
             dbase = FirebaseDatabase.getInstance().getReference("Users")
-            val UserDC = UserDC(fName, lName, pWord, uName, email)
+            val UserDC = UserDC(fName, lName, pWord, uName, email, firebaseAuth.uid.toString())
             dbase.child(uName).setValue(UserDC).addOnSuccessListener {
                 //The (registering) User successfully registered (valid inputs)
                 //Thus we clear the input text provided to sanitize (confused EXACTLY why)

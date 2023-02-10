@@ -25,13 +25,13 @@ class Messaging : AppCompatActivity() {
         setContentView(R.layout.activity_messaging)
 
         val name = intent.getStringExtra("name")
-        val receiverEmail = intent.getStringExtra("email")
+        val receiverUid = intent.getStringExtra("uid")
 
-        val senderEmail = FirebaseAuth.getInstance().currentUser?.email
+        val senderUid = FirebaseAuth.getInstance().currentUser?.uid
         database = FirebaseDatabase.getInstance().getReference()
 
-        senderRoom = receiverEmail + senderEmail
-        receiverRoom = senderEmail + receiverEmail
+        senderRoom = receiverUid + senderUid
+        receiverRoom = senderUid + receiverUid
 
         supportActionBar?.title = name
 
@@ -62,7 +62,7 @@ class Messaging : AppCompatActivity() {
 
         sendButton.setOnClickListener {
             val message = inputBox.text.toString()
-            val messageObject = Message(message, senderEmail)
+            val messageObject = Message(message, senderUid)
 
             database.child("Chats").child(senderRoom!!).child("Messages").push()
                 .setValue(messageObject).addOnSuccessListener {

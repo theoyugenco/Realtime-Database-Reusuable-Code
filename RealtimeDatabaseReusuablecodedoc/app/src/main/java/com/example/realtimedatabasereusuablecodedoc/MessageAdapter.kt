@@ -52,7 +52,7 @@ class MessageAdapter(val context: Context, val messageList: ArrayList<Message>):
     override fun getItemViewType(position: Int): Int {
         val currentMessage = messageList[position]
 
-        if(FirebaseAuth.getInstance().currentUser?.email.equals(currentMessage.senderEmail)) {
+        if(FirebaseAuth.getInstance().currentUser?.uid.equals(currentMessage.senderUid)) {
             return item_sent
         }
         else {

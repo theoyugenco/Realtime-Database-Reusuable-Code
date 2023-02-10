@@ -36,7 +36,7 @@ class UserAdapter (val context: Context, var userList: ArrayList<UserDC>): Recyc
         holder.itemView.setOnClickListener {
             val intent = Intent(context, Messaging::class.java)
             intent.putExtra("name", currentUser.uName)
-            intent.putExtra("email", currentUser.email)
+            intent.putExtra("uid", currentUser.uid)
             context.startActivity(intent)
         }
     }

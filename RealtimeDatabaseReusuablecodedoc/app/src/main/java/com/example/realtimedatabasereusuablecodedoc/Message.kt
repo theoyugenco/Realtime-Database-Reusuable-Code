@@ -2,12 +2,12 @@ package com.example.realtimedatabasereusuablecodedoc
 
 class Message {
     var message: String? = null
-    var senderEmail: String? = null
+    var senderUid: String? = null
 
     constructor(){}
 
-    constructor(message: String?, email: String?) {
+    constructor(message: String?, uid: String?) {
         this.message = message
-        this.senderEmail = email
+        this.senderUid = uid
     }
 }
