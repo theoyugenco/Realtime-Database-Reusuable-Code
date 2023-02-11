@@ -39,7 +39,7 @@ class ChatSearch : AppCompatActivity() {
                 userList.clear()
                 for(postSnapshot in snapshot.children) {
                     val currentUser = postSnapshot.getValue(UserDC::class.java)
-                    if(firebaseAuth.currentUser?.email != currentUser?.email) {
+                    if(firebaseAuth.currentUser?.uid != currentUser?.uid) {
                         userList.add(currentUser!!)
                     }
                 }
