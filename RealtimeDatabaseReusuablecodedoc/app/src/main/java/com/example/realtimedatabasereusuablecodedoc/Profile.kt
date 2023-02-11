@@ -48,6 +48,7 @@ class Profile : AppCompatActivity() {
 
         chatButton.setOnClickListener {
             val intent = Intent(this, ChatSearch::class.java)
+            finish()
             startActivity(intent)
         }
 
