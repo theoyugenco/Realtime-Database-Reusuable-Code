@@ -40,6 +40,7 @@ class Messaging : AppCompatActivity() {
         sendButton = findViewById(R.id.sentButton)
         messageList = ArrayList()
         messageAdapter = MessageAdapter(this, messageList)
+
         chatRecyclerView.layoutManager = LinearLayoutManager(this)
         chatRecyclerView.adapter = messageAdapter
 

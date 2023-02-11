@@ -2,7 +2,7 @@ package com.example.realtimedatabasereusuablecodedoc
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.SearchView
+import androidx.appcompat.widget.SearchView
 import android.widget.SearchView.OnQueryTextListener
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -24,6 +24,7 @@ class ChatSearch : AppCompatActivity() {
 
         firebaseAuth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance().getReference()
+
 
         recyclerView = findViewById(R.id.chatRecyclerView)
         searchView = findViewById(R.id.chatSearchView)
@@ -48,8 +49,8 @@ class ChatSearch : AppCompatActivity() {
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
             }
-
         })
+
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(p0: String?): Boolean {
                 return false
