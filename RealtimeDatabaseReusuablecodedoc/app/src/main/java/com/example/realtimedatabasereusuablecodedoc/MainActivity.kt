@@ -36,14 +36,16 @@ class MainActivity : AppCompatActivity() {
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         // Sign in success, update UI with the signed-in user's information
-                        Toast.makeText(baseContext, "Authentication successful!",
-                            Toast.LENGTH_SHORT).show()
                         val user = firebaseAuth.currentUser
-                        user?.let {
-                            val name = user.displayName
-                            val email = user.email
-                            //val account_type =
-                        }
+                        Toast.makeText(baseContext, "Authentication successful! " + "Uid" + user?.uid
+                            + user?.email,
+                            Toast.LENGTH_SHORT).show()
+//                        val user = firebaseAuth.currentUser
+//                        user?.let {
+//                            val name = user.displayName
+//                            val email = user.email
+//                            //val account_type =
+//                        }
 
                         val intent = Intent(this, Profile::class.java)
                         finish()
