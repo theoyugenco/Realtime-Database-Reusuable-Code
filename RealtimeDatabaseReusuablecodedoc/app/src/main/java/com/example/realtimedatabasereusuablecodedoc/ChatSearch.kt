@@ -39,7 +39,7 @@ class ChatSearch : AppCompatActivity() {
                 userList.clear()
                 for(postSnapshot in snapshot.children) {
                     val currentUser = postSnapshot.getValue(UserDC::class.java)
-                    if(firebaseAuth.currentUser?.uid != currentUser?.uid) {
+                    if(firebaseAuth.currentUser?.email != currentUser?.email) {
                         userList.add(currentUser!!)
                     }
                 }
@@ -47,7 +47,6 @@ class ChatSearch : AppCompatActivity() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
             }
         })
 
@@ -67,7 +66,7 @@ class ChatSearch : AppCompatActivity() {
         if (query != null) {
             val filteredList = ArrayList<UserDC>()
             for (i in userList) {
-                if (i.uName.toString().lowercase(Locale.ROOT).contains(query)) {
+                if (i.uName.toString().lowercase(Locale.ROOT).contains(query.lowercase())) {
                     filteredList.add(i)
                 }
             }
