@@ -13,8 +13,6 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.auth.FirebaseAuth
 
-
-
 class Registration : AppCompatActivity() {
 
     private lateinit var binding: ActivityRegistrationBinding
@@ -24,6 +22,8 @@ class Registration : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registration)
+
+        //Boiler Plate code that is similar across many different activities
 
         binding = ActivityRegistrationBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -45,6 +45,10 @@ class Registration : AppCompatActivity() {
             }
         }
 
+        /*
+        Theodore Yu
+        
+         */
         binding.btnRegister.setOnClickListener(){
             val fName = binding.firstName.text.toString()
             val lName = binding.lastName.text.toString()

@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -42,79 +41,6 @@
                 android:textStyle="bold"/>
         </RelativeLayout>
 
-        <LinearLayout
-            android:layout_height="wrap_content"
-            android:layout_marginTop="-100dp"
-            android:layout_width="match_parent"
-            android:padding="20dp">
-            <com.google.android.material.card.MaterialCardView
-                android:layout_height="50dp"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                app:cardBackgroundColor="#ededed"
-                app:cardElevation="10dp">
-                <RelativeLayout
-                    android:layout_height="match_parent"
-                    android:layout_width="match_parent"
-                    android:padding="5dp">
-                    <Button
-                        android:id="@+id/reservation"
-                        android:includeFontPadding="false"
-                        android:layout_centerInParent="true"
-                        android:layout_height="wrap_content"
-                        android:layout_width="wrap_content"
-                        android:text="Add a Reservation"
-                        android:textSize="8sp" />
-                </RelativeLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_height="50dp"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                app:cardBackgroundColor="#ededed"
-                app:cardElevation="10dp">
-                <RelativeLayout
-                    android:layout_height="match_parent"
-                    android:layout_width="match_parent"
-                    android:padding="5dp">
-                    <Button
-                        android:id="@+id/coupon"
-                        android:includeFontPadding="false"
-                        android:layout_centerHorizontal="true"
-                        android:layout_centerInParent="true"
-                        android:layout_height="wrap_content"
-                        android:layout_width="wrap_content"
-                        android:text="Create Coupon"
-                        android:textSize="8sp" />
-                </RelativeLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_height="50dp"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                app:cardBackgroundColor="#ededed"
-                app:cardElevation="10dp">
-                <RelativeLayout
-                    android:layout_height="match_parent"
-                    android:layout_width="match_parent"
-                    android:padding="5dp">
-                    <Button
-                        android:id="@+id/menu"
-                        android:includeFontPadding="false"
-                        android:layout_centerHorizontal="true"
-                        android:layout_centerInParent="true"
-                        android:layout_height="wrap_content"
-                        android:layout_width="wrap_content"
-                        android:text="Edit Menu"
-                        android:textSize="8sp" />
-                </RelativeLayout>
-            </com.google.android.material.card.MaterialCardView>
-        </LinearLayout>
 
         <LinearLayout
             android:layout_height="wrap_content"
@@ -199,7 +125,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
-                android:background="#f29c45"
+
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:layout_width="match_parent"
