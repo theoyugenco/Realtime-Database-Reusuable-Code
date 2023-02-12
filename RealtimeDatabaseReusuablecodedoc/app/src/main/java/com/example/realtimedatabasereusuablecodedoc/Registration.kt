@@ -97,19 +97,20 @@ class Registration : AppCompatActivity() {
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         dbase = FirebaseDatabase.getInstance().getReference("Users")
+                        val uid : String = firebaseAuth.uid.toString()
                         val UserDC =
-                            UserDC(fName, lName, pWord, uName, email, firebaseAuth.uid.toString())
-                        dbase.child(uName).setValue(UserDC).addOnSuccessListener {
+                            UserDC(fName, lName, pWord, uName, email, uid)
+                        dbase.child(uid).setValue(UserDC).addOnSuccessListener {
                             //The (registering) User successfully registered (valid inputs)
                             //Thus we clear the input text provided to sanitize (confused EXACTLY why)
                             if (userType == "Customer") {
                                 dbase =
                                     FirebaseDatabase.getInstance().getReference("Users/Customers")
-                                dbase.child(uName).setValue(UserDC)
+                                dbase.child(uid).setValue(UserDC)
                             } else if (userType == "Merchant") {
                                 dbase =
                                     FirebaseDatabase.getInstance().getReference("Users/Merchants")
-                                dbase.child(uName).setValue(UserDC)
+                                dbase.child(uid).setValue(UserDC)
                             }
                             binding.firstName.text.clear()
                             binding.lastName.text.clear()

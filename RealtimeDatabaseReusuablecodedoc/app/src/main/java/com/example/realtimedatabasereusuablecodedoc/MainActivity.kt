@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var editPass: EditText
     private lateinit var btnLog: Button
     private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var database: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,14 +32,51 @@ class MainActivity : AppCompatActivity() {
         binding.btnLogin.setOnClickListener {
             val email = binding.etEmail.text.toString()
             val password = binding.etPassWord.text.toString()
+            //val merchantStatus : Boolean = true
 
             firebaseAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         // Sign in success, update UI with the signed-in user's information
                         Toast.makeText(baseContext, "Authentication successful! " + "Uid" + firebaseAuth.currentUser?.uid
-                            + firebaseAuth.currentUser?.email,
+                                + firebaseAuth.currentUser?.email,
                             Toast.LENGTH_SHORT).show()
+                        val userid : String? = firebaseAuth.currentUser?.uid
+                        database = FirebaseDatabase.getInstance().getReference("Users/Merchants")
+                        database.child(userid!!).get().addOnSuccessListener {
+                            //If a node/entry of that specific UserName exists
+                            if(it.exists()){
+
+                                val intent = Intent(this, HomeMerchant::class.java)
+                                finish()
+                                startActivity(intent)
+                            }
+                            else{
+                                Toast.makeText(baseContext, "CRIT ERROR!",
+                                    Toast.LENGTH_SHORT).show()
+                            }
+
+                        }.addOnFailureListener(){
+                            Toast.makeText(this, "Unable to read the User's data!", Toast.LENGTH_SHORT).show()
+                        }
+                        database = FirebaseDatabase.getInstance().getReference("Users/Customers")
+                        database.child(userid!!).get().addOnSuccessListener {
+                            //If a node/entry of that specific UserName exists
+                            if(it.exists()){
+                                val intent = Intent(this, HomeCustomer::class.java)
+                                finish()
+                                startActivity(intent)
+                            }
+                            else{
+                                Toast.makeText(baseContext, "CRIT ERROR!!",
+                                    Toast.LENGTH_SHORT).show()
+                            }
+
+                        }.addOnFailureListener(){
+                            Toast.makeText(this, "Unable to read the User's data!", Toast.LENGTH_SHORT).show()
+                        }
+
+
 //                        val user = firebaseAuth.currentUser
 //                        user?.let {
 //                            val name = user.displayName
@@ -46,9 +84,6 @@ class MainActivity : AppCompatActivity() {
 //                            //val account_type =
 //                        }
 
-                        val intent = Intent(this, Profile::class.java)
-                        finish()
-                        startActivity(intent)
 
                     } else {
                         // If sign in fails, display a message to the user.
@@ -56,8 +91,6 @@ class MainActivity : AppCompatActivity() {
                             Toast.LENGTH_SHORT).show()
                     }
                 }
-
-
         }
 
             binding.tvSignUp.setOnClickListener()

@@ -16,7 +16,7 @@ class Profile : AppCompatActivity() {
 
     private lateinit var binding: ActivityProfileBinding
     private lateinit var database: DatabaseReference
-    private lateinit var chatButton: ImageView
+
     private lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,7 +26,7 @@ class Profile : AppCompatActivity() {
         setContentView(binding.root)
 
         auth = FirebaseAuth.getInstance()
-        chatButton = findViewById(R.id.messagingButton)
+
         //val test = auth.currentUser.
         database = FirebaseDatabase.getInstance().getReference("Users")
         val currentUserUID = auth.currentUser!!.uid
@@ -47,11 +47,6 @@ class Profile : AppCompatActivity() {
             }
         }
 
-        chatButton.setOnClickListener {
-            val intent = Intent(this, ChatSearch::class.java)
-            finish()
-            startActivity(intent)
-        }
 
 
     }
