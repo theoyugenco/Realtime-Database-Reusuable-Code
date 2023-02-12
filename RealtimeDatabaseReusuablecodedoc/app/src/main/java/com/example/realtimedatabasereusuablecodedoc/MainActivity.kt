@@ -48,7 +48,11 @@ class MainActivity : AppCompatActivity() {
             firebaseAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
-                        // Sign in success, update UI with the signed-in user's information
+                        /*
+                        Kenneth Valero
+                        Responsible for testing the login and verifying that the correct
+                        UID is retrieved during login
+                         */
                         Toast.makeText(baseContext, "Authentication successful! " + "Uid" + firebaseAuth.currentUser?.uid
                                 + firebaseAuth.currentUser?.email,
                             Toast.LENGTH_SHORT).show()
