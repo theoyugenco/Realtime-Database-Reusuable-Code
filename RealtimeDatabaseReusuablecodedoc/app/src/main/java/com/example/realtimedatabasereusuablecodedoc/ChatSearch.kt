@@ -12,6 +12,7 @@ import com.google.firebase.database.*
 import java.util.Locale
 
 class ChatSearch : AppCompatActivity() {
+    //Initialize views, list, adapter, and firebase
     private lateinit var recyclerView: RecyclerView
     private lateinit var searchView: SearchView
     private lateinit var userList: ArrayList<UserDC>
@@ -22,18 +23,22 @@ class ChatSearch : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat_search)
 
+        //initialize firebase auth and reference
         firebaseAuth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance().getReference()
 
-
+        //initialize views, list, and user adapter
         recyclerView = findViewById(R.id.chatRecyclerView)
         searchView = findViewById(R.id.chatSearchView)
         userList = ArrayList()
         adapter = UserAdapter(this, userList)
 
+        //setup layout for recyclerview and connect adapter to recyclerview
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
 
+        //update the user list whenever a change is detected in the database
+        //only list users other than the current user
         database.child("Users").addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 userList.clear()
@@ -50,6 +55,7 @@ class ChatSearch : AppCompatActivity() {
             }
         })
 
+        //Update displayed users in response to searchbox text
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(p0: String?): Boolean {
                 return false
@@ -62,6 +68,8 @@ class ChatSearch : AppCompatActivity() {
 
         })
     }
+
+    //filter the list to correspond to the query
     private fun filterList(query: String?) {
         if (query != null) {
             val filteredList = ArrayList<UserDC>()
