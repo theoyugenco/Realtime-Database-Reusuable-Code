@@ -34,14 +34,15 @@ class Profile : AppCompatActivity() {
         database.child(currentUserUID).get().addOnSuccessListener {
             //If a node/entry of that specific Email exists
             if (it.exists()) {
-                binding.tvEmail.setText(auth.currentUser!!.email)
+                binding.tvEmail.editText!!.setText(auth.currentUser!!.email)
 
                 val fName = it.child("fname").value
                 val lName = it.child("lname").value
 
                 val name = "$fName $lName"
+                val name2 = "" + fName + " " + lName
 
-                binding.tvName.text = name.toString()
+                binding.tvName.editText!!.setText("test me")
 
             }
         }

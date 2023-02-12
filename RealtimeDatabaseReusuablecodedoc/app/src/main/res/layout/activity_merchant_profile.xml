@@ -12,6 +12,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="300dp"
@@ -20,82 +21,45 @@
 
             <ImageView
                 android:id="@+id/user_image"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:src="@drawable/empty_user"
-                android:layout_centerVertical="true"/>
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:src="@drawable/hamburger"
+                android:layout_marginLeft="95dp"
+                />
 
             <TextView
                 android:id="@+id/name_field"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
+                android:layout_centerInParent="true"
                 android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@+id/user_image"
+                android:layout_alignBottom="@+id/user_image"
                 android:includeFontPadding="false"
-                android:text="John Greene"
+                android:text="Johnny's Hamburgers"
                 android:textColor="#000"
-                android:textSize="20sp" />
-            <TextView
-                android:id="@+id/username_field"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/name_field"
-                android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@+id/user_image"
-                android:includeFontPadding="false"
-                android:text="john_greene"
-                android:textSize="14sp" />
+                android:textSize="30sp"
+                android:textStyle="bold"/>
         </RelativeLayout>
 
-        <LinearLayout
-            android:layout_height="wrap_content"
-            android:layout_marginTop="-100dp"
-            android:layout_width="match_parent"
-            android:padding="20dp"
-            android:background="#f29c45">
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_height="125dp"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                app:cardBackgroundColor="#ededed"
-                app:cardElevation="10dp">
-                <RelativeLayout
-                    android:layout_height="match_parent"
-                    android:layout_width="match_parent"
-                    android:padding="5dp">
-                    <Button
-                        android:id="@+id/payment_label"
-                        android:includeFontPadding="false"
-                        android:layout_centerInParent="true"
-                        android:layout_height="wrap_content"
-                        android:layout_width="wrap_content"
-                        android:text="Reservations"
-                        android:textSize="15sp" />
-                    <Button
-                        android:id="@+id/payment_desc"
-                        android:includeFontPadding="false"
-                        android:layout_below="@id/payment_label"
-                        android:layout_centerHorizontal="true"
-                        android:layout_height="wrap_content"
-                        android:layout_width="wrap_content"
-                        android:text="Edit Review"
-                        android:textSize="15sp" />
-                </RelativeLayout>
-            </com.google.android.material.card.MaterialCardView>
-        </LinearLayout>
 
         <LinearLayout
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:orientation="vertical"
-            android:padding="20dp">
+            android:padding="20dp"
+            android:background="#f29c45">
+
+            <TextView
+                android:id="@+id/AccountTitle"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Account Info"
+                android:textColor="#000"
+                android:textSize="30sp" />
 
 
             <com.google.android.material.textfield.TextInputLayout
-                android:hint="Full Name"
+                android:hint="Name"
                 android:id="@+id/tvName"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent">
@@ -160,16 +124,17 @@
                     android:layout_width="match_parent" />
             </com.google.android.material.textfield.TextInputLayout>
 
-        <Button
-            android:background="#f29c45"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:layout_width="match_parent"
-            android:text="Edit" />
+            <Button
+
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_width="match_parent"
+                android:text="Edit" />
 
         </LinearLayout>
     </LinearLayout>
 </ScrollView>
+
 
 
 
