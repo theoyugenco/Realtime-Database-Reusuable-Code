@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ChatSearch">
-
-
+<!--Layout for activity to search for user to chat with-->
+<!--    Card view which will contain the searchview-->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/materialCardView"
         android:layout_width="0dp"
@@ -27,6 +27,7 @@
             app:queryHint="Search for a user..." />
     </com.google.android.material.card.MaterialCardView>
 
+<!--    Recyclerview to represent the users-->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/chatRecyclerView"
         android:layout_width="0dp"

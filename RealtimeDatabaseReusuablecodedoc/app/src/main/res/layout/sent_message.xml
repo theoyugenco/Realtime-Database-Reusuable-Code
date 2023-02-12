@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-
+<!--Layout to display sent messages in window (Aligned on right side)-->
     <RelativeLayout
         android:layout_width="wrap_content"
         android:background="@drawable/sent_background"
@@ -10,7 +10,7 @@
         android:layout_marginRight="5dp"
         android:layout_marginTop="5dp"
         android:layout_height="wrap_content">
-
+<!--Textview to represent sent message-->
         <TextView
             android:id="@+id/sent_text"
             android:layout_width="wrap_content"

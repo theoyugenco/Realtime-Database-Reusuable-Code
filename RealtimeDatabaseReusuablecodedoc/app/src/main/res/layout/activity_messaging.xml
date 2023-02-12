@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Messaging">
-
+<!--Layout to represent the chatting window-->
+<!--    Recyclerview to keep track of all messages-->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/messageRecyclerView"
         android:layout_above="@id/messageLinearLayout"
@@ -14,6 +15,7 @@
         android:layout_height="wrap_content"
         />
 
+<!--    Layout for the messaging window-->
     <LinearLayout
         android:id="@+id/messageLinearLayout"
         android:layout_alignParentBottom="true"
@@ -23,6 +25,7 @@
         android:weightSum="100"
         android:layout_marginBottom="5dp">
 
+<!--        Message box for editing message-->
         <EditText
             android:id="@+id/messageBox"
             android:layout_width="wrap_content"
@@ -34,7 +37,7 @@
             android:layout_weight="85">
 
         </EditText>
-
+<!--Image to represent the send button-->
         <ImageView
             android:id="@+id/sentButton"
             android:layout_width="50dp"
