@@ -35,7 +35,11 @@ class Registration : AppCompatActivity() {
         setContentView(binding.root)
 
         firebaseAuth = FirebaseAuth.getInstance()
-
+        /*
+        Kenneth Valero
+        Code to setup the spinner that allows the user to choose between
+        account types customer and merchant
+         */
         val account_type = resources.getStringArray(R.array.account_type_array)
         val spinner = findViewById<Spinner>(R.id.account_type_spinner)
         val arrayAdapter =
