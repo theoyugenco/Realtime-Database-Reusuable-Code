@@ -12,6 +12,11 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
 
+
+/*
+theodore Yu
+Where Customer can custom their profile and retrieve personal information
+ */
 class Profile : AppCompatActivity() {
 
     private lateinit var binding: ActivityProfileBinding
