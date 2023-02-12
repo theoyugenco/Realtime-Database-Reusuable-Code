@@ -50,7 +50,7 @@ class Registration : AppCompatActivity() {
         Theodore Yu
         
          */
-        binding.btnRegister.setOnClickListener(){
+        binding.btnRegister.setOnClickListener() {
 
             val fName = binding.firstName.text.toString()
             val lName = binding.lastName.text.toString()
@@ -96,49 +96,49 @@ class Registration : AppCompatActivity() {
             firebaseAuth.createUserWithEmailAndPassword(email, pWord)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
-                        dbase = FirebaseDatabase.getInstance().getReference("Users")
-                        val uid : String = firebaseAuth.uid.toString()
+                        //dbase = FirebaseDatabase.getInstance().getReference("Users")
+                        val uid: String = firebaseAuth.uid.toString()
                         val UserDC =
                             UserDC(fName, lName, pWord, uName, email, uid)
-                        dbase.child(uid).setValue(UserDC).addOnSuccessListener {
-                            //The (registering) User successfully registered (valid inputs)
-                            //Thus we clear the input text provided to sanitize (confused EXACTLY why)
-                            if (userType == "Customer") {
-                                dbase =
-                                    FirebaseDatabase.getInstance().getReference("Users/Customers")
-                                dbase.child(uid).setValue(UserDC)
-                            } else if (userType == "Merchant") {
-                                dbase =
-                                    FirebaseDatabase.getInstance().getReference("Users/Merchants")
-                                dbase.child(uid).setValue(UserDC)
-                            }
-                            binding.firstName.text.clear()
-                            binding.lastName.text.clear()
-                            binding.Email.text.clear()
-                            binding.userName.text.clear()
-                            binding.passWord.text.clear()
-                            Toast.makeText(
-                                this,
-                                "Your account has been successfully created and registered.",
-                                Toast.LENGTH_SHORT
-                            ).show()
+                        //dbase.child(uid).setValue(UserDC).addOnSuccessListener {
+                        //The (registering) User successfully registered (valid inputs)
+                        //Thus we clear the input text provided to sanitize (confused EXACTLY why)
+                        if (userType == "Customer") {
+                            dbase =
+                                FirebaseDatabase.getInstance().getReference("Users/Customers")
+                            dbase.child(uid).setValue(UserDC)
+                        } else if (userType == "Merchant") {
+                            dbase =
+                                FirebaseDatabase.getInstance().getReference("Users/Merchants")
+                            dbase.child(uid).setValue(UserDC)
                         }
+                        binding.firstName.text.clear()
+                        binding.lastName.text.clear()
+                        binding.Email.text.clear()
+                        binding.userName.text.clear()
+                        binding.passWord.text.clear()
+                        Toast.makeText(
+                            this,
+                            "Your account has been successfully created and registered.",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        }/*
                     } else {
                         Toast.makeText(
                             this,
                             "Failure to create and register account.  Please try again.",
                             Toast.LENGTH_SHORT
                         ).show()
+                    }*/
                     }
+
+                    binding.tvAdmin.setOnClickListener()
+                    {
+                        val intent = Intent(this, AdminDatabaseManipulator::class.java)
+                        startActivity(intent)
+                    }
+
+
                 }
-
-            binding.tvAdmin.setOnClickListener()
-            {
-                val intent = Intent(this, AdminDatabaseManipulator::class.java)
-                startActivity(intent)
-            }
-
-
         }
     }
-}
