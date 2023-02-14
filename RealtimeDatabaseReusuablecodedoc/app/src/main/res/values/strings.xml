@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Realtime Database Reusuable code doc</string>
+    <string name="app_name">MealSteal</string>
     <string-array name="account_type_array">
         <item>Customer</item>
         <item>Merchant</item>
