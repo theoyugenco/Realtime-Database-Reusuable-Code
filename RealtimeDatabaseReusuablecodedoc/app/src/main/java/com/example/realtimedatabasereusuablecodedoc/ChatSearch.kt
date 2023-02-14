@@ -1,5 +1,6 @@
 package com.example.realtimedatabasereusuablecodedoc
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.widget.SearchView
@@ -39,9 +40,39 @@ class ChatSearch : AppCompatActivity() {
 
         //update the user list whenever a change is detected in the database
         //only list users other than the current user
-        database.child("Users").addValueEventListener(object: ValueEventListener {
+        database.child("Users/Merchants").addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                userList.clear()
+                var isMerchant: Boolean = false
+                for(user in userList) {
+                    isMerchant = checkMerchant(user.uid)
+                    if (isMerchant) {
+                        userList.remove(user)
+                    }
+                }
+                //userList.clear()
+                for(postSnapshot in snapshot.children) {
+                    val currentUser = postSnapshot.getValue(UserDC::class.java)
+                    if(firebaseAuth.currentUser?.uid != currentUser?.uid) {
+                        userList.add(currentUser!!)
+                    }
+                }
+                adapter.notifyDataSetChanged()
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+            }
+        })
+
+        database.child("Users/Customers").addValueEventListener(object: ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                var isCustomer: Boolean = false
+                for(user in userList) {
+                    isCustomer = checkCustomer(user.uid)
+                    if (isCustomer) {
+                        userList.remove(user)
+                    }
+                }
+                //userList.clear()
                 for(postSnapshot in snapshot.children) {
                     val currentUser = postSnapshot.getValue(UserDC::class.java)
                     if(firebaseAuth.currentUser?.uid != currentUser?.uid) {
@@ -85,5 +116,29 @@ class ChatSearch : AppCompatActivity() {
                 adapter.setFilteredList(filteredList)
             }
         }
+    }
+
+    private fun checkMerchant(uid: String?): Boolean {
+        database = FirebaseDatabase.getInstance().getReference("Users/Merchants")
+        var itExists: Boolean = false
+        database.child(uid!!).get().addOnSuccessListener {
+            //If a node/entry of that specific UserName exists
+            if(it.exists()) {
+                itExists = true
+            }
+        }
+        return itExists
+    }
+
+    private fun checkCustomer(uid: String?): Boolean {
+        database = FirebaseDatabase.getInstance().getReference("Users/Customers")
+        var itExists: Boolean = false
+        database.child(uid!!).get().addOnSuccessListener {
+            //If a node/entry of that specific UserName exists
+            if(it.exists()) {
+                itExists = true
+            }
+        }
+        return itExists
     }
 }
