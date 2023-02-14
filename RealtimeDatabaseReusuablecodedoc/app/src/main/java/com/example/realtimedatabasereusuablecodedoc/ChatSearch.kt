@@ -67,7 +67,7 @@ class ChatSearch : AppCompatActivity() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 var isCustomer: Boolean = false
                 for(user in userList) {
-                    isCustomer = checkMerchant(user.uid)
+                    isCustomer = checkCustomer(user.uid)
                     if (isCustomer) {
                         userList.remove(user)
                     }
