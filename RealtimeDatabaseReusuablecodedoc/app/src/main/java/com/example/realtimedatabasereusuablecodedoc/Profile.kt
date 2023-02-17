@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.net.Uri
 import android.view.View
 import android.widget.*
@@ -14,6 +15,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import java.io.File
 
 
 /*
@@ -37,6 +39,7 @@ class Profile : AppCompatActivity() {
         profilePic = findViewById((R.id.user_image))
 
         auth = FirebaseAuth.getInstance()
+        retrieveProfilePicture()
 
         profilePic.setOnClickListener {
             val intent = Intent()
@@ -88,6 +91,17 @@ class Profile : AppCompatActivity() {
             Toast.makeText(this, "Profile picture updated!", Toast.LENGTH_SHORT).show()
         }.addOnFailureListener {
             Toast.makeText(this, "Profile picture failed to update!", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun retrieveProfilePicture() {
+        storageReference = FirebaseStorage.getInstance().getReference().child("Customers/"+auth.currentUser?.uid)
+        val localFile = File.createTempFile("ProfilePic", "jpg")
+        storageReference.getFile(localFile).addOnSuccessListener {
+            val bitmap = BitmapFactory.decodeFile((localFile.absolutePath))
+            profilePic.setImageBitmap(bitmap)
+        }.addOnFailureListener{
+            Toast.makeText(this, "No profile picture available...", Toast.LENGTH_SHORT).show()
         }
     }
 }
