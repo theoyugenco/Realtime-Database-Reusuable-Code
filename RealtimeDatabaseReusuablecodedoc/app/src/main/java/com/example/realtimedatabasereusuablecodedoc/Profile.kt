@@ -13,6 +13,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 
 
 /*
@@ -23,10 +24,9 @@ class Profile : AppCompatActivity() {
 
     private lateinit var binding: ActivityProfileBinding
     private lateinit var database: DatabaseReference
-
     private lateinit var auth: FirebaseAuth
-    private lateinit var storage: FirebaseStorage
-
+    private lateinit var storageReference: StorageReference
+    private lateinit var profilePic: ImageView
     private lateinit var chosenImage: Uri
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,11 +34,11 @@ class Profile : AppCompatActivity() {
 
         binding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        profilePic = findViewById((R.id.user_image))
 
         auth = FirebaseAuth.getInstance()
-        storage = FirebaseStorage.getInstance()
 
-        binding.userImage.setOnClickListener {
+        profilePic.setOnClickListener {
             val intent = Intent()
             intent.action = Intent.ACTION_GET_CONTENT
             intent.type = "image/*"
@@ -67,5 +67,27 @@ class Profile : AppCompatActivity() {
 
 
 
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (data != null) {
+            if (data.data != null) {
+                chosenImage = data.data!!
+                binding.userImage.setImageURI(chosenImage)
+                uploadProfilePic()
+            }
+        }
+    }
+
+    private fun uploadProfilePic() {
+        storageReference =
+            FirebaseStorage.getInstance().getReference("Customers/" + auth.currentUser?.uid)
+        storageReference.putFile(chosenImage).addOnSuccessListener {
+            Toast.makeText(this, "Profile picture updated!", Toast.LENGTH_SHORT).show()
+        }.addOnFailureListener {
+            Toast.makeText(this, "Profile picture failed to update!", Toast.LENGTH_SHORT).show()
+        }
     }
 }
