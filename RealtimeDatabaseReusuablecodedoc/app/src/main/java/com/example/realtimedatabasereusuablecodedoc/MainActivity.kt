@@ -13,7 +13,9 @@ import android.widget.EditText
 import android.widget.TextView
 import com.google.firebase.auth.FirebaseAuth
 
-
+/*
+David Nguyen was responsible for the .xml file for this Activity
+ */
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
@@ -29,19 +31,37 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         firebaseAuth = FirebaseAuth.getInstance()
 
+        /*
+        Theodore Yu
+        Boiler Plate code that is similar across many different activities
+         */
+
+        /*
+        Theodore Yu
+        We use this button and code to log Users into their account using Firebase's Authentication
+         */
         binding.btnLogin.setOnClickListener {
             val email = binding.etEmail.text.toString()
             val password = binding.etPassWord.text.toString()
-            //val merchantStatus : Boolean = true
+
 
             firebaseAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
-                        // Sign in success, update UI with the signed-in user's information
+                        /*
+                        Kenneth Valero
+                        Responsible for testing the login and verifying that the correct
+                        UID is retrieved during login
+                         */
                         Toast.makeText(baseContext, "Authentication successful! " + "Uid" + firebaseAuth.currentUser?.uid
                                 + firebaseAuth.currentUser?.email,
                             Toast.LENGTH_SHORT).show()
                         val userid : String? = firebaseAuth.currentUser?.uid
+                        /*
+                        Theodore Yu
+                        We then ensure that the User gets sent to the correct HomePage
+                        based on whether or not they are a merchant or a customer.
+                         */
                         database = FirebaseDatabase.getInstance().getReference("Users/Merchants")
                         database.child(userid!!).get().addOnSuccessListener {
                             //If a node/entry of that specific UserName exists
@@ -50,10 +70,6 @@ class MainActivity : AppCompatActivity() {
                                 val intent = Intent(this, HomeMerchant::class.java)
                                 finish()
                                 startActivity(intent)
-                            }
-                            else{
-                                Toast.makeText(baseContext, "CRIT ERROR!",
-                                    Toast.LENGTH_SHORT).show()
                             }
 
                         }.addOnFailureListener(){
@@ -67,23 +83,10 @@ class MainActivity : AppCompatActivity() {
                                 finish()
                                 startActivity(intent)
                             }
-                            else{
-                                Toast.makeText(baseContext, "CRIT ERROR!!",
-                                    Toast.LENGTH_SHORT).show()
-                            }
 
                         }.addOnFailureListener(){
                             Toast.makeText(this, "Unable to read the User's data!", Toast.LENGTH_SHORT).show()
                         }
-
-
-//                        val user = firebaseAuth.currentUser
-//                        user?.let {
-//                            val name = user.displayName
-//                            val email = user.email
-//                            //val account_type =
-//                        }
-
 
                     } else {
                         // If sign in fails, display a message to the user.
@@ -93,6 +96,10 @@ class MainActivity : AppCompatActivity() {
                 }
         }
 
+            /*
+            Theodore Yu
+            We allow new users to register.
+             */
             binding.tvSignUp.setOnClickListener()
             {
                 val intent = Intent(this, Registration::class.java)

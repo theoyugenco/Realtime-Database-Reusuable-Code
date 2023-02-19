@@ -17,6 +17,11 @@ private lateinit var chatButton: ImageView
 private lateinit var binding: ActivityHomeCustomerBinding
 private lateinit var profButton: ImageView
 
+/*
+Theodore Yu
+The home page for the Merchant
+ */
+
 class HomeCustomer : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,12 +31,21 @@ class HomeCustomer : AppCompatActivity() {
         binding = ActivityHomeCustomerBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+        /*
+        Theodore Yu
+        Takes us to Chatting Functionality
+         */
         chatButton = findViewById(R.id.messagingButton)
         chatButton.setOnClickListener {
             val intent = Intent(this, ChatSearch::class.java)
             startActivity(intent)
         }
 
+        /*
+        Theodore Yu
+        Takes the User to their Profile
+         */
         profButton = findViewById(R.id.profileButton)
         profButton.setOnClickListener {
             val intent = Intent(this, Profile::class.java)

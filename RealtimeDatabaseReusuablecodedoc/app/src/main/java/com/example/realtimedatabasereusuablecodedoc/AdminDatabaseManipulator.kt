@@ -11,6 +11,12 @@ import com.google.firebase.database.FirebaseDatabase
 import android.content.Intent
 import com.example.realtimedatabasereusuablecodedoc.databinding.ActivityAdminDatabaseManipulatorBinding
 
+/*
+Theodore Yu
+This allows us to manipulate data from the RealTimeDatabase
+We may draw snippets of code from here
+ */
+
 class AdminDatabaseManipulator : AppCompatActivity() {
 
     private lateinit var binding: ActivityAdminDatabaseManipulatorBinding
