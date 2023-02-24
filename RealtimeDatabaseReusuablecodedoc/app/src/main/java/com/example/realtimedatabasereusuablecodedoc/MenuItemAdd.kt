@@ -15,7 +15,7 @@ import com.example.realtimedatabasereusuablecodedoc.databinding.ActivityMenuItem
 
 class MenuItemAdd : AppCompatActivity() {
 
-    private lateinit var binding: ActivityItemMenuAddBinding
+    private lateinit var binding: ActivityMenuItemAddBinding
     private lateinit var editEmail: EditText
     private lateinit var editPass: EditText
     private lateinit var btnLog: Button
