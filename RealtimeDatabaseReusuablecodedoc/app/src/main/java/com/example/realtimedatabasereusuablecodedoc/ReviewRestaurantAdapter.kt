@@ -44,7 +44,7 @@ class ReviewRestaurantAdapter (val context: Context, var locationList: ArrayList
         val currentLocation = locationList[position]
 
         holder.name.text = currentLocation.brand
-        holder.picture.setImageResource(locationList[position].picture
+        holder.picture.setImageResource(locationList[position].picture)
 
         holder.itemView.setOnClickListener {
             val intent = Intent(context, Review::class.java)
@@ -54,5 +54,4 @@ class ReviewRestaurantAdapter (val context: Context, var locationList: ArrayList
             context.startActivity(intent)
         }
     }
-
 }
