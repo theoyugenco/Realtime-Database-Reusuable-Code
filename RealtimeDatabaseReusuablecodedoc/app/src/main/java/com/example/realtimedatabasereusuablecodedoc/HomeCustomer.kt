@@ -16,6 +16,7 @@ import com.google.firebase.ktx.Firebase
 private lateinit var chatButton: ImageView
 private lateinit var binding: ActivityHomeCustomerBinding
 private lateinit var profButton: ImageView
+private lateinit var reviewButton: ImageView
 
 /*
 Theodore Yu
@@ -49,6 +50,11 @@ class HomeCustomer : AppCompatActivity() {
         profButton = findViewById(R.id.profileButton)
         profButton.setOnClickListener {
             val intent = Intent(this, Profile::class.java)
+            startActivity(intent)
+        }
+        reviewButton = findViewById(R.id.reviewButton)
+        reviewButton.setOnClickListener {
+            val intent = Intent(this, ReviewSearch::class.java)
             startActivity(intent)
         }
     }
