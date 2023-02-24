@@ -27,21 +27,19 @@ class ItemMenuItem : AppCompatActivity() {
         binding = ActivityItemMenuItemBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        btnAddItem.setOnclickListener{
+        btnAddItem.setOnclickListener {
             val intent = Intent(this, MenuItemAdd::class.java)
             startActivity(intent)
         }
 
-        btnEditItem.setOnClickListener{
+        btnEditItem.setOnClickListener {
             val intent = Intent(this, MenuItemEdit::class.java)
             startActivity(intent)
         }
 
-        btnViewItem.setOnClickListener{
+        btnViewItem.setOnClickListener {
             val intent = Intent(this, MenuItemView::class.java)
             startActivity(intent)
         }
-
-
     }
 }

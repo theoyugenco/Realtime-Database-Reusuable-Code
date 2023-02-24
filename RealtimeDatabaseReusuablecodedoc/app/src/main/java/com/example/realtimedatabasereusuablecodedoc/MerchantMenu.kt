@@ -7,16 +7,10 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 
-
-/*
-theodore Yu
-Where Merchants can custom their profile and retrieve personal information
- */
-
-class MerchantProfile : AppCompatActivity() {
+class MerchantMenu : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_merchant_profile)
+        setContentView(R.layout.activity_merchant_menu)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

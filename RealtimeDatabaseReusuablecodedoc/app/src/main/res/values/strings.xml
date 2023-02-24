@@ -1,4 +1,7 @@
 <resources>
+    <string name="location">location</string>
+    <string name="menu">menu</string>
+    <string name="menu_items">Menu Items</string>
     <string name="app_name">MealSteal</string>
     <string-array name="account_type_array">
         <item>Customer</item>
