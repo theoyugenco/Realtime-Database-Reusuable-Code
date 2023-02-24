@@ -10,7 +10,7 @@ import com.google.firebase.database.FirebaseDatabase
 
 private lateinit var recyclerView: RecyclerView
 private lateinit var searchView: SearchView
-private lateinit var restaurantList: ArrayList<Restaurant>
+private lateinit var restaurantList: ArrayList<LocationDC>
 private lateinit var adapter: ReviewRestaurantAdapter
 private lateinit var firebaseAuth: FirebaseAuth
 private lateinit var database: DatabaseReference
