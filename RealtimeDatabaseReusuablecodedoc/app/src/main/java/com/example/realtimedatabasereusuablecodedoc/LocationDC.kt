@@ -13,3 +13,4 @@ data class LocationDC(val name: String?,
                       var description: String?,
                       var picture : String?
 )
+

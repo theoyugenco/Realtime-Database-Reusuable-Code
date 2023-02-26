@@ -39,9 +39,7 @@ class ReviewSearch : AppCompatActivity() {
                 restaurantList.clear()
                 for(postSnapshot in snapshot.children) {
                     val currentRestaurant = postSnapshot.getValue(LocationDC::class.java)
-                    if(firebaseAuth.currentLocation?.brand != currentLocation?.brand) {
-                        locationList.add(currentLocation!!)
-                    }
+                    restaurantList.add(currentRestaurant!!)
                 }
                 adapter.notifyDataSetChanged()
             }
