@@ -15,9 +15,6 @@
             android:name=".ReviewSearch"
             android:exported="false" />
         <activity
-            android:name=".LocationActivity"
-            android:exported="false" />
-        <activity
             android:name=".MenuItemAdd"
             android:exported="false" />
         <activity

@@ -16,15 +16,16 @@ import com.example.realtimedatabasereusuablecodedoc.databinding.ActivityMenuItem
 class MenuItemAdd : AppCompatActivity() {
 
     private lateinit var binding: ActivityMenuItemAddBinding
-    private lateinit var editEmail: EditText
-    private lateinit var editPass: EditText
-    private lateinit var btnLog: Button
+    private lateinit var etName: EditText
+    private lateinit var etDescription: EditText
+    private lateinit var etPrice: EditText
+    private lateinit var btnAdd: Button
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var database: DatabaseReference
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu_item_add)
-        binding = ActivityItemMenuAddBinding.inflate(layoutInflater)
+        binding = ActivityMenuItemAddBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         /*

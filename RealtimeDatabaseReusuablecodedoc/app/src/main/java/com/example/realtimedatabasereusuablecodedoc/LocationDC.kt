@@ -7,10 +7,9 @@ Theodore Yu
 This represents Merchants' specific locations of their restaurants
  */
 
-data class LocationDC(val brand: String?,
+data class LocationDC(val name: String?,
                       val ownerUID: String?,
                       var address: String?,
                       var description: String?,
-                      var menu : MenuDC?,
-                      var picture : Int){
-}
+                      var picture : String?
+)
