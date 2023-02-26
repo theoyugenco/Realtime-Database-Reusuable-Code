@@ -11,6 +11,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.google.firebase.storage.FirebaseStorage
+import org.w3c.dom.Text
 import java.io.File
 
 class ReviewRestaurantAdapter (val context: Context, var locationList: ArrayList<LocationDC>):
@@ -20,6 +21,7 @@ class ReviewRestaurantAdapter (val context: Context, var locationList: ArrayList
     class ReviewRestaurantViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val name : TextView = itemView.findViewById<TextView>(R.id.textLocation)
         val picture : ImageView = itemView.findViewById<ImageView>(R.id.imgLocation)
+        val address: TextView = itemView.findViewById<TextView>(R.id.textAddress)
     }
 
     //Sets user list to filtered list
@@ -46,12 +48,14 @@ class ReviewRestaurantAdapter (val context: Context, var locationList: ArrayList
 
         holder.name.text = currentLocation.brand
         Glide.with(context).load(currentLocation.picture).into(holder.picture)
+        holder.address.text = currentLocation.address
 
         holder.itemView.setOnClickListener {
             val intent = Intent(context, Review::class.java)
             intent.putExtra("name", currentLocation.brand)
             //will need to finalize identification method of restaurant image
             intent.putExtra("logo", currentLocation.picture)
+            intent.putExtra("address", currentLocation.address)
             context.startActivity(intent)
         }
     }
