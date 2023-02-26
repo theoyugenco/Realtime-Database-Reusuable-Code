@@ -12,5 +12,5 @@ data class LocationDC(val brand: String?,
                       var address: String?,
                       var description: String?,
                       var menu : MenuDC?,
-                      var picture : Int){
+                      var picture : String?){
 }

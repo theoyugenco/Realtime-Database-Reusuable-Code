@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import com.bumptech.glide.Glide
 import com.google.firebase.storage.FirebaseStorage
 import java.io.File
 
@@ -44,7 +45,7 @@ class ReviewRestaurantAdapter (val context: Context, var locationList: ArrayList
         val currentLocation = locationList[position]
 
         holder.name.text = currentLocation.brand
-        holder.picture.setImageResource(locationList[position].picture)
+        Glide.with(context).load(currentLocation.picture).into(holder.picture)
 
         holder.itemView.setOnClickListener {
             val intent = Intent(context, Review::class.java)
