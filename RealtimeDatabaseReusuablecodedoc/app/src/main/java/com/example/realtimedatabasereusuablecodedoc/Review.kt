@@ -65,11 +65,19 @@ class Review : AppCompatActivity() {
             val feedback = feedbackWindow.text.toString()
             val getRatingValue = ratingBar.rating
             uploadProfilePic(locationID.toString())
-            val currentUserID = auth.currentUser?.uid.toString()
-            val newReview = ReviewDC(currentUserID, locationID, feedback, getRatingValue, uploadURL)
+
+            val currentUserUID = auth.currentUser!!.uid
+            var username : String = ""
+            database = FirebaseDatabase.getInstance().getReference("Users/Customers")
+            database.child(currentUserUID).get().addOnSuccessListener {
+                if (it.exists()) {
+                    username = it.child("uname").value.toString()
+                }
+            }
 
             database = FirebaseDatabase.getInstance().getReference("Reviews")
-            database.child(locationID + currentUserID).setValue(newReview)
+            val newReview = ReviewDC(currentUserUID, locationID, username, feedback, getRatingValue, uploadURL)
+            database.child(locationID + currentUserUID).setValue(newReview)
         }
 
         seeReviews.setOnClickListener {
