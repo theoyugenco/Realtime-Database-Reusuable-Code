@@ -1,3 +1,4 @@
+/*
 package com.example.realtimedatabasereusuablecodedoc
 
 import android.content.Context
@@ -60,3 +61,4 @@ class ReviewRestaurantAdapter (val context: Context, var locationList: ArrayList
         }
     }
 }
+*/

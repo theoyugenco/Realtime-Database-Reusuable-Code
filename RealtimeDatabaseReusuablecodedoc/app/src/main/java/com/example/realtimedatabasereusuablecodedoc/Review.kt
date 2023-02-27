@@ -1,3 +1,4 @@
+/*
 package com.example.realtimedatabasereusuablecodedoc
 
 import androidx.appcompat.app.AppCompatActivity
@@ -33,3 +34,4 @@ class Review : AppCompatActivity() {
         Glide.with(this).load(logo).into(restaurantPic)
     }
 }
+*/

@@ -15,6 +15,24 @@
         android:theme="@style/Theme.RealtimeDatabaseReusuableCodeDoc"
         tools:targetApi="31">
         <activity
+            android:name=".MenuItemViewEdit"
+            android:exported="false" />
+        <activity
+            android:name=".MenuItemManagement"
+            android:exported="false" />
+        <activity
+            android:name=".MenuAdd"
+            android:exported="false" />
+        <activity
+            android:name=".MenuManagement"
+            android:exported="false" />
+        <activity
+            android:name=".RestaurantAdd"
+            android:exported="false" />
+        <activity
+            android:name=".RestaurantManagement"
+            android:exported="false" />
+        <activity
             android:name=".Review"
             android:exported="false" />
         <activity

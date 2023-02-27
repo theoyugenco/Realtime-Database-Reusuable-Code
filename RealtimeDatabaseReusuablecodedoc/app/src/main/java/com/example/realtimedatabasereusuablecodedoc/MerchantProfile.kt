@@ -27,7 +27,7 @@ class MerchantProfile : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId){
             R.id.menu_location->{
-                val intent = Intent(this, ItemLocation::class.java)
+                val intent = Intent(this, RestaurantManagement::class.java)
                 startActivity(intent)
                 Toast.makeText(this, "Location Clicked", Toast.LENGTH_SHORT).show()
                 true
@@ -41,7 +41,7 @@ class MerchantProfile : AppCompatActivity() {
             }
 
             R.id.menu_item->{
-                val intent = Intent(this, ItemMenuItem::class.java)
+                val intent = Intent(this, MenuItemManagement::class.java)
                 startActivity(intent)
                 Toast.makeText(this, "Menu Item Clicked", Toast.LENGTH_SHORT).show()
                 true

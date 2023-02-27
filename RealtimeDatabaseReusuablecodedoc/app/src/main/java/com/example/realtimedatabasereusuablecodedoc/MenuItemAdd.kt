@@ -34,17 +34,19 @@ class MenuItemAdd : AppCompatActivity() {
         All Fields must be completed/filled to create.
          */
 
+
         binding.btnAdd.setOnClickListener(){
             val dishName : String? = binding.etName.text.toString()
             val description : String? = binding.etDescription.text.toString()
-            val price : Float = binding.etPrice.text.toFloat()
+            val price : Float = binding.etPrice.text.toString().toFloat()
 
             if ((!dishName.isNullOrEmpty()) && (!description.isNullOrEmpty()) && (!price.isNaN())){
-                val item = MenuItemDC(dishName, description, price)
+
                 firebaseAuth = FirebaseAuth.getInstance()
                 val uid : String = firebaseAuth.uid.toString()
-                database = FirebaseDatabase.getInstance().getReference("Users/Merchants/" + uid)
-                database.child(dishName).setValue(item).addOnSuccessListener {
+                val item = MenuItemDC(dishName, description, price, uid)
+                database = FirebaseDatabase.getInstance().getReference("Menu Items/")
+                database.push().setValue(item).addOnSuccessListener {
                     Toast.makeText(this, "The Menu Item has been created!", Toast.LENGTH_SHORT).show()
                 }.addOnFailureListener() {
                     Toast.makeText(this, "The Menu Item was NOT able to be created.", Toast.LENGTH_SHORT).show()

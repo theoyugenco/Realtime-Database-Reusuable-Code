@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/design_default_color_background"
-    tools:context=".RestaurantAdd">
+    tools:context=".MenuAdd">
 
     <ImageView
         android:id="@+id/shape"
@@ -18,7 +18,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Create a New Menu Item"
+        android:text="Create a New Menu"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="18sp"
@@ -30,7 +30,48 @@
         android:layout_height="50dp"
         android:layout_gravity="center_horizontal"
         android:paddingLeft="20dp"
-        android:hint="Name of Menu Item"
+        android:hint="Name of Menu"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/input"/>
+
+
+    <EditText
+        android:id="@+id/etStreetAddress"
+        android:layout_width="360dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:paddingLeft="20dp"
+        android:hint="Street Address"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/input"/>
+
+    <EditText
+        android:id="@+id/etCity"
+        android:layout_width="360dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:paddingLeft="20dp"
+        android:hint="City"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/input"/>
+
+    <EditText
+        android:id="@+id/etState"
+        android:layout_width="360dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:paddingLeft="20dp"
+        android:hint="State"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/input"/>
+
+    <EditText
+        android:id="@+id/etZip"
+        android:layout_width="360dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:paddingLeft="20dp"
+        android:hint="ZipCode"
         android:layout_marginTop="30dp"
         android:background="@drawable/input"/>
 
@@ -43,18 +84,6 @@
         android:hint="Description"
         android:layout_marginTop="30dp"
         android:background="@drawable/input"/>
-
-
-    <EditText
-        android:id="@+id/etPrice"
-        android:layout_width="360dp"
-        android:layout_height="50dp"
-        android:layout_gravity="center_horizontal"
-        android:paddingLeft="20dp"
-        android:hint="Price"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/input"/>
-
 
     <Button
         android:id="@+id/btnAdd"

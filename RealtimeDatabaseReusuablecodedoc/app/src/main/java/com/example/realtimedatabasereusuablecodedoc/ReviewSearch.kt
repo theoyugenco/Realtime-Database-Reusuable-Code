@@ -1,4 +1,4 @@
-package com.example.realtimedatabasereusuablecodedoc
+/*package com.example.realtimedatabasereusuablecodedoc
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -78,3 +78,4 @@ class ReviewSearch : AppCompatActivity() {
         }
     }
 }
+*/
