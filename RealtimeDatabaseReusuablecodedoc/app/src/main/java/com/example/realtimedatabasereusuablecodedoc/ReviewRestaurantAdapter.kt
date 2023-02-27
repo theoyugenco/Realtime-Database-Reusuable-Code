@@ -46,16 +46,16 @@ class ReviewRestaurantAdapter (val context: Context, var locationList: ArrayList
     override fun onBindViewHolder(holder: ReviewRestaurantViewHolder, position: Int) {
         val currentLocation = locationList[position]
 
-        holder.name.text = currentLocation.brand
+        holder.name.text = currentLocation.name
         Glide.with(context).load(currentLocation.picture).into(holder.picture)
         holder.address.text = currentLocation.address
 
         holder.itemView.setOnClickListener {
             val intent = Intent(context, Review::class.java)
-            intent.putExtra("name", currentLocation.brand)
-            //will need to finalize identification method of restaurant image
+            intent.putExtra("name", currentLocation.name)
             intent.putExtra("logo", currentLocation.picture)
             intent.putExtra("address", currentLocation.address)
+            intent.putExtra("locationID", currentLocation.id)
             context.startActivity(intent)
         }
     }
