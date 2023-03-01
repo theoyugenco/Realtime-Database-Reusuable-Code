@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.realtimedatabasereusuablecodedoc.databinding.ActivityHomeMerchantBinding
 import android.content.Intent
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.*
 import com.example.realtimedatabasereusuablecodedoc.databinding.ActivityProfileBinding
@@ -50,6 +52,38 @@ class HomeMerchant : AppCompatActivity() {
         profButton.setOnClickListener {
             val intent = Intent(this, MerchantProfile::class.java)
             startActivity(intent)
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.merchant_item,menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId){
+            R.id.menu_location->{
+                val intent = Intent(this, RestaurantManagement::class.java)
+                startActivity(intent)
+                Toast.makeText(this, "Location Clicked", Toast.LENGTH_SHORT).show()
+                true
+            }
+
+            R.id.menu_menu-> {
+                val intent = Intent(this, ItemMenu::class.java)
+                startActivity(intent)
+                Toast.makeText(this,"Menu Clicked", Toast.LENGTH_SHORT).show()
+                true
+            }
+
+            R.id.menu_item->{
+                val intent = Intent(this, MenuItemManagement::class.java)
+                startActivity(intent)
+                Toast.makeText(this, "Menu Item Clicked", Toast.LENGTH_SHORT).show()
+                true
+            }
+
+            else -> super.onOptionsItemSelected(item)
         }
     }
 }
