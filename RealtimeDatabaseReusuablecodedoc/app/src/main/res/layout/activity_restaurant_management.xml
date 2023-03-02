@@ -48,7 +48,7 @@
 
 
         <Button
-            android:id="@+id/btnEdit"
+            android:id="@+id/btnViewEditRestaurant"
             android:layout_width="120dp"
             android:layout_height="60dp"
             android:background="@drawable/login_btn"

@@ -28,7 +28,7 @@
                 android:id="@+id/user_image"
                 android:layout_width="180dp"
                 android:layout_height="180dp"
-                android:src="@drawable/hamburger"
+                android:src="@drawable/addimage"
                 android:layout_marginLeft="95dp"
                 />
 
@@ -65,10 +65,20 @@
                 android:textSize="30sp" />
 
 
-            <!--Below is a set of repeated cards that displays the user's profile information that can be changed-->
             <com.google.android.material.textfield.TextInputLayout
-                android:hint="Name"
-                android:id="@+id/tvName"
+                android:hint="Full Name"
+                android:id="@+id/tvFName"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:drawablePadding="10dp"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:hint="User Name"
+                android:id="@+id/tvUName"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent">
                 <com.google.android.material.textfield.TextInputEditText
@@ -79,7 +89,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:hint="Password"
-                android:id="@+id/tvPassword"
+                android:id="@+id/tvPWord"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent">
                 <com.google.android.material.textfield.TextInputEditText

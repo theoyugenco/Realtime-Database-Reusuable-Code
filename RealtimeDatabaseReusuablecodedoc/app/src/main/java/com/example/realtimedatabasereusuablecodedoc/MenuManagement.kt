@@ -24,10 +24,12 @@ class MenuManagement : AppCompatActivity() {
         setContentView(binding.root)
 
 
+        /*
         binding.btnAddMenu.setOnClickListener() {
             val intent = Intent(this, MenuAdd::class.java)
             startActivity(intent)
         }
+        */
 
 
 

@@ -29,6 +29,11 @@ class MenuItemManagement : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.btnEdit.setOnClickListener(){
+            val intent = Intent(this, MenuItemViewEdit::class.java)
+            startActivity(intent)
+        }
+
 
 
     }
