@@ -25,8 +25,8 @@ class ReviewSearch : AppCompatActivity() {
         firebaseAuth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance().getReference()
 
-        recyclerView = findViewById(R.id.reviewSearchRecyclerView)
-        searchView = findViewById(R.id.reviewLocationSearchView)
+        recyclerView = findViewById(R.id.restaurantSearchRecycler)
+        searchView = findViewById(R.id.reviewSearchBar)
         restaurantList = ArrayList()
         adapter = ReviewRestaurantAdapter(this, restaurantList)
 
