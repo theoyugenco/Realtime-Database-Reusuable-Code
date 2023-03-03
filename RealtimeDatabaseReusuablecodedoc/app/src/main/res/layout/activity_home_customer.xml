@@ -46,6 +46,13 @@
         android:layout_height="50dp"
         android:src="@drawable/profilepic" />
 
+        <ImageView
+            android:id="@+id/reviewButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/profilepic"
+            android:layout_below="@id/messagingButton"/>
+
 
 
     </LinearLayout>

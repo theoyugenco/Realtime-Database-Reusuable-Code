@@ -13,7 +13,7 @@ import kotlin.collections.ArrayList
 
 private lateinit var recyclerView: RecyclerView
 private lateinit var searchView: SearchView
-private lateinit var restaurantList: ArrayList<LocationDC>
+private lateinit var restaurantList: ArrayList<RestaurantDC>
 private lateinit var adapter: ReviewRestaurantAdapter
 private lateinit var firebaseAuth: FirebaseAuth
 private lateinit var database: DatabaseReference
@@ -25,8 +25,8 @@ class ReviewSearch : AppCompatActivity() {
         firebaseAuth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance().getReference()
 
-        recyclerView = findViewById(R.id.reviewSearchRecyclerView)
-        searchView = findViewById(R.id.reviewLocationSearchView)
+        recyclerView = findViewById(R.id.restaurantSearchRecycler)
+        searchView = findViewById(R.id.reviewSearchBar)
         restaurantList = ArrayList()
         adapter = ReviewRestaurantAdapter(this, restaurantList)
 
@@ -34,11 +34,11 @@ class ReviewSearch : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
 
-        database.child("Restaurants").addValueEventListener(object: ValueEventListener {
+        database.child("Users/Restaurants").addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 restaurantList.clear()
                 for(postSnapshot in snapshot.children) {
-                    val currentRestaurant = postSnapshot.getValue(LocationDC::class.java)
+                    val currentRestaurant = postSnapshot.getValue(RestaurantDC::class.java)
                     restaurantList.add(currentRestaurant!!)
                 }
                 adapter.notifyDataSetChanged()
@@ -63,7 +63,7 @@ class ReviewSearch : AppCompatActivity() {
 
     private fun filterList(query: String?) {
         if (query != null) {
-            val filteredList = ArrayList<LocationDC>()
+            val filteredList = ArrayList<RestaurantDC>()
             for (i in restaurantList) {
                 if (i.name.toString().lowercase(Locale.ROOT).contains(query.lowercase())) {
                     filteredList.add(i)

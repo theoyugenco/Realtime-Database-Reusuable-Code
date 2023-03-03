@@ -46,7 +46,7 @@ class Review : AppCompatActivity() {
         val name = intent.getStringExtra("name")
         val logo = intent.getStringExtra("logo")
         val address = intent.getStringExtra("address")
-        val locationID = intent.getStringExtra("locationID")
+        val restaurantID = intent.getStringExtra("restaurantID")
 
         auth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance().getReference("Reviews")
@@ -65,7 +65,7 @@ class Review : AppCompatActivity() {
         submitReview.setOnClickListener {
             val feedback = feedbackWindow.text.toString()
             val getRatingValue = ratingBar.rating
-            uploadProfilePic(locationID.toString())
+            uploadProfilePic(restaurantID.toString())
 
             val currentUserUID = auth.currentUser!!.uid
             var username : String = ""
@@ -77,13 +77,13 @@ class Review : AppCompatActivity() {
             }
 
             database = FirebaseDatabase.getInstance().getReference("Reviews")
-            val newReview = ReviewDC(currentUserUID, locationID, username, feedback, getRatingValue, uploadURL)
-            database.child(locationID + currentUserUID).setValue(newReview)
+            val newReview = ReviewDC(currentUserUID, restaurantID, username, feedback, getRatingValue, uploadURL)
+            database.child(restaurantID + currentUserUID).setValue(newReview)
         }
 
         seeReviews.setOnClickListener {
             val intent = Intent(this, CurrentReviews::class.java)
-            intent.putExtra("locationID", locationID)
+            intent.putExtra("restaurantID", restaurantID)
             startActivity(intent)
         }
     }
@@ -99,9 +99,9 @@ class Review : AppCompatActivity() {
         }
     }
 
-    private fun uploadProfilePic(locationID: String) {
+    private fun uploadProfilePic(restaurantID: String) {
         storageReference =
-            FirebaseStorage.getInstance().getReference("Reviews/" + auth.currentUser?.uid + locationID)
+            FirebaseStorage.getInstance().getReference("Reviews/" + auth.currentUser?.uid + restaurantID)
         storageReference.putFile(chosenImage).addOnSuccessListener {
             uploadURL = storageReference.downloadUrl.toString()
             Toast.makeText(this, "Review picture uploaded", Toast.LENGTH_SHORT).show()

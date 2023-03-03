@@ -15,7 +15,7 @@ import com.google.firebase.storage.FirebaseStorage
 import org.w3c.dom.Text
 import java.io.File
 
-class ReviewRestaurantAdapter (val context: Context, var locationList: ArrayList<LocationDC>):
+class ReviewRestaurantAdapter (val context: Context, var restaurantList: ArrayList<RestaurantDC>):
     RecyclerView.Adapter<ReviewRestaurantAdapter.ReviewRestaurantViewHolder>() {
 
     //value to be displayed in the view
@@ -26,8 +26,8 @@ class ReviewRestaurantAdapter (val context: Context, var locationList: ArrayList
     }
 
     //Sets user list to filtered list
-    fun setFilteredList(lList: ArrayList<LocationDC>) {
-        this.locationList = lList
+    fun setFilteredList(rList: ArrayList<RestaurantDC>) {
+        this.restaurantList = rList
         notifyDataSetChanged()
     }
 
@@ -39,24 +39,27 @@ class ReviewRestaurantAdapter (val context: Context, var locationList: ArrayList
 
     //get total number of users
     override fun getItemCount(): Int {
-        return locationList.size
+        return restaurantList.size
     }
 
     //binds the current user's name to the view holder. carries over
     //name and UID of chosen user to represent a recipient in messaging
     override fun onBindViewHolder(holder: ReviewRestaurantViewHolder, position: Int) {
-        val currentLocation = locationList[position]
+        val currentRestaurant = restaurantList[position]
 
-        holder.name.text = currentLocation.name
-        Glide.with(context).load(currentLocation.picture).into(holder.picture)
-        holder.address.text = currentLocation.address
+        holder.name.text = currentRestaurant.name
+        Glide.with(context).load(currentRestaurant.downloadURL).into(holder.picture)
+        val full_address : String = currentRestaurant.streetAddress + ", "
+        + currentRestaurant.city + ", " + currentRestaurant.state + ", "
+        + currentRestaurant.zipcode
+        holder.address.text = full_address
 
         holder.itemView.setOnClickListener {
             val intent = Intent(context, Review::class.java)
-            intent.putExtra("name", currentLocation.name)
-            intent.putExtra("logo", currentLocation.picture)
-            intent.putExtra("address", currentLocation.address)
-            intent.putExtra("locationID", currentLocation.id)
+            intent.putExtra("name", currentRestaurant.name)
+            intent.putExtra("logo", currentRestaurant.picture)
+            intent.putExtra("address", full_address)
+            intent.putExtra("restaurantID", currentRestaurant.restaurantID)
             context.startActivity(intent)
         }
     }

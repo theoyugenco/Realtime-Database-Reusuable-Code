@@ -25,7 +25,7 @@ class CurrentReviews : AppCompatActivity() {
         firebaseAuth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance().getReference()
 
-        val locationID = intent.getStringExtra("locationID")
+        val restaurantID = intent.getStringExtra("restaurantID")
 
         //initialize views, list, and user adapter
         recyclerView = findViewById(R.id.reviewRecyclerView)
@@ -41,7 +41,7 @@ class CurrentReviews : AppCompatActivity() {
                     reviewList.clear()
                     for (postSnapshot in snapshot.children) {
                         val currentReview = postSnapshot.getValue(ReviewDC::class.java)
-                        if(locationID == currentReview?.locationID) {
+                        if(restaurantID == currentReview?.restaurantID) {
                             reviewList.add(currentReview!!)
                         }
                     }

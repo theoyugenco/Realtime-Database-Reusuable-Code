@@ -7,30 +7,23 @@
     android:orientation="vertical"
     android:background="@color/design_default_color_background"
     tools:context=".MainActivity">
-
-    <ImageView
-        android:id="@+id/shape"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/shape"/>
-
-
-
+    
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Welcome Back!"
+        android:text="Welcome to MealSteal!"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="18sp"
-        android:textStyle="bold"/>
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:paddingTop="110dp"/>
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/login_draw"
-        android:layout_marginTop="30dp"
-        android:layout_gravity="center_horizontal"/>
+        android:layout_width="220dp"
+        android:layout_height="220dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/mealsteal" />
 
 
     <EditText
@@ -40,7 +33,6 @@
         android:layout_gravity="center_horizontal"
         android:paddingLeft="20dp"
         android:hint="Email"
-        android:layout_marginTop="30dp"
         android:background="@drawable/input"/>
 
     <EditText
@@ -50,7 +42,7 @@
         android:layout_gravity="center_horizontal"
         android:paddingLeft="20dp"
         android:hint="Password"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
         android:background="@drawable/input"/>
 
     <Button
@@ -60,8 +52,9 @@
         android:background="@drawable/login_btn"
         android:layout_marginTop="15dp"
         android:text="Login"
-        android:layout_gravity="center_horizontal"/>
-
+        android:layout_gravity="center_horizontal"
+        app:backgroundTint="#d0d3cf"
+        android:textColor="@color/black"/>
 
 
     <LinearLayout
