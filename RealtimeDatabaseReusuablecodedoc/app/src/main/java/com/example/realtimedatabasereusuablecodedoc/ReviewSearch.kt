@@ -65,7 +65,7 @@ class ReviewSearch : AppCompatActivity() {
         if (query != null) {
             val filteredList = ArrayList<LocationDC>()
             for (i in restaurantList) {
-                if (i.brand.toString().lowercase(Locale.ROOT).contains(query.lowercase())) {
+                if (i.name.toString().lowercase(Locale.ROOT).contains(query.lowercase())) {
                     filteredList.add(i)
                 }
             }
