@@ -1,4 +1,4 @@
-/*
+
 package com.example.realtimedatabasereusuablecodedoc
 
 import android.content.Intent
@@ -110,4 +110,3 @@ class Review : AppCompatActivity() {
         }
     }
 }
-*/

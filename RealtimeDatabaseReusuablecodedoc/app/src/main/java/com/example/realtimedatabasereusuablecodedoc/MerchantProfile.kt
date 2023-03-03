@@ -79,8 +79,6 @@ class MerchantProfile : AppCompatActivity() {
         */
 
     }
-<<<<<<< Updated upstream
-=======
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.merchant_item,menu)
@@ -180,5 +178,4 @@ class MerchantProfile : AppCompatActivity() {
 
 
     }
->>>>>>> Stashed changes
 }

@@ -1,4 +1,4 @@
-/*
+
 package com.example.realtimedatabasereusuablecodedoc
 
 import android.content.Context
@@ -49,19 +49,16 @@ class ReviewRestaurantAdapter (val context: Context, var restaurantList: ArrayLi
 
         holder.name.text = currentRestaurant.name
         Glide.with(context).load(currentRestaurant.downloadURL).into(holder.picture)
-        val full_address : String = currentRestaurant.streetAddress + ", "
-        + currentRestaurant.city + ", " + currentRestaurant.state + ", "
-        + currentRestaurant.zipcode
+        val full_address : String = currentRestaurant.streetAddress + ", " + currentRestaurant.city + ", " + currentRestaurant.state + ", " + currentRestaurant.zipcode
         holder.address.text = full_address
 
         holder.itemView.setOnClickListener {
             val intent = Intent(context, Review::class.java)
             intent.putExtra("name", currentRestaurant.name)
-            intent.putExtra("logo", currentRestaurant.picture)
+            intent.putExtra("logo", currentRestaurant.downloadURL)
             intent.putExtra("address", full_address)
             intent.putExtra("restaurantID", currentRestaurant.restaurantID)
             context.startActivity(intent)
         }
     }
 }
-*/
