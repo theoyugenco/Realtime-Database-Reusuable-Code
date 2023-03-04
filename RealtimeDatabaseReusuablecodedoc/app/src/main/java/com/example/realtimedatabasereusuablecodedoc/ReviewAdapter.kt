@@ -17,9 +17,16 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import java.io.File
 
+/*
+Kenneth Valero
+This adapter will represent a compilation of reviews for a specific restaurant.
+ */
 class ReviewAdapter (val context: Context, var reviewList: ArrayList<ReviewDC>): RecyclerView.Adapter<ReviewAdapter.ReviewViewHolder>() {
 
-    //value to be displayed in the view
+    /*
+    Attributes to be displayed in the view:
+    Reviewer username, given rating, provided feedback and image
+     */
     class ReviewViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val username : TextView = itemView.findViewById<TextView>(R.id.text_username)
         val ratingBar : RatingBar = itemView.findViewById<RatingBar>(R.id.rating_bar)
@@ -27,27 +34,30 @@ class ReviewAdapter (val context: Context, var reviewList: ArrayList<ReviewDC>):
         val reviewImage : ImageView = itemView.findViewById<ImageView>(R.id.review_image)
     }
 
-    //Setups the layout for a card view for a user in the list
+    /*
+    Sets up the layout for a card to represent a review on the recyclerview
+     */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReviewViewHolder {
         val view: View = LayoutInflater.from(context).inflate(R.layout.review_layout, parent, false)
         return ReviewViewHolder(view)
     }
 
-    //get total number of users
+    /*
+    Gets the total number of reviews
+     */
     override fun getItemCount(): Int {
         return reviewList.size
     }
 
-    //binds the current user's name to the view holder. carries over
-    //name and UID of chosen user to represent a recipient in messaging
+    /*
+    Binds the current review's attributes to the viewholder:
+    username, feedback, review upload, and rating.
+     */
     override fun onBindViewHolder(holder: ReviewViewHolder, position: Int) {
         val currentReview = reviewList[position]
 
         holder.username.text = currentReview.username
         holder.feedback.text = currentReview.feedback
-//        var imageUri: Uri = Uri.parse(currentReview.picture)
-//        Glide.with(context).load(imageUri).into(holder.reviewImage)
-//        holder.reviewImage.setImageURI(imageUri)
         var storageReference: StorageReference = FirebaseStorage.getInstance().getReference().child("Reviews/"+currentReview.userID+currentReview.restaurantID)
         val localFile = File.createTempFile("RestaurantPic", "jpg")
         storageReference.getFile(localFile).addOnSuccessListener {

@@ -41,6 +41,11 @@ class Profile : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         retrieveProfilePicture()
 
+        /*
+        Kenneth Valero: Image Upload Use Case
+        User can click on the profile picture imageview
+        to access their gallery to upload an image
+         */
         profilePic.setOnClickListener {
             val intent = Intent()
             intent.action = Intent.ACTION_GET_CONTENT
@@ -72,6 +77,11 @@ class Profile : AppCompatActivity() {
 
     }
 
+    /*
+    Kenneth Valero: Image Upload Use case
+    Function to set the current displayed imageview to the chosen image
+    initiates uploading image to storage
+     */
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -84,6 +94,11 @@ class Profile : AppCompatActivity() {
         }
     }
 
+    /*
+    Kenneth Valero: Image Upload Use Case
+    Creates a storage reference to the Customers folder then adds the image to the storage
+    under the user ID
+     */
     private fun uploadProfilePic() {
         storageReference =
             FirebaseStorage.getInstance().getReference("Customers/" + auth.currentUser?.uid)
@@ -94,6 +109,11 @@ class Profile : AppCompatActivity() {
         }
     }
 
+    /*
+    Kenneth Valero: Image Upload Use Case
+    Retrieves the profile picture from the storage and assigns the bitmap data to the profile
+    picture image view.
+     */
     private fun retrieveProfilePicture() {
         storageReference = FirebaseStorage.getInstance().getReference().child("Customers/"+auth.currentUser?.uid)
         val localFile = File.createTempFile("ProfilePic", "jpg")

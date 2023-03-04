@@ -16,7 +16,11 @@ import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import java.io.File
-
+/*
+Kenneth Valero
+In this activity, the user can give a review of the restaurant they chose
+in the review search activity, providing a star rating, feedback, and an image
+ */
 class Review : AppCompatActivity() {
     private lateinit var restaurantPic: ImageView
     private lateinit var reviewUpload: ImageView
@@ -28,7 +32,6 @@ class Review : AppCompatActivity() {
     private lateinit var seeReviews: Button
     private lateinit var submitReview: Button
     private lateinit var ratingBar: RatingBar
-//    private lateinit var uploadURL: String
     private lateinit var username: String
     private lateinit var database: DatabaseReference
     private lateinit var auth: FirebaseAuth
@@ -38,6 +41,7 @@ class Review : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_review)
 
+        //initialize display members on layout
         restaurantPic = findViewById((R.id.location_image))
         reviewUpload = findViewById(R.id.review_upload)
         restaurantName = findViewById(R.id.restaurant_name)
@@ -48,6 +52,7 @@ class Review : AppCompatActivity() {
         submitReview = findViewById((R.id.submit_review))
         ratingBar = findViewById(R.id.rating_bar)
 
+        //Retrive the username of the current user
         auth = FirebaseAuth.getInstance()
         username = ""
         database = FirebaseDatabase.getInstance().getReference("Users/Customers")
@@ -58,6 +63,7 @@ class Review : AppCompatActivity() {
             }
         }
 
+        //Retrieve attributes from last activity
         val name = intent.getStringExtra("name")
         val logo = intent.getStringExtra("logo")
         val address = intent.getStringExtra("address")
@@ -65,6 +71,7 @@ class Review : AppCompatActivity() {
 
         database = FirebaseDatabase.getInstance().getReference("Reviews")
 
+        //Set the name, address and the restaurant picture on the layout
         restaurantName.text = name
         restaurantAddress.text = address
 //        var imageUri: Uri = Uri.parse(logo)
@@ -79,6 +86,7 @@ class Review : AppCompatActivity() {
             Toast.makeText(this, "No restaurant picture available", Toast.LENGTH_SHORT).show()
         }
 
+        //Open the gallery when the user wants to upload a review picture
         getPicture.setOnClickListener {
             val intent = Intent()
             intent.action = Intent.ACTION_GET_CONTENT
@@ -86,6 +94,7 @@ class Review : AppCompatActivity() {
             startActivityForResult(intent, 1)
         }
 
+        //Submit their review to the database
         submitReview.setOnClickListener {
             val feedback = feedbackWindow.text.toString()
             val getRatingValue = ratingBar.rating
@@ -98,6 +107,7 @@ class Review : AppCompatActivity() {
             database.child(restaurantID + auth.currentUser!!.uid).setValue(newReview)
         }
 
+        //Allows the user to see past reviews
         seeReviews.setOnClickListener {
             val intent = Intent(this, CurrentReviews::class.java)
             intent.putExtra("restaurantID", restaurantID)
@@ -105,6 +115,9 @@ class Review : AppCompatActivity() {
         }
     }
 
+    /*
+    Sets the imageview for the review upload to the chosen gallery image
+     */
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -116,7 +129,9 @@ class Review : AppCompatActivity() {
             }
         }
     }
-
+    /*
+    Uploads the review upload picture to the Storage database.
+    */
     private fun uploadProfilePic(restaurantID: String?) {
         storageReference =
             FirebaseStorage.getInstance().getReference("Reviews/" + auth.currentUser?.uid + restaurantID)
