@@ -87,11 +87,12 @@
             android:numStars="5"
             android:scaleX="2"
             android:scaleY="2"
-            android:stepSize="1" />
+            android:stepSize="1"
+            android:isIndicator="false"/>
 
         <com.google.android.material.textfield.TextInputLayout
             android:hint="Feedback"
-            android:id="@+id/feedback_window"
+            android:id="@+id/feedback_layout"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:paddingStart="20dp"
@@ -100,6 +101,7 @@
             android:layout_marginTop="20dp">
             <com.google.android.material.textfield.TextInputEditText
                 android:drawablePadding="10dp"
+                android:id="@+id/feedback_window"
                 android:layout_height="200dp"
                 android:layout_width="match_parent"
                 android:inputType="textMultiLine"
@@ -116,33 +118,32 @@
             android:backgroundTint="#d0d3cf"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:layout_centerHorizontal="true"
             android:text="Submit"
             android:textColor="@color/black"
-            android:layout_below="@+id/get_picture"
+            android:layout_below="@+id/review_upload"
             />
 
         <Button
             android:id="@+id/get_picture"
             android:backgroundTint="#d0d3cf"
-            android:layout_width="300dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:layout_centerHorizontal="true"
-            android:text="Upload Image"
+            android:layout_marginTop="10dp"
+            android:text="Upload Images"
             android:textColor="@color/black"
-            android:layout_below="@+id/feedback_window"
+            android:layout_below="@+id/feedback_layout"
             />
 
         <ImageView
             android:id="@+id/review_upload"
-            android:layout_width="100dp"
+            android:layout_width="80dp"
             android:layout_height="100dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginStart="10dp"
             android:src="@drawable/person"
-            android:layout_above="@id/submit_review"/>
+            android:layout_below="@id/get_picture"
+            android:layout_centerHorizontal="true"/>
 
 
     </RelativeLayout>

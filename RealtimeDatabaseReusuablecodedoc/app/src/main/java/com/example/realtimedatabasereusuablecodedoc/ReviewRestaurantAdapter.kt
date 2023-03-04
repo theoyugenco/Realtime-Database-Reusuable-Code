@@ -4,14 +4,17 @@ package com.example.realtimedatabasereusuablecodedoc
 import android.content.Context
 import android.content.Intent
 import android.graphics.BitmapFactory
+import android.net.Uri
 import android.view.LayoutInflater
 import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import org.w3c.dom.Text
 import java.io.File
 
@@ -48,7 +51,25 @@ class ReviewRestaurantAdapter (val context: Context, var restaurantList: ArrayLi
         val currentRestaurant = restaurantList[position]
 
         holder.name.text = currentRestaurant.name
-        Glide.with(context).load(currentRestaurant.downloadURL).into(holder.picture)
+//        var imageUri: Uri = Uri.parse(currentRestaurant.downloadURL)
+//        Glide.with(context).load(imageUri).into(holder.picture)
+//        holder.picture.setImageURI(imageUri)
+//        storageReference = FirebaseStorage.getInstance().getReference().child("Customers/"+auth.currentUser?.uid)
+//        val localFile = File.createTempFile("ProfilePic", "jpg")
+//        storageReference.getFile(localFile).addOnSuccessListener {
+//            val bitmap = BitmapFactory.decodeFile((localFile.absolutePath))
+//            profilePic.setImageBitmap(bitmap)
+//        }.addOnFailureListener{
+//            Toast.makeText(this, "No profile picture available...", Toast.LENGTH_SHORT).show()
+//        }
+        var storageReference: StorageReference = FirebaseStorage.getInstance().getReference().child("Restaurants/"+currentRestaurant.restaurantID)
+        val localFile = File.createTempFile("RestaurantPic", "jpg")
+        storageReference.getFile(localFile).addOnSuccessListener {
+            val bitmap = BitmapFactory.decodeFile((localFile.absolutePath))
+            holder.picture.setImageBitmap(bitmap)
+        }.addOnFailureListener {
+            Toast.makeText(context, "No restaurant picture available", Toast.LENGTH_SHORT).show()
+        }
         val full_address : String = currentRestaurant.streetAddress + ", " + currentRestaurant.city + ", " + currentRestaurant.state + ", " + currentRestaurant.zipcode
         holder.address.text = full_address
 

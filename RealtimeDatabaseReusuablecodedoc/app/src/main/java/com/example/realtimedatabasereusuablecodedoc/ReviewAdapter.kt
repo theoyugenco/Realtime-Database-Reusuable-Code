@@ -3,6 +3,7 @@ package com.example.realtimedatabasereusuablecodedoc
 import android.content.Context
 import android.content.Intent
 import android.graphics.BitmapFactory
+import android.net.Uri
 import android.view.LayoutInflater
 import androidx.recyclerview.widget.RecyclerView
 import android.view.View
@@ -10,7 +11,11 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
+import android.widget.Toast
 import com.bumptech.glide.Glide
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
+import java.io.File
 
 class ReviewAdapter (val context: Context, var reviewList: ArrayList<ReviewDC>): RecyclerView.Adapter<ReviewAdapter.ReviewViewHolder>() {
 
@@ -40,7 +45,17 @@ class ReviewAdapter (val context: Context, var reviewList: ArrayList<ReviewDC>):
 
         holder.username.text = currentReview.username
         holder.feedback.text = currentReview.feedback
-        Glide.with(context).load(currentReview.picture).into(holder.reviewImage)
+//        var imageUri: Uri = Uri.parse(currentReview.picture)
+//        Glide.with(context).load(imageUri).into(holder.reviewImage)
+//        holder.reviewImage.setImageURI(imageUri)
+        var storageReference: StorageReference = FirebaseStorage.getInstance().getReference().child("Reviews/"+currentReview.userID+currentReview.restaurantID)
+        val localFile = File.createTempFile("RestaurantPic", "jpg")
+        storageReference.getFile(localFile).addOnSuccessListener {
+            val bitmap = BitmapFactory.decodeFile((localFile.absolutePath))
+            holder.reviewImage.setImageBitmap(bitmap)
+        }.addOnFailureListener {
+            Toast.makeText(context, "No review picture available", Toast.LENGTH_SHORT).show()
+        }
         val rating = currentReview.rating
         if (rating != null) {
             holder.ratingBar.rating = rating

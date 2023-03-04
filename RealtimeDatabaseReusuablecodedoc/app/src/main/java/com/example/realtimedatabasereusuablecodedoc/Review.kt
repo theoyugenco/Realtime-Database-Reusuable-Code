@@ -2,16 +2,20 @@
 package com.example.realtimedatabasereusuablecodedoc
 
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
+import androidx.core.net.toUri
 import com.bumptech.glide.Glide
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import java.io.File
 
 class Review : AppCompatActivity() {
     private lateinit var restaurantPic: ImageView
@@ -20,11 +24,12 @@ class Review : AppCompatActivity() {
     private lateinit var restaurantAddress: TextView
     private lateinit var getPicture: Button
     private lateinit var chosenImage: Uri
-    private lateinit var feedbackWindow: EditText
+    private lateinit var feedbackWindow: TextInputEditText
     private lateinit var seeReviews: Button
     private lateinit var submitReview: Button
     private lateinit var ratingBar: RatingBar
-    private lateinit var uploadURL: String
+//    private lateinit var uploadURL: String
+    private lateinit var username: String
     private lateinit var database: DatabaseReference
     private lateinit var auth: FirebaseAuth
     private lateinit var storageReference: StorageReference
@@ -43,17 +48,36 @@ class Review : AppCompatActivity() {
         submitReview = findViewById((R.id.submit_review))
         ratingBar = findViewById(R.id.rating_bar)
 
+        auth = FirebaseAuth.getInstance()
+        username = ""
+        database = FirebaseDatabase.getInstance().getReference("Users/Customers")
+        database.child(auth.currentUser!!.uid).get().addOnSuccessListener {
+            if(it.exists()) {
+                var currentUser: String = it.child("uname").value.toString()
+                username = currentUser
+            }
+        }
+
         val name = intent.getStringExtra("name")
         val logo = intent.getStringExtra("logo")
         val address = intent.getStringExtra("address")
         val restaurantID = intent.getStringExtra("restaurantID")
 
-        auth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance().getReference("Reviews")
 
         restaurantName.text = name
         restaurantAddress.text = address
-        Glide.with(this).load(logo).into(restaurantPic)
+//        var imageUri: Uri = Uri.parse(logo)
+//        restaurantPic.setImageURI(imageUri)
+//        Glide.with(this).load(imageUri).into(restaurantPic)
+        var storageReference: StorageReference = FirebaseStorage.getInstance().getReference().child("Restaurants/"+restaurantID)
+        val localFile = File.createTempFile("RestaurantPic", "jpg")
+        storageReference.getFile(localFile).addOnSuccessListener {
+            val bitmap = BitmapFactory.decodeFile((localFile.absolutePath))
+            restaurantPic.setImageBitmap(bitmap)
+        }.addOnFailureListener {
+            Toast.makeText(this, "No restaurant picture available", Toast.LENGTH_SHORT).show()
+        }
 
         getPicture.setOnClickListener {
             val intent = Intent()
@@ -65,20 +89,13 @@ class Review : AppCompatActivity() {
         submitReview.setOnClickListener {
             val feedback = feedbackWindow.text.toString()
             val getRatingValue = ratingBar.rating
-            uploadProfilePic(restaurantID.toString())
+//            uploadURL = uploadProfilePic(restaurantID.toString())
 
-            val currentUserUID = auth.currentUser!!.uid
-            var username : String = ""
-            database = FirebaseDatabase.getInstance().getReference("Users/Customers")
-            database.child(currentUserUID).get().addOnSuccessListener {
-                if (it.exists()) {
-                    username = it.child("uname").value.toString()
-                }
-            }
+            uploadProfilePic(restaurantID)
 
             database = FirebaseDatabase.getInstance().getReference("Reviews")
-            val newReview = ReviewDC(currentUserUID, restaurantID, username, feedback, getRatingValue, uploadURL)
-            database.child(restaurantID + currentUserUID).setValue(newReview)
+            val newReview = ReviewDC(auth.currentUser!!.uid, restaurantID, username, feedback, getRatingValue, chosenImage.toString())
+            database.child(restaurantID + auth.currentUser!!.uid).setValue(newReview)
         }
 
         seeReviews.setOnClickListener {
@@ -94,19 +111,20 @@ class Review : AppCompatActivity() {
         if (data != null) {
             if (data.data != null) {
                 chosenImage = data.data!!
-                reviewUpload.setImageURI(chosenImage)
+                Glide.with(this).load(chosenImage).into(reviewUpload)
+//                reviewUpload.setImageURI(chosenImage)
             }
         }
     }
 
-    private fun uploadProfilePic(restaurantID: String) {
+    private fun uploadProfilePic(restaurantID: String?) {
         storageReference =
             FirebaseStorage.getInstance().getReference("Reviews/" + auth.currentUser?.uid + restaurantID)
         storageReference.putFile(chosenImage).addOnSuccessListener {
-            uploadURL = storageReference.downloadUrl.toString()
-            Toast.makeText(this, "Review picture uploaded", Toast.LENGTH_SHORT).show()
+            //url = storage.downloadUrl.toString()
+            Toast.makeText(this, "Profile picture updated!", Toast.LENGTH_SHORT).show()
         }.addOnFailureListener {
-            Toast.makeText(this, "Review picture failed to upload!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Profile picture failed to update!", Toast.LENGTH_SHORT).show()
         }
     }
 }
