@@ -9,5 +9,5 @@ data class RestaurantDC( var name: String? = "",
                          var zipcode: String? = "",
                          var description: String? = "",
                          var restaurantID: String? = "",
-                         var downloadURL: String? = ""
+                         var merchantID: String? = ""
 )

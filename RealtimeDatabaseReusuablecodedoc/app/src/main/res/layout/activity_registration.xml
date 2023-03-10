@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!--ScrollView allows the user to be able to scroll the page up or down-->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/design_default_color_background"
     tools:context=".Registration">
+
+    <!--LinearLayout is used to order each item in a vertical orientation-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
     <ImageView
         android:id="@+id/shape"
@@ -27,7 +33,7 @@
 
 
     <EditText
-        android:id="@+id/firstName"
+        android:id="@+id/etFName"
         android:layout_width="360dp"
         android:layout_height="50dp"
         android:layout_gravity="center_horizontal"
@@ -37,7 +43,7 @@
         android:background="@drawable/input"/>
 
     <EditText
-        android:id="@+id/lastName"
+        android:id="@+id/etLName"
         android:layout_width="360dp"
         android:layout_height="50dp"
         android:layout_gravity="center_horizontal"
@@ -47,7 +53,7 @@
         android:background="@drawable/input"/>
 
     <EditText
-        android:id="@+id/Email"
+        android:id="@+id/etEmail"
         android:layout_width="360dp"
         android:layout_height="50dp"
         android:layout_gravity="center_horizontal"
@@ -57,7 +63,7 @@
         android:background="@drawable/input"/>
 
     <EditText
-        android:id="@+id/userName"
+        android:id="@+id/etUName"
         android:layout_width="360dp"
         android:layout_height="50dp"
         android:layout_gravity="center_horizontal"
@@ -67,12 +73,62 @@
         android:background="@drawable/input"/>
 
     <EditText
-        android:id="@+id/passWord"
+        android:id="@+id/etPWord"
         android:layout_width="360dp"
         android:layout_height="50dp"
         android:layout_gravity="center_horizontal"
         android:paddingLeft="20dp"
         android:hint="Password"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/input"/>
+
+    <EditText
+        android:id="@+id/etStreetAddress"
+        android:layout_width="360dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:paddingLeft="20dp"
+        android:hint="Street Address"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/input"/>
+
+    <EditText
+        android:id="@+id/etCity"
+        android:layout_width="360dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:paddingLeft="20dp"
+        android:hint="City"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/input"/>
+
+    <EditText
+        android:id="@+id/etState"
+        android:layout_width="360dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:paddingLeft="20dp"
+        android:hint="State"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/input"/>
+
+    <EditText
+        android:id="@+id/etZip"
+        android:layout_width="360dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:paddingLeft="20dp"
+        android:hint="ZipCode"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/input"/>
+
+    <EditText
+        android:id="@+id/etPhone"
+        android:layout_width="360dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:paddingLeft="20dp"
+        android:hint="ZipCode"
         android:layout_marginTop="30dp"
         android:background="@drawable/input"/>
 
@@ -85,8 +141,6 @@
         android:layout_marginTop="5dp"
         android:spinnerMode="dropdown"
         android:entries="@array/account_type_array" />
-
-
 
     <Button
         android:id="@+id/btnRegister"
@@ -106,12 +160,5 @@
         android:textStyle="bold"
         android:text="Admin Mode"/>
 
-
-
-
-
-
-
-
-
-</LinearLayout>
+    </LinearLayout>
+</ScrollView>

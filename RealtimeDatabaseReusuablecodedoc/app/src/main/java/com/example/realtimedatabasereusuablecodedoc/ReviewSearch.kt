@@ -1,3 +1,4 @@
+/*
 package com.example.realtimedatabasereusuablecodedoc
 
 import androidx.appcompat.app.AppCompatActivity
@@ -78,3 +79,4 @@ class ReviewSearch : AppCompatActivity() {
         }
     }
 }
+*/

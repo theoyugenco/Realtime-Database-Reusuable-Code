@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
+//import com.example.realtimedatabasereusuablecodedoc.databinding.ActivityHomeCustomerBinding
 import com.example.realtimedatabasereusuablecodedoc.databinding.ActivityHomeCustomerBinding
 import android.view.View
 import android.widget.*
@@ -47,13 +48,14 @@ class HomeCustomer : AppCompatActivity() {
         Theodore Yu
         Takes the User to their Profile
          */
-        /*
+
         profButton = findViewById(R.id.profileButton)
         profButton.setOnClickListener {
             val intent = Intent(this, Profile::class.java)
             startActivity(intent)
         }
         reviewButton = findViewById(R.id.reviewButton)
+        /*
         reviewButton.setOnClickListener {
             val intent = Intent(this, ReviewSearch::class.java)
             startActivity(intent)

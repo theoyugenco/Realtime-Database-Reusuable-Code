@@ -63,11 +63,16 @@ class Registration : AppCompatActivity() {
          */
         binding.btnRegister.setOnClickListener() {
 
-            val fName = binding.firstName.text.toString()
-            val lName = binding.lastName.text.toString()
-            val email = binding.Email.text.toString()
-            val uName = binding.userName.text.toString()
-            val pWord = binding.passWord.text.toString()
+            val fName = binding.etFName.text.toString()
+            val lName = binding.etLName.text.toString()
+            val email = binding.etEmail.text.toString()
+            val uName = binding.etUName.text.toString()
+            val pWord = binding.etPWord.text.toString()
+            val streetAddress = binding.etStreetAddress.text.toString()
+            val city = binding.etCity.text.toString()
+            val state = binding.etState.text.toString()
+            val zipcode = binding.etZip.text.toString()
+            val phone = binding.etPhone.text.toString()
 
 
 
@@ -81,7 +86,7 @@ class Registration : AppCompatActivity() {
                          */
                         val uid: String = firebaseAuth.uid.toString()
                         val UserDC =
-                            UserDC(fName, lName, pWord, uName, email, uid)
+                            UserDC(fName, lName, pWord, uName, email, uid, streetAddress, city, state, zipcode, phone)
                         /*
                         Theodore Yu
                         It is important to delineate between Users (Customers and Merchants)
@@ -97,11 +102,18 @@ class Registration : AppCompatActivity() {
                                 FirebaseDatabase.getInstance().getReference("Users/Merchants")
                             dbase.child(uid).setValue(UserDC)
                         }
-                        binding.firstName.text.clear()
-                        binding.lastName.text.clear()
-                        binding.Email.text.clear()
-                        binding.userName.text.clear()
-                        binding.passWord.text.clear()
+
+                        binding.etFName.text.clear()
+                        binding.etLName.text.clear()
+                        binding.etEmail.text.clear()
+                        binding.etUName.text.clear()
+                        binding.etPWord.text.clear()
+                        binding.etStreetAddress.text.clear()
+                        binding.etCity.text.clear()
+                        binding.etState.text.clear()
+                        binding.etZip.text.clear()
+                        binding.etPhone.text.clear()
+
                         Toast.makeText(
                             this,
                             "Your account has been successfully created and registered.",

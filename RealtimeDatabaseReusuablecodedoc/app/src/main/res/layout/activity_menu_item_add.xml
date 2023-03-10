@@ -1,69 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/design_default_color_background"
     tools:context=".RestaurantAdd">
-
-    <ImageView
-        android:id="@+id/shape"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/shape"/>
-
-
-    <TextView
+    <!-- This is the general layout to add items that will be used for Restaurant, Menu and Menu Item
+     All with their own relative fields of course-->
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Create a New Menu Item"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/etName"
-        android:layout_width="360dp"
-        android:layout_height="50dp"
-        android:layout_gravity="center_horizontal"
-        android:paddingLeft="20dp"
-        android:hint="Name of Menu Item"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/input"/>
-
-    <EditText
-        android:id="@+id/etDescription"
-        android:layout_width="360dp"
-        android:layout_height="100dp"
-        android:layout_gravity="center_horizontal"
-        android:paddingLeft="20dp"
-        android:hint="Description"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/input"/>
+        <ImageView
+            android:id="@+id/shape"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/shape"/>
 
 
-    <EditText
-        android:id="@+id/etPrice"
-        android:layout_width="360dp"
-        android:layout_height="50dp"
-        android:layout_gravity="center_horizontal"
-        android:paddingLeft="20dp"
-        android:hint="Price"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/input"/>
+        <ImageView
+            android:id="@+id/dishImage"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/addimage"
+            android:layout_gravity="center"
+            android:focusableInTouchMode="false"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Create a New Dish"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            />
+
+        <EditText
+            android:id="@+id/etName"
+            android:layout_width="360dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:paddingLeft="20dp"
+            android:hint="Name of Dish"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/input" />
 
 
-    <Button
-        android:id="@+id/btnAdd"
-        android:layout_width="120dp"
-        android:layout_height="60dp"
-        android:background="@drawable/login_btn"
-        android:layout_marginTop="15dp"
-        android:text="Create"
-        android:layout_gravity="center_horizontal"/>
+        <EditText
+            android:id="@+id/etPrice"
+            android:layout_width="360dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:paddingLeft="20dp"
+            android:hint="Price"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/input" />
 
-</LinearLayout>
 
+        <EditText
+            android:id="@+id/etDescription"
+            android:layout_width="360dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center_horizontal"
+            android:paddingLeft="20dp"
+            android:hint="Description"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/input"/>
+
+        <Button
+            android:id="@+id/btnAdd"
+            android:layout_width="120dp"
+            android:layout_height="60dp"
+            android:background="@drawable/login_btn"
+            android:layout_marginTop="15dp"
+            android:text="Create"
+            android:layout_gravity="center_horizontal"/>
+
+    </LinearLayout>
+</ScrollView>

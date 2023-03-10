@@ -37,14 +37,25 @@
                 android:id="@+id/name_field"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/user_image"
                 android:layout_centerInParent="true"
                 android:layout_marginLeft="10dp"
-                android:layout_alignBottom="@+id/user_image"
+                android:layout_marginBottom="-35dp"
                 android:includeFontPadding="false"
                 android:text="Johnny's Hamburgers"
                 android:textColor="#000"
                 android:textSize="30sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnSave"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_width="match_parent"
+                android:layout_alignBottom="@+id/name_field"
+                android:layout_marginBottom="-50dp"
+                android:text="Save"
+                android:visibility="gone"/>
         </RelativeLayout>
 
 
@@ -66,14 +77,31 @@
 
 
             <com.google.android.material.textfield.TextInputLayout
-                android:hint="Full Name"
+                android:hint="First Name"
                 android:id="@+id/tvFName"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent">
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tfFName"
                     android:drawablePadding="10dp"
                     android:layout_height="wrap_content"
-                    android:layout_width="match_parent" />
+                    android:layout_width="match_parent"
+                    android:focusableInTouchMode="false"
+                    android:focusable="false"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:hint="Last Name"
+                android:id="@+id/tvLName"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tfLName"
+                    android:drawablePadding="10dp"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:focusableInTouchMode="false"
+                    android:focusable="false"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -82,9 +110,12 @@
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent">
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tfUName"
                     android:drawablePadding="10dp"
                     android:layout_height="wrap_content"
-                    android:layout_width="match_parent" />
+                    android:layout_width="match_parent"
+                    android:focusableInTouchMode="false"
+                    android:focusable="false"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -93,9 +124,12 @@
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent">
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tfPWord"
                     android:drawablePadding="10dp"
                     android:layout_height="wrap_content"
-                    android:layout_width="match_parent" />
+                    android:layout_width="match_parent"
+                    android:focusableInTouchMode="false"
+                    android:focusable="false"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -104,9 +138,12 @@
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent">
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tfEmail"
                     android:drawablePadding="10dp"
                     android:layout_height="wrap_content"
-                    android:layout_width="match_parent" />
+                    android:layout_width="match_parent"
+                    android:focusableInTouchMode="false"
+                    android:focusable="false"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -115,9 +152,12 @@
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent">
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tfPhone"
                     android:drawablePadding="10dp"
                     android:layout_height="wrap_content"
-                    android:layout_width="match_parent" />
+                    android:layout_width="match_parent"
+                    android:focusableInTouchMode="false"
+                    android:focusable="false"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -126,9 +166,12 @@
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent">
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tfAddress"
                     android:drawablePadding="10dp"
                     android:layout_height="wrap_content"
-                    android:layout_width="match_parent" />
+                    android:layout_width="match_parent"
+                    android:focusableInTouchMode="false"
+                    android:focusable="false"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -139,11 +182,14 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:drawablePadding="10dp"
                     android:layout_height="wrap_content"
-                    android:layout_width="match_parent" />
+                    android:layout_width="match_parent"
+                    android:focusableInTouchMode="false"
+                    android:focusable="false"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <!--Displays edit button on screen-->
             <Button
+                android:id="@+id/btnEdit"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:layout_width="match_parent"
