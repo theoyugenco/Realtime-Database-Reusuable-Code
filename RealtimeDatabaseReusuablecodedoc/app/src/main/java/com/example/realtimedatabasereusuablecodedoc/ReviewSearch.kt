@@ -11,7 +11,10 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import java.util.*
 import kotlin.collections.ArrayList
-
+/*
+Kenneth Valero
+Activity where the user can search for restaurants to review
+ */
 private lateinit var recyclerView: RecyclerView
 private lateinit var searchView: SearchView
 private lateinit var restaurantList: ArrayList<RestaurantDC>
@@ -23,9 +26,11 @@ class ReviewSearch : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_review_search)
 
+        //Initialize database instances
         firebaseAuth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance().getReference()
 
+        //Initialize recyclerview, searchview, arraylist and adapter
         recyclerView = findViewById(R.id.restaurantSearchRecycler)
         searchView = findViewById(R.id.reviewSearchBar)
         restaurantList = ArrayList()
@@ -35,6 +40,7 @@ class ReviewSearch : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
 
+        //Populates arraylist with restaurants in response to any database changes
         database.child("Users/Restaurants").addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 restaurantList.clear()
@@ -49,6 +55,7 @@ class ReviewSearch : AppCompatActivity() {
             }
         })
 
+        //Filters the recyclerview based on the search query
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(p0: String?): Boolean {
                 return false
@@ -62,6 +69,10 @@ class ReviewSearch : AppCompatActivity() {
         })
     }
 
+    /*
+    Filters the list and makes sure only restaurants whose names contain
+    the search query are included in the arraylist
+     */
     private fun filterList(query: String?) {
         if (query != null) {
             val filteredList = ArrayList<RestaurantDC>()

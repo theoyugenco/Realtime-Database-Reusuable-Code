@@ -11,6 +11,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import java.util.Locale
+/*
+Kenneth Valero:
+This activity is where past reviews for the restaurant the user
+is currently viewing will be displayed.
+ */
 class CurrentReviews : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var reviewList: ArrayList<ReviewDC>
@@ -25,6 +30,7 @@ class CurrentReviews : AppCompatActivity() {
         firebaseAuth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance().getReference()
 
+        //Retrieve variables from Review activity
         val restaurantID = intent.getStringExtra("restaurantID")
 
         //initialize views, list, and user adapter
@@ -36,6 +42,7 @@ class CurrentReviews : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
 
+        //Populate the review array with reviews for the current restaurant being viewed
         database.child("Reviews").addValueEventListener(object: ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
                     reviewList.clear()
