@@ -70,7 +70,7 @@ class HomeMerchant : AppCompatActivity() {
             }
 
             R.id.menu_menu-> {
-                val intent = Intent(this, ItemMenu::class.java)
+                val intent = Intent(this, MenuManagement::class.java)
                 startActivity(intent)
                 Toast.makeText(this,"Menu Clicked", Toast.LENGTH_SHORT).show()
                 true

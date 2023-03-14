@@ -49,7 +49,7 @@ class MenuItemAdd : AppCompatActivity() {
 
         binding.btnAdd.visibility = View.GONE
 
-        database = FirebaseDatabase.getInstance().getReference("Users/Restaurants")
+        database = FirebaseDatabase.getInstance().getReference("Menu Items")
         auth = FirebaseAuth.getInstance()
         uid = auth.currentUser!!.uid.toString()
         //database.push() will give us a random unique "hash", but as of now, it is NOT tied to anything yet

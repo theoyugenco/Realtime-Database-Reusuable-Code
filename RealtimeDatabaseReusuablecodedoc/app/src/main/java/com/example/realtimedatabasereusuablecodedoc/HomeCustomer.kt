@@ -60,7 +60,7 @@ class HomeCustomer : AppCompatActivity() {
             val intent = Intent(this, ReviewSearch::class.java)
             startActivity(intent)
         }
-
+        */
     }
 }
 
