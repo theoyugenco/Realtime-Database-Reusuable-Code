@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/hn_messagingBtn"
+        android:icon="@drawable/chat"
+        android:title="Messages" />
+
+    <item
+        android:id="@+id/hn_map"
+        android:icon="@drawable/map"
+        android:title="Map" />
+
+    <item
+        android:id="@+id/hn_home"
+        android:icon="@drawable/home"
+        android:title="Home" />
+
+    <item
+        android:id="@+id/hn_notifications"
+        android:icon="@drawable/notifications"
+        android:title="Notifications" />
+
+    <item
+        android:id="@+id/hn_profileBtn"
+        android:icon="@drawable/person"
+        android:title="Profile" />
+</menu>
