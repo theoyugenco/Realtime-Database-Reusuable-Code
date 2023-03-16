@@ -21,9 +21,9 @@ The home page for the Merchant
  */
 
 class HomeMerchant : AppCompatActivity() {
-    private lateinit var chatButton: ImageView
+    private lateinit var chatButton: ImageButton
     private lateinit var binding: ActivityHomeMerchantBinding
-    private lateinit var profButton: ImageView
+    private lateinit var profButton: ImageButton
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,7 +38,7 @@ class HomeMerchant : AppCompatActivity() {
         Takes us to Chatting Functionality
          */
 
-        chatButton = findViewById(R.id.messagingButton)
+        chatButton = findViewById(R.id.message_btn)
         chatButton.setOnClickListener {
             val intent = Intent(this, ChatSearch::class.java)
             startActivity(intent)
@@ -48,7 +48,7 @@ class HomeMerchant : AppCompatActivity() {
         Theodore Yu
         Takes the User to their Profile
          */
-        profButton = findViewById(R.id.profileButton)
+        profButton = findViewById(R.id.profile_btn)
         profButton.setOnClickListener {
             val intent = Intent(this, MerchantProfile::class.java)
             startActivity(intent)
