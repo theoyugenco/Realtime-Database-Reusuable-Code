@@ -1,17 +1,4 @@
 buildscript {
-    repositories {
-        mavenCentral()
-        // This private repository is required to resolve the Cardinal SDK transitive dependency.
-        maven {
-            url  "https://cardinalcommerceprod.jfrog.io/artifactory/android"
-            credentials {
-                // Be sure to add these non-sensitive credentials in order to retrieve dependencies from
-                // the private repository.
-                username mavenUsername
-                password mavenPassword
-            }
-        }
-    }
     dependencies {
         classpath 'com.google.gms:google-services:4.3.15'
     }
