@@ -4,10 +4,13 @@ import android.view.LayoutInflater
 import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ActionMenuView.OnMenuItemClickListener
 import android.widget.TextView
 
-class MenuItemViewEditMultiselectAdapter (private val menuItemList : ArrayList<MenuItemDC>):RecyclerView.Adapter<MenuItemViewEditMultiselectAdapter.MultiselectViewHolder>() {
+//class MenuAddMenuItemViewAddMultiselectAdapter (private val menuItemClickListener: ArrayList<MenuItemDC>):RecyclerView.Adapter<Menu>
 
+
+class MenuAddMenuItemViewAddMultiselectAdapter (private val menuItemList : ArrayList<MenuItemDC>):RecyclerView.Adapter<MenuAddMenuItemViewAddMultiselectAdapter.MultiselectViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MultiselectViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.menu_item, parent, false)
@@ -32,3 +35,4 @@ class MenuItemViewEditMultiselectAdapter (private val menuItemList : ArrayList<M
         val price : TextView = itemView.findViewById(R.id.tvPrice)
     }
 }
+

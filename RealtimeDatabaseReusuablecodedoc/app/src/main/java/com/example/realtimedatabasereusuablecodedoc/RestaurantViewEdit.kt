@@ -51,7 +51,7 @@ class RestaurantViewEdit : AppCompatActivity() {
 
     //We call the user's data to populate it within the recyclerview
     private fun getUserData(){
-        database = FirebaseDatabase.getInstance().getReference("Users/Restaurants/")
+        database = FirebaseDatabase.getInstance().getReference("Restaurants/")
         auth = FirebaseAuth.getInstance()
         database.orderByChild("merchantID").equalTo(auth.currentUser!!.uid).addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
