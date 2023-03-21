@@ -15,6 +15,9 @@
         android:theme="@style/Theme.RealtimeDatabaseReusuableCodeDoc"
         tools:targetApi="31">
         <activity
+            android:name=".CustomerCheckout"
+            android:exported="false" />
+        <activity
             android:name=".RestaurantEdit"
             android:exported="false" />
         <activity
