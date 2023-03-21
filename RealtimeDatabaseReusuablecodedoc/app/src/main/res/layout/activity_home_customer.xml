@@ -1,59 +1,330 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<!-- This is the customer home page UI that they will see when they login-->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/design_default_color_background"
-    tools:context=".HomeCustomer">
+    >
 
-    <ImageView
-        android:id="@+id/shape"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/shape"/>
-
-
-
-    <TextView
+    <!-- This creates the navigation bar found at the bottom of the screen -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Customer HomePage"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"/>
+        android:id="@+id/bottomNavigationView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        >
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageButton
+                android:id="@+id/message_btn"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:src="@drawable/chat"
+                android:layout_weight = "1"
+                >
+            </ImageButton>
+
+            <ImageButton
+                android:id="@+id/map_btn"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:src="@drawable/map"
+                android:layout_weight = "1"
+                >
+            </ImageButton>
+
+            <ImageButton
+                android:id="@+id/home_btn"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:src="@drawable/home"
+                android:layout_weight = "1">
+            </ImageButton>
+
+            <ImageButton
+                android:id="@+id/notif_btn"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:src="@drawable/notifications"
+                android:layout_weight = "1">
+
+            </ImageButton>
+
+            <ImageButton
+                android:id="@+id/profile_btn"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:src="@drawable/person"
+                android:layout_weight = "1">
+            </ImageButton>
+
+        </LinearLayout>
 
 
 
-    <ImageView
-        android:id="@+id/messagingButton"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/chatsymbolsample" />
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
 
-    <ImageView
-        android:id="@+id/profileButton"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/profilepic" />
+    <!-- Allows user to scroll page -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintTop_toTopOf="parent"
+        >
 
-        <ImageView
-            android:id="@+id/reviewButton"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/profilepic"
-            android:layout_below="@id/messagingButton"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:padding="20dp"
+                android:background="#f29c45"
+                android:orientation="horizontal">
 
 
 
-    </LinearLayout>
-</LinearLayout>
+                <!--Displays button for reservations, reviews, and orders on screen in cards-->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_width="0dp">
+
+                    <RelativeLayout
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:padding="5dp"
+                        android:gravity="center"
+                        android:background="#f29c45">
+
+                        <Button
+                            android:id="@+id/ch_message_btn"
+                            android:includeFontPadding="false"
+                            android:layout_height="80dp"
+                            android:layout_width="140dp"
+                            android:text="Reservations"
+                            android:textSize="12sp"
+                            android:layout_marginEnd="10dp"
+                            android:drawableTop="@drawable/chat"
+                            android:backgroundTint="#d0d3cf"
+                            android:textColor="@color/black"
+                            />
+
+                        <Button
+                            android:id="@+id/ch_create_review_btn"
+                            android:includeFontPadding="false"
+                            android:layout_below="@+id/ch_message_btn"
+                            android:layout_height="80dp"
+                            android:layout_width="140dp"
+                            android:text="Create Reviews"
+                            android:textSize="12sp"
+                            android:layout_marginEnd="10dp"
+                            android:drawableTop="@drawable/star_border"
+                            android:backgroundTint="#d0d3cf"
+                            android:textColor="@color/black"
+                            />
+
+                        <Button
+                            android:id="@+id/ch_orders_btn"
+                            android:includeFontPadding="false"
+                            android:layout_toEndOf="@+id/ch_create_review_btn"
+                            android:layout_height="80dp"
+                            android:layout_width="140dp"
+                            android:text="Orders"
+                            android:textSize="15sp"
+                            android:layout_marginStart="10dp"
+                            android:drawableTop="@drawable/fastfood"
+                            android:backgroundTint="#d0d3cf"
+                            android:textColor="@color/black"/>
+
+                        <Button
+                            android:id="@+id/mh_past_reviews_btn"
+                            android:includeFontPadding="false"
+                            android:layout_toEndOf="@+id/ch_create_review_btn"
+                            android:layout_below="@id/ch_orders_btn"
+                            android:layout_height="80dp"
+                            android:layout_width="140dp"
+                            android:text="Past Reviews"
+                            android:textSize="12sp"
+                            android:layout_marginStart="10dp"
+                            android:drawableTop="@drawable/star_half"
+                            android:backgroundTint="#d0d3cf"
+                            android:textColor="@color/black"/>
+
+                    </RelativeLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+            <!-- Creates the search bar to search for restaurants-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/restaurantMaterialCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="8dp"
+                    app:cardUseCompatPadding="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.appcompat.widget.SearchView
+                        android:id="@+id/restaurantSearchBar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:iconifiedByDefault="false"
+                        app:queryHint="Search Restaurants"
+                        app:queryBackground="@android:color/transparent"/>
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+
+            <!-- Layout to look for coupons -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/add_rectangle"
+                android:layout_margin="10dp"
+                android:padding="10dp"
+                >
+
+                <TextView
+                    android:id="@+id/comment1"
+                    android:layout_width="150dp"
+                    android:layout_height="100dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="Find Your Next MealSteal!"
+                    android:textSize="25dp"
+                    android:textStyle="italic"
+                    android:textColor="@color/black">
+                </TextView>
+
+                <Button
+                    android:id="@+id/comment2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginRight="100dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_below="@id/comment1"
+                    android:text="Browse Coupons"
+                    android:textSize="12dp"
+                    android:textStyle="bold"
+                    android:backgroundTint="#d0d3cf"
+                    android:textColor="@color/black"
+                    android:layout_centerHorizontal="true">
+
+                </Button>
+
+                <ImageView
+                    android:id="@+id/food_image"
+                    android:layout_width="180dp"
+                    android:layout_height="110dp"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/hamburger"
+                    android:layout_toEndOf="@id/comment1">
+
+                </ImageView>
+            </RelativeLayout>
+
+            <!-- Buttons for local food options-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Looking for some Local Options?"
+                    android:textAllCaps="true"
+                    android:textStyle="italic"
+                    android:textSize="20dp">
+                </TextView>
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/ch_hamburger"
+                        android:layout_width="55dp"
+                        android:layout_height="47dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginBottom="15dp"
+                        app:srcCompat="@drawable/hamburger_icon" />
+
+                    <ImageView
+                        android:id="@+id/ch_drinks"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginBottom="15dp"
+                        android:layout_toEndOf="@id/ch_hamburger"
+                        app:srcCompat="@drawable/drink" />
+
+                    <ImageView
+                        android:id="@+id/ch_pizza"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_centerInParent="true"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginBottom="15dp"
+                        android:layout_toEndOf="@id/ch_drinks"
+                        app:srcCompat="@drawable/pizza" />
+
+                    <ImageView
+                        android:id="@+id/ch_dessert"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_margin="15dp"
+                        android:layout_toEndOf="@id/ch_pizza"
+                        app:srcCompat="@drawable/cake" />
+
+                    <ImageView
+                        android:id="@+id/ch_bakery"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_margin="15dp"
+                        android:layout_toEndOf="@id/ch_dessert"
+                        app:srcCompat="@drawable/bread" />
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
