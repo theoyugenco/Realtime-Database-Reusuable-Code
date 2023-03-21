@@ -123,7 +123,7 @@ class LocationViewEditMultiselectAdapter(
             for (i in 0..(size-1)){
                 keyTBR = itemSelectedList.get(i)
 
-                database = FirebaseDatabase.getInstance().getReference("Users/Restaurants")
+                database = FirebaseDatabase.getInstance().getReference("Restaurants")
                 val key: String? = keyTBR
 
                 database.child(key!!).removeValue().addOnFailureListener(){
