@@ -93,6 +93,7 @@ class MainActivity : AppCompatActivity() {
                         Toast.makeText(baseContext, "Authentication failed.",
                             Toast.LENGTH_SHORT).show()
                     }
+
                 }
         }
 
@@ -106,5 +107,24 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
             }
 
+        //checkIfMerchantLoggedIn()
+        //checkIfCustomerLoggedIn()
     }
+
+    private fun checkIfMerchantLoggedIn(){
+        if(firebaseAuth.currentUser != null){
+            startActivity(Intent(this, HomeMerchant::class.java))
+            finish()
+        }
+    }
+
+
+    private fun checkIfCustomerLoggedIn(){
+        if(firebaseAuth.currentUser != null){
+            startActivity(Intent(this, HomeCustomer::class.java))
+            finish()
+        }
+    }
+
+
 }

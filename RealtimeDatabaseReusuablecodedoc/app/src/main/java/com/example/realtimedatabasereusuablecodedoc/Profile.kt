@@ -121,6 +121,14 @@ class Profile : AppCompatActivity() {
             startActivityForResult(intent, 1)
         }
 
+        binding.btnSignout.setOnClickListener{
+            auth.signOut()
+            startActivity(
+                Intent(this, MainActivity::class.java)
+            )
+            finish()
+        }
+
 
         /*
         binding = ActivityProfileBinding.inflate(layoutInflater)

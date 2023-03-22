@@ -126,6 +126,14 @@ class MerchantProfile : AppCompatActivity() {
             startActivityForResult(intent, 1)
         }
 
+        binding.btnLogout.setOnClickListener{
+            auth.signOut()
+            startActivity(
+                Intent(this, MainActivity::class.java)
+            )
+            finish()
+        }
+
     }
 
 
