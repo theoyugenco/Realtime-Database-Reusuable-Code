@@ -154,6 +154,20 @@
             </Button>
 
 
+            <com.paypal.checkout.paymentbutton.PaymentButtonContainer
+                android:id="@+id/paypal_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:paypal_button_color="silver"
+                app:paypal_button_label="pay"
+                app::paypal_button_shape="rectangle"
+                app:paypal_button_size="large"
+                app:paypal_button_enabled="true"
+                >
+            </com.paypal.checkout.paymentbutton.PaymentButtonContainer>
+
+
+
 
         </LinearLayout>
 
