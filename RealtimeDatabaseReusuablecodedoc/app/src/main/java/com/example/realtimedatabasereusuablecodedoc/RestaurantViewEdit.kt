@@ -111,6 +111,11 @@ class RestaurantViewEdit : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId){
             R.id.delete -> { delete() }
+
+            R.id.cart-> {
+                val intent = Intent(this, CustomerCheckout::class.java)
+                startActivity(intent)
+            }
         }
         return super.onOptionsItemSelected(item)
     }
