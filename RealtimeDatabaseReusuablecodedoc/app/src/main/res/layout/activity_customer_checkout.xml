@@ -153,7 +153,7 @@
                 android:layout_marginTop="10dp">
             </Button>
 
-
+            <!--
             <com.paypal.checkout.paymentbutton.PaymentButtonContainer
                 android:id="@+id/paypal_button"
                 android:layout_width="match_parent"
@@ -165,7 +165,7 @@
                 app:paypal_button_enabled="true"
                 >
             </com.paypal.checkout.paymentbutton.PaymentButtonContainer>
-
+            -->
 
 
 

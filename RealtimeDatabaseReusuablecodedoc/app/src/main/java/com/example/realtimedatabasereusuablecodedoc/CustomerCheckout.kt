@@ -14,29 +14,21 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
 class CustomerCheckout : AppCompatActivity() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_customer_checkout)
-    }
-/*
-    private var TAG: String? = null
     private lateinit var database: DatabaseReference
     private lateinit var auth: FirebaseAuth
     private var restaurantMenu: Menu? = null
-    private lateinit var rv: RecyclerView
-    private lateinit var msAdapter: LocationViewEditMultiselectAdapter
-    private lateinit var restaurantArrayList: ArrayList<RestaurantDC>
-    //private lateinit var menuItemArrayList: ArrayList<MenuItemDC>
+    private lateinit var recyclerv: RecyclerView
+    private lateinit var msAdapter: CustomerCheckoutAdapter
+    private lateinit var restaurantArrayList: ArrayList<CustomerCheckoutDC>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_customer_checkout)
 
-        rv = findViewById(R.id.cc_cartItemsRecycler)
-        rv.layoutManager = LinearLayoutManager(this)
-        rv.setHasFixedSize(true)
-        restaurantArrayList = arrayListOf<RestaurantDC>()
+        recyclerv = findViewById(R.id.cc_cartItemsRecycler)
+        recyclerv.layoutManager = LinearLayoutManager(this)
+        recyclerv.setHasFixedSize(true)
+        restaurantArrayList = arrayListOf<CustomerCheckoutDC>()
         getUserData()
     }
 
@@ -51,20 +43,21 @@ class CustomerCheckout : AppCompatActivity() {
                     //Toast.makeText(this@RestaurantViewEdit, "onDataChanged!", Toast.LENGTH_SHORT)
                         //.show()
                     if (snapshot.exists()) {
-                        //restaurantArrayList.clear()
                         for (menuItemSnapshot in snapshot.children) {
-                            val menuItem = menuItemSnapshot.getValue(RestaurantDC::class.java)
+                            val menuItem = menuItemSnapshot.getValue(CustomerCheckoutDC::class.java)
                             restaurantArrayList.add(menuItem!!)
                         }
-                        /*
+
                         msAdapter =
-                            LocationViewEditMultiselectAdapter(restaurantArrayList) { show ->
+                            CustomerCheckoutAdapter(restaurantArrayList) { show ->
                                 showDeleteMenu(show)
                             }
 
-                         */
 
-                        rv.adapter = msAdapter
+
+
+
+                        recyclerv.adapter = msAdapter
                     }
                 }
 
@@ -74,5 +67,7 @@ class CustomerCheckout : AppCompatActivity() {
             })
     }
 
- */
+    fun showDeleteMenu(show: Boolean){
+        restaurantMenu?.findItem(R.id.delete)?.isVisible = show
+    }
 }

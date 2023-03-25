@@ -25,17 +25,14 @@ import com.google.firebase.storage.StorageReference
 
 
 class CustomerCheckoutAdapter(/*private val checkoutList : ArrayList<CustomerCheckoutDC>*/
-    private var checkoutList : ArrayList<RestaurantDC>,
+    private var checkoutList : ArrayList<CustomerCheckoutDC>,
     private val showMenuDelete: (Boolean) -> Unit,
     ) : RecyclerView.Adapter<CustomerCheckoutAdapter.MultiselectViewHolder>() {
 
-    private lateinit var database: DatabaseReference
-    private var isEnable = false
     private var itemSelectedList = ArrayList<String>()
     private var keyTBR : String? = null
     private var TAG: String? = null
-    private lateinit var storage: StorageReference
-    private lateinit var selectedImg: Uri
+
 
     class MultiselectViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
         val card: CardView = view.findViewById(com.example.realtimedatabasereusuablecodedoc.R.id.card)
@@ -46,14 +43,8 @@ class CustomerCheckoutAdapter(/*private val checkoutList : ArrayList<CustomerChe
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MultiselectViewHolder {
-        /*
-        This run for every time a card is created
-        a card is created for every single item
-         */
-
         val adapterLayout =
             LayoutInflater.from(parent.context).inflate(com.example.realtimedatabasereusuablecodedoc.R.layout.restaurant, parent, false)
-        //Log.d(TAG, "do i run when deletion")
         return MultiselectViewHolder(adapterLayout)
     }
 
@@ -64,7 +55,7 @@ class CustomerCheckoutAdapter(/*private val checkoutList : ArrayList<CustomerChe
 
     private fun selectItem(
         holder: CustomerCheckoutAdapter.MultiselectViewHolder,
-        item: RestaurantDC,
+        item: CustomerCheckoutDC,
         position: Int
     ) {
         //isEnable = true
