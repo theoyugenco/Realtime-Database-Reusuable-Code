@@ -53,10 +53,6 @@ class CustomerCheckout : AppCompatActivity() {
                                 showDeleteMenu(show)
                             }
 
-
-
-
-
                         recyclerv.adapter = msAdapter
                     }
                 }

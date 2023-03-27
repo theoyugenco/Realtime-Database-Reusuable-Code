@@ -3,7 +3,7 @@ package com.example.realtimedatabasereusuablecodedoc
 data class MenuItemDC(var name: String? = null,
                       var price: String? = null,
                       var description: String? = null,
-                      val key: String? = null,
+                      val menuItemID: String? = null,
                       val ownerUID: String? = null){
 
 }

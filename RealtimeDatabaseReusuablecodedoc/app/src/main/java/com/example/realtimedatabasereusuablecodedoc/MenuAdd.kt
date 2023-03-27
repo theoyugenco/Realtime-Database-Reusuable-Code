@@ -66,7 +66,7 @@ class MenuAdd : AppCompatActivity() {
         //Changes should only be allowed to be finalized and executed when the user decides to Add (presses button)
         binding.btnAdd.setOnClickListener(){
             uploadData()
-            val intent = Intent(this, MenuItemViewEdit::class.java)
+            val intent = Intent(this, MenuAddMenuItemViewAdd::class.java)
             intent.putExtra("key", key)
             intent.putExtra("uid", uid)
             startActivity(intent)
