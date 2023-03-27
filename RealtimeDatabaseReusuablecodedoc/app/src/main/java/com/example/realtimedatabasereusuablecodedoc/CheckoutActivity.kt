@@ -1,5 +1,6 @@
 /*package com.example.realtimedatabasereusuablecodedoc
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -16,12 +17,29 @@ import com.paypal.checkout.order.Amount
 import com.paypal.checkout.order.AppContext
 import com.paypal.checkout.order.Order
 import com.paypal.checkout.order.PurchaseUnit
+import kotlin.collections.List
+import kotlin.collections.ArrayList
 
 class CheckoutActivity : AppCompatActivity() {
+    private lateinit var cart: List<PurchaseUnit>
+    private lateinit var itemNames: ArrayList<String>
+    private lateinit var prices: ArrayList<String>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_checkout)
 
+        itemNames = intent.getStringArrayListExtra("items")
+        prices = intent.getStringArrayListExtra("prices")
+
+        cart = listOf()
+
+        for (i in 0..itemNames.size) {
+            val currentItem: PurchaseUnit = PurchaseUnit(
+                amount = prices.elementAt(i)
+            )
+            cart.add(currentItem)
+        }
+        
         val config = CheckoutConfig(
             application,
             clientId = "AbBw9JwhPcD0-5wZRCi_LpmDiHyGXuYK_FnfNZfVkQCuRk_PdscpI4VvgWz-D39JJV4re4E0V9rIYEP_",
