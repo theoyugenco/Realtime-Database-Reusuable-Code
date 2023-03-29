@@ -49,6 +49,7 @@ class MenuAdd : AppCompatActivity() {
 
         binding.btnAdd.visibility = View.GONE
 
+        //why menu items here?
         database = FirebaseDatabase.getInstance().getReference("Menu Items")
         auth = FirebaseAuth.getInstance()
         uid = auth.currentUser!!.uid.toString()

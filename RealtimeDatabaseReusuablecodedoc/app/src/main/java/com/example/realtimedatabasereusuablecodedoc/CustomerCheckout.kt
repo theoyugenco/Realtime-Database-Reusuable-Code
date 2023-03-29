@@ -17,6 +17,7 @@ class CustomerCheckout : AppCompatActivity() {
     private lateinit var database: DatabaseReference
     private lateinit var auth: FirebaseAuth
     private var restaurantMenu: Menu? = null
+    private lateinit var itemSelectedList : ArrayList<String>
     private lateinit var recyclerv: RecyclerView
     private lateinit var msAdapter: CustomerCheckoutAdapter
     private lateinit var restaurantArrayList: ArrayList<CustomerCheckoutDC>
@@ -24,6 +25,12 @@ class CustomerCheckout : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_customer_checkout)
+
+        val bundle = intent.extras
+        //var id : String = ""
+        if (bundle != null){
+            itemSelectedList = bundle.getStringArrayList("itemSelectedList")!!
+        }
 
         recyclerv = findViewById(R.id.cc_cartItemsRecycler)
         recyclerv.layoutManager = LinearLayoutManager(this)
