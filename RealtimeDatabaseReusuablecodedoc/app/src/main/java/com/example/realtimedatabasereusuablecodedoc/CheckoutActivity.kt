@@ -28,6 +28,7 @@ import kotlin.properties.Delegates
 class CheckoutActivity : AppCompatActivity() {
     private lateinit var cartRecyclerView: RecyclerView
     private lateinit var orderItemList: ArrayList<OrderItemDC>
+    private lateinit var adapter: CartItemAdapter
     private lateinit var cart: ArrayList<PurchaseUnit>
     private lateinit var itemNames: ArrayList<String>
     private lateinit var prices: ArrayList<String>
@@ -47,8 +48,11 @@ class CheckoutActivity : AppCompatActivity() {
         taxDisplay = findViewById(R.id.tax)
         orderItemList = ArrayList()
         cart = ArrayList()
-
+        adapter = CartItemAdapter(this, orderItemList)
+        cartRecyclerView.layoutManager = LinearLayoutManager(this)
+        cartRecyclerView.adapter = adapter
         var subtotal: Float = 0.0F
+        orderItemList.clear()
         for (i in 0..itemNames.size) {
             val currentItem: PurchaseUnit = PurchaseUnit(
                 amount = Amount(currencyCode = CurrencyCode.USD, value = prices.elementAt(i))
@@ -56,6 +60,7 @@ class CheckoutActivity : AppCompatActivity() {
             cart.add(currentItem)
             subtotal += prices.elementAt(i).toFloat()
         }
+        adapter.notifyDataSetChanged()
         subtotalDisplay.setText(subtotal.toString())
         var tax: Float = subtotal * 0.1F
         taxDisplay.setText(tax.toString())
