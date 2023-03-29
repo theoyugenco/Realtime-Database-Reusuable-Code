@@ -1,9 +1,11 @@
 
 package com.example.realtimedatabasereusuablecodedoc
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
@@ -18,10 +20,12 @@ class MenuAddMenuItemViewAdd : AppCompatActivity() {
     private lateinit var database: DatabaseReference
     private lateinit var menuItemRecyclerView: RecyclerView
     private lateinit var menuItemArrayList: ArrayList<MenuItemDC>
+    private var itemSelectedList : ArrayList<String> = ArrayList<String>()
     private lateinit var auth: FirebaseAuth
     private lateinit var msAdapter: MenuAddMenuItemViewAddMultiselectAdapter
     private lateinit var rv: RecyclerView
     private var restaurantMenu: Menu? = null
+    private var id: String = ""
     //private lateinit var menuItemArrayList: ArrayList<MenuItemDC>
     //private lateinit var menuItemAdapter: MultiselectAdapter
     //private lateinit var binding:
@@ -33,6 +37,14 @@ class MenuAddMenuItemViewAdd : AppCompatActivity() {
         menuItemRecyclerView.layoutManager = LinearLayoutManager(this)
         menuItemRecyclerView.setHasFixedSize(true)
 
+        val bundle = intent.extras
+        //var id : String = ""
+        if (bundle != null){
+            id = bundle.getString("key")!!
+        }
+
+
+        //itemSelectedList = ArrayList<String>()
         menuItemArrayList = arrayListOf<MenuItemDC>()
         getUserData()
 
@@ -41,7 +53,7 @@ class MenuAddMenuItemViewAdd : AppCompatActivity() {
     private fun getUserData() {
         database = FirebaseDatabase.getInstance().getReference("Menu Items/")
         auth = FirebaseAuth.getInstance()
-        database.orderByChild("merchantID").equalTo(auth.currentUser!!.uid).addValueEventListener(object : ValueEventListener{//
+        database.orderByChild("ownerUID").equalTo(auth.currentUser!!.uid).addValueEventListener(object : ValueEventListener{//
                 override fun onDataChange(snapshot: DataSnapshot) {
                     menuItemArrayList.clear()
                     Toast.makeText(
@@ -56,11 +68,11 @@ class MenuAddMenuItemViewAdd : AppCompatActivity() {
                             menuItemArrayList.add(menuItem!!)
                         }
                         msAdapter =
-                            MenuAddMenuItemViewAddMultiselectAdapter(menuItemArrayList) { show ->
+                            MenuAddMenuItemViewAddMultiselectAdapter(menuItemArrayList, id, itemSelectedList) { show ->
                                 showCartMenu(show)
                             }
 
-                        rv.adapter = msAdapter
+                        menuItemRecyclerView.adapter = msAdapter
                     }
                 }
 
@@ -75,6 +87,19 @@ class MenuAddMenuItemViewAdd : AppCompatActivity() {
         menuInflater.inflate(R.menu.cart_menu,restaurantMenu)
         showCartMenu(false)
         return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId){
+
+            R.id.cart-> {
+                add()
+                //val intent = Intent(this, CustomerCheckout::class.java)
+                //intent.putExtra("itemSelectedList", itemSelectedList)
+                //startActivity(intent)
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     fun showCartMenu(show: Boolean){

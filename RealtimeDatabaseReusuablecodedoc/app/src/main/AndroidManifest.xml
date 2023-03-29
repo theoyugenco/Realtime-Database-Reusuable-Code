@@ -41,6 +41,9 @@
             android:name=".MenuAdd"
             android:exported="false" />
         <activity
+            android:name=".MenuAddMenuItemViewAdd"
+            android:exported="false" />
+        <activity
             android:name=".MenuManagement"
             android:exported="false" />
         <activity
