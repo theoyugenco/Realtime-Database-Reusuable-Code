@@ -15,16 +15,19 @@
         android:theme="@style/Theme.RealtimeDatabaseReusuableCodeDoc"
         tools:targetApi="31">
         <activity
+            android:name=".RestaurantSearch"
+            android:exported="false" />
+        <activity
             android:name=".CustomerCheckout"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".CheckoutActivity"
             android:exported="false" />
-
         <!--
         <activity
             android:name=".RestaurantEdit"
-            android:exported="false" /> -->
+            android:exported="false" />
+        -->
         <activity
             android:name=".RestaurantViewEdit"
             android:exported="false" />
@@ -55,9 +58,11 @@
         <activity
             android:name=".Review"
             android:exported="false" />
-        <!-- <activity
+        <!--
+ <activity
             android:name=".ReviewSearch"
-            android:exported="false" /> -->
+            android:exported="false" />
+        -->
         <activity
             android:name=".MenuItemAdd"
             android:exported="false" />
