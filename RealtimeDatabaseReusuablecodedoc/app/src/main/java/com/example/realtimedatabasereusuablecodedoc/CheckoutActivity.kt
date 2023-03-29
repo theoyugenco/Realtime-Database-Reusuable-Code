@@ -4,6 +4,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
 import com.paypal.checkout.PayPalCheckout
 import com.paypal.checkout.approve.OnApprove
 import com.paypal.checkout.config.CheckoutConfig
@@ -19,26 +23,47 @@ import com.paypal.checkout.order.Order
 import com.paypal.checkout.order.PurchaseUnit
 import kotlin.collections.List
 import kotlin.collections.ArrayList
+import kotlin.properties.Delegates
 
 class CheckoutActivity : AppCompatActivity() {
-    private lateinit var cart: List<PurchaseUnit>
+    private lateinit var cartRecyclerView: RecyclerView
+    private lateinit var orderItemList: ArrayList<OrderItemDC>
+    private lateinit var adapter: CartItemAdapter
+    private lateinit var cart: ArrayList<PurchaseUnit>
     private lateinit var itemNames: ArrayList<String>
     private lateinit var prices: ArrayList<String>
+    private lateinit var subtotalDisplay: TextView
+    private lateinit var taxDisplay: TextView
+    private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var database: DatabaseReference
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_checkout)
 
-        itemNames = intent.getStringArrayListExtra("items")
-        prices = intent.getStringArrayListExtra("prices")
+        itemNames = intent.getStringArrayListExtra("items") as ArrayList<String>
+        prices = intent.getStringArrayListExtra("prices") as ArrayList<String>
 
-        cart = listOf()
-
+        cartRecyclerView = findViewById(R.id.cartRecyclerView)
+        subtotalDisplay = findViewById(R.id.subtotal)
+        taxDisplay = findViewById(R.id.tax)
+        orderItemList = ArrayList()
+        cart = ArrayList()
+        adapter = CartItemAdapter(this, orderItemList)
+        cartRecyclerView.layoutManager = LinearLayoutManager(this)
+        cartRecyclerView.adapter = adapter
+        var subtotal: Float = 0.0F
+        orderItemList.clear()
         for (i in 0..itemNames.size) {
             val currentItem: PurchaseUnit = PurchaseUnit(
-                amount = prices.elementAt(i)
+                amount = Amount(currencyCode = CurrencyCode.USD, value = prices.elementAt(i))
             )
             cart.add(currentItem)
+            subtotal += prices.elementAt(i).toFloat()
         }
+        adapter.notifyDataSetChanged()
+        subtotalDisplay.setText(subtotal.toString())
+        var tax: Float = subtotal * 0.1F
+        taxDisplay.setText(tax.toString())
         
         val config = CheckoutConfig(
             application,
@@ -60,13 +85,13 @@ class CheckoutActivity : AppCompatActivity() {
                     Order(
                         intent = OrderIntent.CAPTURE,
                         appContext = AppContext(userAction = UserAction.PAY_NOW),
-                        purchaseUnitList =
-                        listOf(
-                            PurchaseUnit(
-                                amount =
-                                Amount(currencyCode = CurrencyCode.USD, value = "10.00")
-                            )
-                        )
+                        purchaseUnitList = cart
+//                        listOf(
+//                            PurchaseUnit(
+//                                amount =
+//                                Amount(currencyCode = CurrencyCode.USD, value = "10.00")
+//                            )
+//                        )
                     )
                 createOrderActions.create(order)
             },
