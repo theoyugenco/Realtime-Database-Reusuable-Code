@@ -1,3 +1,4 @@
+/*
 package com.example.realtimedatabasereusuablecodedoc
 
 import android.content.Context
@@ -83,3 +84,4 @@ class RestaurantSearchAdapter (val context: Context, var restaurantList: ArrayLi
         }
     }
 }
+*/

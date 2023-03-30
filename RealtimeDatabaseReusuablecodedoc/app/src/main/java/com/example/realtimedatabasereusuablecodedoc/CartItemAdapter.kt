@@ -1,3 +1,4 @@
+/*
 package com.example.realtimedatabasereusuablecodedoc
 
 import android.content.Context
@@ -36,3 +37,5 @@ class CartItemAdapter (val context: Context, var cartList: ArrayList<OrderItemDC
         holder.price.text = currentItem.price
     }
 }
+
+ */
