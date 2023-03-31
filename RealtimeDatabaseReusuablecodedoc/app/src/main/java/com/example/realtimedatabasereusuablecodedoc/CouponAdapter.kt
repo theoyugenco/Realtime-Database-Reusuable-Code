@@ -1,3 +1,4 @@
+/*
 package com.example.realtimedatabasereusuablecodedoc
 
 import android.view.View
@@ -42,3 +43,4 @@ interface ListItem {
 abstract class BaseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     abstract fun bind(item: ListItem)
 }
+ */

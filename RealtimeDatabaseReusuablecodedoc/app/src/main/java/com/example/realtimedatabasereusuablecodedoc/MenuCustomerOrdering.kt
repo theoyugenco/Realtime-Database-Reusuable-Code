@@ -4,6 +4,7 @@ package com.example.realtimedatabasereusuablecodedoc
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -28,7 +29,8 @@ class MenuCustomerOrdering : AppCompatActivity() {
     private lateinit var rv: RecyclerView
     private var restaurantMenu: Menu? = null
     //private var rid: String =
-    private var id: String = "NRlZ5uQ6IJe8ogud6Fs"
+    private var TAG: String? = null
+    private var id: String = "-NRlZ5uQ6IJe8ogud6Fs"
     //private lateinit var menuItemArrayList: ArrayList<MenuItemDC>
     //private lateinit var menuItemAdapter: MultiselectAdapter
     //private lateinit var binding:
@@ -56,15 +58,10 @@ class MenuCustomerOrdering : AppCompatActivity() {
     }
 
     private fun getMenuItems(){
-        Toast.makeText(
-            this@MenuCustomerOrdering,
-            "at least!!",
-            Toast.LENGTH_SHORT
-        ).show()
-        database = FirebaseDatabase.getInstance().getReference("Menus/"+id+"/Menu Items")
+        //Toast.makeText( this@MenuCustomerOrdering, "at least!!", Toast.LENGTH_SHORT ).show()
+        database = FirebaseDatabase.getInstance().getReference("Menus/"+id+"/Menu Items/")
         database.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-
                 Toast.makeText(
                     this@MenuCustomerOrdering,
                     "yohooo!",
@@ -78,10 +75,13 @@ class MenuCustomerOrdering : AppCompatActivity() {
                     ).show()
                     //restaurantArrayList.clear()
                     for (menuItemSnapshot in snapshot.children) {
-                        val menuItem = menuItemSnapshot.getValue(MenuItemDC::class.java)
-                        currentMenuArrayList.add(menuItem!!.menuItemID.toString())
+                        val menuItem = menuItemSnapshot.getValue()
+                        Log.d (TAG, "string is: " + menuItem.toString())
+                        //Toast.makeText(this@MenuCustomerOrdering, menuItem.toString(), Toast.LENGTH_SHORT).show()
+                        currentMenuArrayList.add(menuItem!!.toString())
                     }
                     for (i in menuItemArrayList){
+                        Log.d (TAG, "compare")
                         val iID : String = i.menuItemID.toString()
                         for (j in currentMenuArrayList){
                             //Toast.makeText(this, "calgery", Toast.LENGTH_SHORT).show()
@@ -94,15 +94,18 @@ class MenuCustomerOrdering : AppCompatActivity() {
                             }
                         }
                     }
-                    /*
+
                     msAdapter =
-                        MenuAddMenuItemViewAddMultiselectAdapter(menuItemArrayList, id, itemSelectedList) { show ->
+                        MenuAddMenuItemViewAddMultiselectAdapter(currentMenuItemArrayList, id, itemSelectedList) { show ->
                             showCartMenu(show)
                         }
 
                     menuItemRecyclerView.adapter = msAdapter
 
-                     */
+
+                }
+                else{
+                    Toast.makeText(this@MenuCustomerOrdering, "well shit", Toast.LENGTH_SHORT).show()
                 }
             }
 
@@ -125,17 +128,14 @@ class MenuCustomerOrdering : AppCompatActivity() {
         database.orderByChild("ownerUID").equalTo("2T2gX0AVHPStGhVKoJd8lsEkcnB2").addValueEventListener(object : ValueEventListener{//
         override fun onDataChange(snapshot: DataSnapshot) {
             menuItemArrayList.clear()
-            Toast.makeText(
-                this@MenuCustomerOrdering,
-                "onDataChanged!",
-                Toast.LENGTH_SHORT
-            ).show()
+            //Toast.makeText(this@MenuCustomerOrdering, "onDataChanged!", Toast.LENGTH_SHORT).show()
             if (snapshot.exists()) {
                 //restaurantArrayList.clear()
                 for (menuItemSnapshot in snapshot.children) {
                     val menuItem = menuItemSnapshot.getValue(MenuItemDC::class.java)
                     menuItemArrayList.add(menuItem!!)
-                    Toast.makeText(this@MenuCustomerOrdering, "rangers lead teh way!", Toast.LENGTH_SHORT).show()
+                    Log.d (TAG, "run prior")
+                    //Toast.makeText(this@MenuCustomerOrdering, "rangers lead teh way!", Toast.LENGTH_SHORT).show()
                 }
             }
         }
@@ -148,15 +148,11 @@ class MenuCustomerOrdering : AppCompatActivity() {
         The Menu ID of the current/ACTIVE Menu should already be provided.
          */
 
-
-
         /*
         suboptimal O(n^2) searching algorithm
         However, the amount of Menu Items a merchant should have should be relatively low
         We cut down a LOT of items by honing in only the Menu Items the Merchant of the current Restaurant has
         */
-
-        Toast.makeText(this, "spearhead", Toast.LENGTH_SHORT).show()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
