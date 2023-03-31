@@ -15,14 +15,14 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
 
-class MenuAddMenuItemViewAdd : AppCompatActivity() {
+class MenuAddRestaurantViewAdd : AppCompatActivity() {
 
     private lateinit var database: DatabaseReference
-    private lateinit var menuItemRecyclerView: RecyclerView
-    private lateinit var menuItemArrayList: ArrayList<MenuItemDC>
+    private lateinit var restaurantRecyclerView: RecyclerView
+    private lateinit var restaurantArrayList: ArrayList<RestaurantDC>
     private var itemSelectedList : ArrayList<String> = ArrayList<String>()
     private lateinit var auth: FirebaseAuth
-    private lateinit var msAdapter: MenuAddMenuItemViewAddMultiselectAdapter
+    private lateinit var msAdapter: MenuAddRestaurantViewAddMultiselectAdapter
     private lateinit var rv: RecyclerView
     private var restaurantMenu: Menu? = null
     private var id: String = ""
@@ -32,10 +32,10 @@ class MenuAddMenuItemViewAdd : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_menu_item_view_edit)
-        menuItemRecyclerView = findViewById(R.id.menuItemList)
-        menuItemRecyclerView.layoutManager = LinearLayoutManager(this)
-        menuItemRecyclerView.setHasFixedSize(true)
+        setContentView(R.layout.activity_menu_add_restaurant_view_add)
+        restaurantRecyclerView = findViewById(R.id.restaurantList)
+        restaurantRecyclerView.layoutManager = LinearLayoutManager(this)
+        restaurantRecyclerView.setHasFixedSize(true)
 
         val bundle = intent.extras
         //var id : String = ""
@@ -45,36 +45,36 @@ class MenuAddMenuItemViewAdd : AppCompatActivity() {
 
 
         //itemSelectedList = ArrayList<String>()
-        menuItemArrayList = arrayListOf<MenuItemDC>()
+        restaurantArrayList = arrayListOf<RestaurantDC>()
         getUserData()
 
     }
 
     private fun getUserData() {
-        database = FirebaseDatabase.getInstance().getReference("Menu Items/")
+        database = FirebaseDatabase.getInstance().getReference("Restaurants/")
         auth = FirebaseAuth.getInstance()
-        database.orderByChild("ownerUID").equalTo(auth.currentUser!!.uid).addValueEventListener(object : ValueEventListener{//
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    menuItemArrayList.clear()
-                    Toast.makeText(
-                        this@MenuAddMenuItemViewAdd,
-                        "onDataChanged!",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    if (snapshot.exists()) {
-                        //restaurantArrayList.clear()
-                        for (menuItemSnapshot in snapshot.children) {
-                            val menuItem = menuItemSnapshot.getValue(MenuItemDC::class.java)
-                            menuItemArrayList.add(menuItem!!)
-                        }
-                        msAdapter =
-                            MenuAddMenuItemViewAddMultiselectAdapter(menuItemArrayList, id, itemSelectedList) { show ->
-                                showCartMenu(show)
-                            }
-
-                        menuItemRecyclerView.adapter = msAdapter
-                    }
+        database.orderByChild("merchantID").equalTo(auth.currentUser!!.uid).addValueEventListener(object : ValueEventListener{//
+        override fun onDataChange(snapshot: DataSnapshot) {
+            restaurantArrayList.clear()
+            Toast.makeText(
+                this@MenuAddRestaurantViewAdd,
+                "onDataChanged!",
+                Toast.LENGTH_SHORT
+            ).show()
+            if (snapshot.exists()) {
+                //restaurantArrayList.clear()
+                for (restaurantSnapshot in snapshot.children) {
+                    val restaurant = restaurantSnapshot.getValue(RestaurantDC::class.java)
+                    restaurantArrayList.add(restaurant!!)
                 }
+                msAdapter =
+                    MenuAddRestaurantViewAddMultiselectAdapter(restaurantArrayList, id, itemSelectedList) { show ->
+                        showCartMenu(show)
+                    }
+
+                restaurantRecyclerView.adapter = msAdapter
+            }
+        }
 
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
@@ -97,9 +97,6 @@ class MenuAddMenuItemViewAdd : AppCompatActivity() {
                 //val intent = Intent(this, CustomerCheckout::class.java)
                 //intent.putExtra("itemSelectedList", itemSelectedList)
                 //startActivity(intent)
-               // val intent = Intent(this, MenuAddRestaurantViewAdd::class.java)
-               // intent.putExtra("key", id)
-                //startActivity(intent)
             }
         }
         return super.onOptionsItemSelected(item)
@@ -111,16 +108,15 @@ class MenuAddMenuItemViewAdd : AppCompatActivity() {
 
     private fun add(){
         val alertDialog = AlertDialog.Builder(this)
-        alertDialog.setTitle("Add Menu Items to current Menu?")
-        alertDialog.setMessage("Would you want to add these Menu Items to the current Menu?")
+        alertDialog.setTitle("Add the current Menu to Restaurants?")
+        alertDialog.setMessage("Would you want to add this current Menu to the selected Restaurants?")
         alertDialog.setPositiveButton("Create"){_,_ ->
             msAdapter.addSelectedItem()
             showCartMenu(false)
-            val intent = Intent(this, MenuAddRestaurantViewAdd::class.java)
-            intent.putExtra("key", id)
-            startActivity(intent)
         }
         alertDialog.setNegativeButton("Cancel"){_,_ ->}
         alertDialog.show()
     }
 }
+
+
