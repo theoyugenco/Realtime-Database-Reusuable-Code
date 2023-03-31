@@ -98,6 +98,39 @@
                 android:layout_toEndOf="@+id/price_title"
                 />
 
+            <ImageButton
+                android:id="@+id/ci_add"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/add"
+                android:layout_toStartOf="@id/ci_quantity"
+                android:layout_centerVertical="true">
+            </ImageButton>
+
+            <TextView
+                android:id="@+id/ci_quantity"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_toStartOf="@id/ci_minus"
+                android:text="0"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:gravity="center"
+                android:layout_centerVertical="true">
+            </TextView>
+
+            <ImageButton
+                android:id="@+id/ci_minus"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/subtract"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="15dp"
+                >
+            </ImageButton>
+
         </RelativeLayout>
 
 
