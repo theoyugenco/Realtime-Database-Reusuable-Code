@@ -74,9 +74,8 @@ class RestaurantSearchAdapter (val context: Context, var restaurantList: ArrayLi
         val full_address : String = currentRestaurant.streetAddress + ", " + currentRestaurant.city + ", " + currentRestaurant.state + ", " + currentRestaurant.zipcode
         holder.address.text = full_address
         holder.itemView.setOnClickListener {
-            val intent = Intent(context, Review::class.java)
+            val intent = Intent(context, Ordering::class.java)
             intent.putExtra("name", currentRestaurant.name)
-            intent.putExtra("logo", currentRestaurant.downloadURL)
             intent.putExtra("address", full_address)
             intent.putExtra("restaurantID", currentRestaurant.restaurantID)
             context.startActivity(intent)

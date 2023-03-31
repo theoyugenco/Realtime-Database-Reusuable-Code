@@ -1,10 +1,11 @@
-/*package com.example.realtimedatabasereusuablecodedoc
+package com.example.realtimedatabasereusuablecodedoc
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
@@ -27,8 +28,14 @@ import kotlin.properties.Delegates
 
 class CheckoutActivity : AppCompatActivity() {
     private lateinit var cartRecyclerView: RecyclerView
+    private lateinit var genCouponRecyclerView: RecyclerView
+    private lateinit var itemCouponRecyclerView: RecyclerView
     private lateinit var orderItemList: ArrayList<OrderItemDC>
+    private lateinit var generalCouponList: ArrayList<GeneralCoupons>
+    private lateinit var specificCouponList: ArrayList<SpecificCoupons>
     private lateinit var adapter: CartItemAdapter
+    private lateinit var generalAdapter: GeneralCouponAdapter
+    private lateinit var specificAdapter: SpecificCouponAdapter
     private lateinit var cart: ArrayList<PurchaseUnit>
     private lateinit var itemNames: ArrayList<String>
     private lateinit var prices: ArrayList<String>
@@ -58,6 +65,7 @@ class CheckoutActivity : AppCompatActivity() {
                 amount = Amount(currencyCode = CurrencyCode.USD, value = prices.elementAt(i))
             )
             cart.add(currentItem)
+            val newItem: OrderItemDC = OrderItemDC(itemNames.elementAt(i).toString(), prices.elementAt(i).toString())
             subtotal += prices.elementAt(i).toFloat()
         }
         adapter.notifyDataSetChanged()
@@ -103,4 +111,4 @@ class CheckoutActivity : AppCompatActivity() {
             }
         )
     }
-}*/
+}
