@@ -26,6 +26,7 @@ class HomeCustomer : AppCompatActivity() {
     private lateinit var chatButton: ImageButton
     private lateinit var binding: ActivityHomeCustomerBinding
     private lateinit var profButton: ImageButton
+    private lateinit var orderButton: Button
     private lateinit var reviewButton: ImageView
     private lateinit var homeButton: ImageButton
 
@@ -58,6 +59,16 @@ class HomeCustomer : AppCompatActivity() {
             val intent = Intent(this, Profile::class.java)
             startActivity(intent)
         }
+
+        /*
+        Theodore Yu
+         */
+        orderButton = findViewById(R.id.ch_orders_btn)
+        orderButton.setOnClickListener(){
+            val intent = Intent(this, MenuCustomerOrdering::class.java)
+            startActivity(intent)
+        }
+
 
         homeButton = findViewById(R.id.home_btn)
         homeButton.setOnClickListener {
