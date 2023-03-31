@@ -22,6 +22,7 @@ import com.paypal.checkout.order.Amount
 import com.paypal.checkout.order.AppContext
 import com.paypal.checkout.order.Order
 import com.paypal.checkout.order.PurchaseUnit
+import com.paypal.checkout.paymentbutton.PaymentButtonContainer
 import kotlin.collections.List
 import kotlin.collections.ArrayList
 import kotlin.properties.Delegates
@@ -31,16 +32,15 @@ class CheckoutActivity : AppCompatActivity() {
     private lateinit var genCouponRecyclerView: RecyclerView
     private lateinit var itemCouponRecyclerView: RecyclerView
     private lateinit var orderItemList: ArrayList<OrderItemDC>
-    private lateinit var generalCouponList: ArrayList<GeneralCoupons>
-    private lateinit var specificCouponList: ArrayList<SpecificCoupons>
+    private lateinit var couponList: List<Any>
     private lateinit var adapter: CartItemAdapter
-    private lateinit var generalAdapter: GeneralCouponAdapter
-    private lateinit var specificAdapter: SpecificCouponAdapter
+    private lateinit var generalAdapter: CouponAdapter
     private lateinit var cart: ArrayList<PurchaseUnit>
     private lateinit var itemNames: ArrayList<String>
     private lateinit var prices: ArrayList<String>
     private lateinit var subtotalDisplay: TextView
     private lateinit var taxDisplay: TextView
+    private lateinit var paymentButtonContainer: PaymentButtonContainer
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var database: DatabaseReference
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -67,11 +67,15 @@ class CheckoutActivity : AppCompatActivity() {
             cart.add(currentItem)
             val newItem: OrderItemDC = OrderItemDC(itemNames.elementAt(i).toString(), prices.elementAt(i).toString())
             subtotal += prices.elementAt(i).toFloat()
+            orderItemList.add(newItem)
         }
+
         adapter.notifyDataSetChanged()
         subtotalDisplay.setText(subtotal.toString())
         var tax: Float = subtotal * 0.1F
         taxDisplay.setText(tax.toString())
+
+        couponList = mutableListOf<Any>()
         
         val config = CheckoutConfig(
             application,
