@@ -25,25 +25,15 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/r_name_title"
+                android:id="@+id/ci_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Name: "
+                android:hint="Name"
                 android:textColor="@color/black"
                 android:textSize="26sp"
                 android:textStyle="bold"
-                android:layout_centerVertical="true"/>
-
-            <TextView
-                android:id="@+id/tvName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginStart="8dp"
-                android:layout_toEndOf="@+id/r_name_title"
-                android:text="Arya"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
+                android:layout_centerHorizontal="true"/>
 
             <ImageView
                 android:id="@+id/checkSelect"
@@ -55,56 +45,60 @@
                 />
         </RelativeLayout>
 
-        <LinearLayout
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/ci_image"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/pizza" />
+
+            <TextView
+                android:id="@+id/ci_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Description"
+                android:textColor="@color/black"
+                android:textSize="26sp"
+                android:textStyle="bold"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@id/ci_image"/>
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/price_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Description: "
+                android:text="Price: "
                 android:textColor="@color/black"
-                android:textSize="26sp"
+                android:textSize="25sp"
                 android:textStyle="bold"/>
 
             <TextView
-                android:id="@+id/tvDescription"
+                android:id="@+id/ci_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="Stark"
+                android:text="$20.00"
                 android:textColor="@color/black"
-                android:textSize="20sp"/>
+                android:textSize="25sp"
+                android:paddingBottom="5dp"
+                android:layout_toEndOf="@+id/price_title"
+                />
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Address: "
-                android:textColor="@color/black"
-                android:textSize="26sp"
-                android:textStyle="bold"/>
-
-            <TextView
-                android:id="@+id/tvAddress"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:text="20"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:paddingBottom="5dp"/>
-
-        </LinearLayout>
+        </RelativeLayout>
 
 
 
