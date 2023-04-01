@@ -4,10 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f29c45">
-
-    <!--
-    tools:context=".CustomerCheckout" -->
+    android:background="#f29c45"
+    tools:context=".CustomerCheckout">
 
     <ScrollView
         android:layout_width="match_parent"
