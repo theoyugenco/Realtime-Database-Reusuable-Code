@@ -16,14 +16,16 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import org.w3c.dom.Text
 
 //class MenuAddMenuItemViewAddMultiselectAdapter (private val menuItemClickListener: ArrayList<MenuItemDC>):RecyclerView.Adapter<Menu>
 
 
 class MenuCustomerOrderingMultiselectAdapter (
-    private val menuItemList : ArrayList<MenuItemDC>,
+    private val currentMenuItemArrayList : ArrayList<MenuItemDC>,
     private val id : String,
-    private val itemSelectedList : ArrayList<String>,
+    private val menuItemNameList : ArrayList<String>,
+    private val menuItemPriceList: ArrayList<String>,
     private val showMenuCart: (Boolean) -> Unit
 ):RecyclerView.Adapter<MenuCustomerOrderingMultiselectAdapter.MultiselectViewHolder>() {
 
@@ -40,6 +42,9 @@ class MenuCustomerOrderingMultiselectAdapter (
         val name: TextView = view.findViewById(R.id.tvName)
         val price: TextView = view.findViewById(R.id.tvPrice)
         val description: TextView = view.findViewById(R.id.tvDescription)
+        val add: ImageView = view.findViewById(R.id.ci_add)
+        val delete: ImageView = view.findViewById(R.id.ci_minus)
+        val counter: TextView = view.findViewById(R.id.ci_quantity)
         //val check: ImageView = view.findViewById(R.id.checkSelect)
     }
 
@@ -58,83 +63,60 @@ class MenuCustomerOrderingMultiselectAdapter (
     */
     override fun onBindViewHolder(holder: MultiselectViewHolder, position: Int) {
 
-        val item = menuItemList[position]
-        keyTBR = item.menuItemID
+        val item = currentMenuItemArrayList[position]
+        //keyTBR = item.menuItemID
 
         //This is each card is created.
         holder.name.text = item.name.toString()
         holder.description.text = item.description.toString()
         holder.price.text = item.price.toString()
-        //holder.check.visibility = View.GONE
+        val name: String? = item.name.toString()
+        val price: String? = item.price.toString()
+        //var count: String? = holder.counter.text.toString()
 
-        /*
-        holder.card.setOnLongClickListener() {
-            selectItem(holder, item, position)
-            holder.check.visibility = View.VISIBLE
-            true
+        holder.add.setOnClickListener() {
+            menuItemNameList.add(name!!)
+            menuItemPriceList.add(price!!)
+            for (i in menuItemNameList){
+                Log.d(TAG, "N:" + i)
+            }
+            for (j in menuItemPriceList){
+                Log.d(TAG, "N:" + j)
+            }
+            var count: String? = holder.counter.text.toString()
+            var c : Int = count!!.toInt()
+            c = c + 1
+            Log.d(TAG, "c is: " + c)
+            holder.counter.setText(c.toString())
+            showMenuCart(true)
         }
-        */
-        holder.card.setOnClickListener() {
-            //menuItemID is
-            keyTBR = item.menuItemID
-            //is the item already checked
-            if (itemSelectedList.contains(keyTBR)) {
-                itemSelectedList.remove(keyTBR)
-                //holder.check.visibility = View.GONE
 
-                //It wouldn't make sense to show the options if nothing were to be selected
-                if (itemSelectedList.isEmpty()) {
-                    showMenuCart(false)
-                }
+        holder.delete.setOnClickListener(){
+            menuItemNameList.remove(name!!)
+            menuItemPriceList.remove(price!!)
+            for (i in menuItemNameList){
+                Log.d(TAG, "N:" + i)
             }
-            else{
-                //holder.check.visibility = View.VISIBLE
-                //keyTBR = item.restaurantID //Change this code
-                itemSelectedList.add(keyTBR!!)
-
-                showMenuCart(true)
+            for (j in menuItemPriceList){
+                Log.d(TAG, "N:" + j)
             }
-        }
-    }
-
-    /*
-    Instead of deleting items from the database, we are adding items to the database again
-    However, instead of adding the actual Menu Items to the database again (duplication),
-    we are merely adding the Menu Items' IDs/Keys
-
-     */
-    fun addSelectedItem(){
-        database = FirebaseDatabase.getInstance().getReference("Menus/" + id + "/Menu Items/")
-        if(itemSelectedList.isNotEmpty()){
-            val size: Int = itemSelectedList.size
-            var i : Int = 0
-            for (i in 0..(size-1)){
-                keyTBR = itemSelectedList.get(i)
-                val key: String? = keyTBR
-                database.child(key!!).setValue(key).addOnSuccessListener {
-
-                }.addOnFailureListener(){
-
-                }
+            var count: String? = holder.counter.text.toString()
+            var c : Int = count!!.toInt()
+            c = c - 1
+            Log.d(TAG, "c is: " + c)
+            if (c < 0){
+                c = 0
             }
-            itemSelectedList.clear()
+            holder.counter.setText(c.toString())
+            if (menuItemNameList.isEmpty()) {
+                showMenuCart(false)
+            }
         }
     }
+
 
     override fun getItemCount(): Int {
-        return menuItemList.size
-    }
-
-    private fun selectItem(
-        holder: MenuAddMenuItemViewAddMultiselectAdapter.MultiselectViewHolder,
-        item: MenuItemDC,
-        position: Int
-    ) {
-        //isEnable = true
-        keyTBR = item.menuItemID //Change this code
-        itemSelectedList.add(keyTBR!!)
-
-        showMenuCart(true)
+        return currentMenuItemArrayList.size
     }
 
 
