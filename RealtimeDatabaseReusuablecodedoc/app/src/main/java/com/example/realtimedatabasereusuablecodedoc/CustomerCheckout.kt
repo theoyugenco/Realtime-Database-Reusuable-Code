@@ -14,6 +14,8 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import android.util.Log
 import android.view.MenuItem
+import android.widget.TextView
+import kotlin.math.roundToInt
 
 class CustomerCheckout : AppCompatActivity() {
     private lateinit var database: DatabaseReference
@@ -30,6 +32,8 @@ class CustomerCheckout : AppCompatActivity() {
     private lateinit var recyclerv: RecyclerView
     private lateinit var msAdapterMenuItems: CustomerCheckoutAdapter
     private var TAG: String? = null
+    private lateinit var subtotalPrice: TextView
+    private lateinit var taxPrice: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,14 +48,25 @@ class CustomerCheckout : AppCompatActivity() {
             itemPriceArrayList = bundle.getStringArrayList("itemPrice")!!
         }
 
-
-
         iNAL = ArrayList(itemNameArrayList.toList())
         for (i in itemNameArrayList){
             Log.d(TAG, "Nx:" + i)
         }
 
         getUserData()
+
+        subtotalPrice = findViewById(R.id.cc_subtotal_price)
+        var subtotal = 0.00
+        for (i in itemPriceArrayList) {
+            subtotal += i.toDouble()
+        }
+        val roundedsubtotal = (subtotal * 100.0).roundToInt()/100.0
+
+        subtotalPrice.setText(roundedsubtotal.toString())
+
+        taxPrice = findViewById(R.id.cc_fee_price)
+        val tax = ((roundedsubtotal * 0.10) * 100.0).roundToInt()/100.0
+        taxPrice.setText(tax.toString())
     }
 
 
