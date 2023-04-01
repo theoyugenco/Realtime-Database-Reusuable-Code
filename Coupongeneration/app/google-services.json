@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "135720307991",
+    "firebase_url": "https://test4coupons-bf9bc-default-rtdb.firebaseio.com",
+    "project_id": "test4coupons-bf9bc",
+    "storage_bucket": "test4coupons-bf9bc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:135720307991:android:42c57e506bd11caa953b52",
+        "android_client_info": {
+          "package_name": "com.example.coupongeneration"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "135720307991-cask9dcu0jfraloabu94afippev9pale.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDN12bBvXCVtwFUHzR-Mc3Es0QVC9FjbeQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "135720307991-cask9dcu0jfraloabu94afippev9pale.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
