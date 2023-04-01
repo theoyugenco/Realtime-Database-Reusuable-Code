@@ -25,7 +25,7 @@ class MenuCustomerOrdering : AppCompatActivity() {
     private var currentMenuItemArrayList: ArrayList<MenuItemDC> = ArrayList<MenuItemDC>()
     private var itemSelectedList : ArrayList<String> = ArrayList<String>()
     private lateinit var auth: FirebaseAuth
-    private lateinit var msAdapter: MenuAddMenuItemViewAddMultiselectAdapter
+    private lateinit var msAdapter: MenuCustomerOrderingMultiselectAdapter
     private lateinit var rv: RecyclerView
     private var restaurantMenu: Menu? = null
     //private var rid: String =
@@ -96,7 +96,7 @@ class MenuCustomerOrdering : AppCompatActivity() {
                     }
 
                     msAdapter =
-                        MenuAddMenuItemViewAddMultiselectAdapter(currentMenuItemArrayList, id, itemSelectedList) { show ->
+                        MenuCustomerOrderingMultiselectAdapter(currentMenuItemArrayList, id, itemSelectedList) { show ->
                             showCartMenu(show)
                         }
 

@@ -44,7 +44,7 @@ class MenuCustomerOrderingMultiselectAdapter (
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MultiselectViewHolder {
-        val adapterLayout = LayoutInflater.from(parent.context).inflate(R.layout.menu_item, parent, false)
+        val adapterLayout = LayoutInflater.from(parent.context).inflate(R.layout.checkout_item, parent, false)
         return MultiselectViewHolder(adapterLayout)
     }
     /*
