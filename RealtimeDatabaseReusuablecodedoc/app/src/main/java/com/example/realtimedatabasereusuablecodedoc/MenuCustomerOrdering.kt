@@ -37,7 +37,7 @@ class MenuCustomerOrdering : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_menu_item_view_edit)
+        setContentView(R.layout.activity_menu_customer_ordering)
         menuItemRecyclerView = findViewById(R.id.menuItemList)
         menuItemRecyclerView.layoutManager = LinearLayoutManager(this)
         menuItemRecyclerView.setHasFixedSize(true)
