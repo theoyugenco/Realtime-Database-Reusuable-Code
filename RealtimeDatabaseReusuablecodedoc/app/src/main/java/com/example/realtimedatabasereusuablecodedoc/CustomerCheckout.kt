@@ -12,67 +12,92 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import android.util.Log
+import android.view.MenuItem
 
 class CustomerCheckout : AppCompatActivity() {
     private lateinit var database: DatabaseReference
     private lateinit var auth: FirebaseAuth
     private var restaurantMenu: Menu? = null
-    private lateinit var itemNameArrayList : ArrayList<String>
-    private lateinit var itemPriceArrayList : ArrayList<String>
+    private var itemNameArrayList : ArrayList<String> = ArrayList<String>()
+    private var itemPriceArrayList : ArrayList<String> = ArrayList<String>()
+    //private lateinit var itemNameSet: Set<String>
+    //private lateinit var itemPriceSet: Set<String>
+    private var itemNameDistinctArrayList : ArrayList<String> = ArrayList<String>()
+    private var itemPriceDistinctArrayList : ArrayList<String> = ArrayList<String>()
+    private var iNAL : ArrayList<String> = ArrayList<String>()
+    private var itemCountArrayList : ArrayList<Int> = ArrayList<Int>()
     private lateinit var recyclerv: RecyclerView
-    private lateinit var msAdapter: CustomerCheckoutAdapter
-    private lateinit var restaurantArrayList: ArrayList<CustomerCheckoutDC>
+    private lateinit var msAdapterMenuItems: CustomerCheckoutAdapter
+    private var TAG: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_customer_checkout)
+        recyclerv = findViewById(R.id.cc_cartItemsRecycler)
+        recyclerv.layoutManager = LinearLayoutManager(this)
+        recyclerv.setHasFixedSize(true)
 
         val bundle = intent.extras
-        //var id : String = ""
         if (bundle != null){
             itemNameArrayList = bundle.getStringArrayList("itemName")!!
             itemPriceArrayList = bundle.getStringArrayList("itemPrice")!!
         }
 
-        recyclerv = findViewById(R.id.cc_cartItemsRecycler)
-        recyclerv.layoutManager = LinearLayoutManager(this)
-        recyclerv.setHasFixedSize(true)
-        restaurantArrayList = arrayListOf<CustomerCheckoutDC>()
+
+
+        iNAL = ArrayList(itemNameArrayList.toList())
+        for (i in itemNameArrayList){
+            Log.d(TAG, "Nx:" + i)
+        }
+
         getUserData()
     }
 
 
     private fun getUserData() {
-        database = FirebaseDatabase.getInstance().getReference("Restaurants/")
-        auth = FirebaseAuth.getInstance()
-        database.orderByChild("merchantID").equalTo(auth.currentUser!!.uid)
-            .addValueEventListener(object : ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    restaurantArrayList.clear()
-                    //Toast.makeText(this@RestaurantViewEdit, "onDataChanged!", Toast.LENGTH_SHORT)
-                        //.show()
-                    if (snapshot.exists()) {
-                        for (menuItemSnapshot in snapshot.children) {
-                            val menuItem = menuItemSnapshot.getValue(CustomerCheckoutDC::class.java)
-                            restaurantArrayList.add(menuItem!!)
-                        }
+        //itemNameSet = itemNameArrayList.toList().toSet()
+        //itemPriceSet = itemPriceArrayList.toList().toSet()
 
-                        msAdapter =
-                            CustomerCheckoutAdapter(restaurantArrayList) { show ->
-                                showDeleteMenu(show)
-                            }
+        //We need a set because we want to efficiently display to the Customer what they ordered.
+        itemNameDistinctArrayList = ArrayList(itemNameArrayList.toList().toSet().toList())
+        itemPriceDistinctArrayList = ArrayList(itemPriceArrayList.toList().toSet().toList())
 
-                        recyclerv.adapter = msAdapter
-                    }
-                }
+        Log.d(TAG, "this ran100")
+        val originalSize : Int = iNAL.size
+        Log.d(TAG, "inal size: " + originalSize.toString())
 
-                override fun onCancelled(error: DatabaseError) {
-                    TODO("Not yet implemented")
-                }
-            })
+        //We are trying to get the item count/quantity of each distinct item
+        for (i in itemNameDistinctArrayList){
+            var c : Int = 0
+
+            //iNAL.remove(i).equals(true)
+            while (iNAL.remove(i) == true){
+                c++
+            }
+
+            itemCountArrayList.add(c)
+        }
+
+        //This checks if the sum of all the counts matches the original size
+        var sum : Int = 0
+
+        for (j in itemCountArrayList)
+        {
+            sum += j
+        }
+
+        if (sum.equals(originalSize)){
+            Log.d(TAG, "correct Math!")
+        }
+        else{
+            Log.d(TAG, "dissapoint")
+        }
+
+
+        msAdapterMenuItems = CustomerCheckoutAdapter(iNAL, itemNameDistinctArrayList, itemPriceDistinctArrayList, itemCountArrayList)
+        recyclerv.adapter = msAdapterMenuItems
     }
 
-    fun showDeleteMenu(show: Boolean){
-        restaurantMenu?.findItem(R.id.delete)?.isVisible = show
-    }
+
 }
