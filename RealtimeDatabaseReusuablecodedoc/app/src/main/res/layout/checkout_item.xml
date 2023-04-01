@@ -25,7 +25,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/ci_name"
+                android:id="@+id/tvName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="Name"
@@ -58,7 +58,7 @@
                 android:src="@drawable/pizza" />
 
             <TextView
-                android:id="@+id/ci_description"
+                android:id="@+id/tvDescription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="Description"
@@ -87,7 +87,7 @@
                 android:textStyle="bold"/>
 
             <TextView
-                android:id="@+id/ci_price"
+                android:id="@+id/tvPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
