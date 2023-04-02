@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- This is the display of the menu items to the customer -->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -6,6 +8,7 @@
     android:layout_height="match_parent"
     tools:context=".MenuCustomerOrdering">
 
+    <!-- recycler view for each item-->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/menuItemList"
         android:layout_width="match_parent"
@@ -14,6 +17,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/menu_item"/>
+        tools:listitem="@layout/cart_item"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- The page for searching for restaurants using a recycler view -->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -6,8 +8,9 @@
     android:layout_height="match_parent"
     tools:context=".RestaurantSearch">
 
+    <!-- This is the search bar  -->
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/reviewSearchCard"
+        android:id="@+id/restaurantSearchCard"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:cardCornerRadius="8dp"
@@ -18,12 +21,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <!-- Recycler view showing the list of restaurants-->
         <androidx.appcompat.widget.SearchView
-            android:id="@+id/reviewSearchBar"
+            android:id="@+id/restaurantSearchBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:iconifiedByDefault="false"
-            app:queryHint="Search Reviews"
+            app:queryHint="Search Restaurants"
             app:queryBackground="@android:color/transparent"/>
     </com.google.android.material.card.MaterialCardView>
 
@@ -35,7 +39,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/reviewSearchCard" />
+        app:layout_constraintTop_toBottomOf="@+id/restaurantSearchCard" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- This is the card that shows the coupon on the checkout page -->
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -15,6 +17,7 @@
         android:orientation="horizontal"
         android:background="@color/orange">
 
+        <!-- This section represents the coupon description -->
             <TextView
                 android:id="@+id/textLocation"
                 android:layout_width="100dp"
@@ -30,6 +33,7 @@
                 android:layout_weight="1"
                 android:padding="5dp"/>
 
+        <!-- This section represents the coupon expiration date -->
             <TextView
                 android:id="@+id/textAddress"
                 android:layout_width="wrap_content"
@@ -41,10 +45,8 @@
                 android:textSize="15sp"
                 android:textStyle="bold"
                 android:layout_weight="0"
-                android:padding="5dp"/>
-
-
-
+                android:padding="5dp"
+                android:layout_marginEnd="10dp"/>
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

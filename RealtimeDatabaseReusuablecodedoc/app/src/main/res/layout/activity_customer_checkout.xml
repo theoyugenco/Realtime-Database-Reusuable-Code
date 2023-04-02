@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- This is the customer checkout page which will show the customer the list of items they ordered,
+a subtotal, fees, and then all the possible coupons they could use -->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -18,6 +21,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <!-- Display title for the page -->
             <TextView
                 android:id="@+id/cc_title"
                 android:layout_width="match_parent"
@@ -29,6 +33,7 @@
                 android:textSize="40sp"
                 android:textStyle="bold"/>
 
+            <!-- Recycler view that displays the menu items the customer chose -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/cc_cartItemsRecycler"
                 android:layout_width="match_parent"
@@ -38,6 +43,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/cc_title"
                 tools:listitem="@layout/checkout_items" />
 
+            <!-- This linear layout displays the subtotal of the prices of all the items-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -62,6 +68,7 @@
                     android:textSize="20sp" />
             </LinearLayout>
 
+            <!-- This linear layout displays the fess of the prices of all the items-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -86,6 +93,7 @@
                     android:textSize="20sp" />
             </LinearLayout>
 
+            <!-- This linear layout displays the coupon savings of the prices of all the items-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -99,7 +107,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Coupon"
+                    android:text="Coupons"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
@@ -114,6 +122,7 @@
 
             </LinearLayout>
 
+            <!-- This recycler view displays all the usable coupons -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/cc_couponRecycler"
                 android:layout_width="match_parent"
@@ -148,6 +157,7 @@
                     android:textStyle="bold" />
             </LinearLayout>
 
+            <!-- This button will have a user checkout going to the payment section -->
             <Button
                 android:id="@+id/cc_checkout"
                 android:layout_width="200dp"

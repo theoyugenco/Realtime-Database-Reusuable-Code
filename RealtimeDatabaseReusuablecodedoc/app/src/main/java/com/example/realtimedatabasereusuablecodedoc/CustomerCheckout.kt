@@ -1,5 +1,6 @@
 package com.example.realtimedatabasereusuablecodedoc
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -14,6 +15,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import android.util.Log
 import android.view.MenuItem
+import android.widget.Button
 
 class CustomerCheckout : AppCompatActivity() {
     private lateinit var database: DatabaseReference
@@ -30,6 +32,10 @@ class CustomerCheckout : AppCompatActivity() {
     private lateinit var recyclerv: RecyclerView
     private lateinit var msAdapterMenuItems: CustomerCheckoutAdapter
     private var TAG: String? = null
+
+    //Test
+    private lateinit var receiptButton: Button
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,6 +58,13 @@ class CustomerCheckout : AppCompatActivity() {
         }
 
         getUserData()
+
+        //Testkris
+        receiptButton = findViewById(R.id.cc_receipt)
+        receiptButton.setOnClickListener {
+            val intent = Intent(this, CustomerReceipt::class.java)
+            startActivity(intent)
+        }
     }
 
 
