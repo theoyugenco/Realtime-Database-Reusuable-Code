@@ -1,4 +1,3 @@
-/*
 package com.example.realtimedatabasereusuablecodedoc
 
 import android.view.LayoutInflater
@@ -14,35 +13,39 @@ class CouponAdapter (val items: MutableList<ListItem>) : RecyclerView.Adapter<Ba
     }
 
     class ViewHolderA(itemView: View) : BaseViewHolder(itemView) {
-        private val textView: TextView = itemView.findViewById(R.id.general_text)
+        private val description: TextView = itemView.findViewById(R.id.textLocation)
+        private val expDate: TextView = itemView.findViewById(R.id.textAddress)
 
         override fun bind(item: ListItem) {
             val itemA = item as GeneralCoupon
-            textView.text = itemA.textA
+            description.text = itemA.quantityNeeded.toString()
+            expDate.text = itemA.expirationDate
         }
     }
 
     class ViewHolderB(itemView: View) : BaseViewHolder(itemView) {
-        private val textView: TextView = itemView.findViewById(R.id.specific_text)
+        private val description: TextView = itemView.findViewById(R.id.textLocation)
+        private val expDate: TextView = itemView.findViewById(R.id.textAddress)
 
         override fun bind(item: ListItem) {
             val itemB = item as SpecificCoupon
-            textView.text = itemB.textA
+            description.text = itemB.couponFor
+            expDate.text = itemB.expirationDate
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
         return when (viewType) {
             ListItem.Type.GeneralCoupon.ordinal -> {
-                val view = LayoutInflater.from(parent.context).inflate(R.layout.general_coupon, parent, false)
+                val view = LayoutInflater.from(parent.context).inflate(R.layout.checkout_coupon_recycler, parent, false)
                 return ViewHolderA(view)
             }
             ListItem.Type.SpecificCoupon.ordinal -> {
-                val view = LayoutInflater.from(parent.context).inflate(R.layout.specific_coupon, parent, false)
+                val view = LayoutInflater.from(parent.context).inflate(R.layout.checkout_coupon_recycler, parent, false)
                 return ViewHolderB(view)
             }
             else -> {
-                val view = LayoutInflater.from(parent.context).inflate(R.layout.general_coupon, parent, false)
+                val view = LayoutInflater.from(parent.context).inflate(R.layout.checkout_coupon_recycler, parent, false)
                 return ViewHolderB(view)
             }
         }
@@ -63,12 +66,6 @@ class CouponAdapter (val items: MutableList<ListItem>) : RecyclerView.Adapter<Ba
     }
 }
 
-interface ListItem {
-    enum class Type(value: Int) {GeneralCoupon(0), SpecificCoupon(1) }
-    fun getListItemType(): Int
-}
-
 abstract class BaseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     abstract fun bind(item: ListItem)
 }
- */
