@@ -70,3 +70,4 @@ public class SpecificCoupon implements ListItem {
         return ListItem.Type.SpecificCoupon.ordinal();
     }
 }
+

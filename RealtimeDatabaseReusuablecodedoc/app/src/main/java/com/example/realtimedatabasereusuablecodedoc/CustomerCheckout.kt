@@ -96,8 +96,8 @@ class CustomerCheckout : AppCompatActivity() {
         couponRecyclerView.layoutManager = LinearLayoutManager(this)
         couponRecyclerView.adapter = couponAdapter
 
-        val generalCoupon: GeneralCoupon = GeneralCoupon(10.0, 20.0, 3, 2, "04-05-2023")
-        val specificCoupon: SpecificCoupon = SpecificCoupon("m8mi2", 3242.0, 2, 3, 2, "04-05-2023")
+        val generalCoupon = GeneralCoupon(10.0, 20.0, 3, 2, "04-05-2023")
+        val specificCoupon = SpecificCoupon("m8mi2", 3242.0, 2, 3, 2, "04-05-2023")
 
         auth = FirebaseAuth.getInstance()
 
