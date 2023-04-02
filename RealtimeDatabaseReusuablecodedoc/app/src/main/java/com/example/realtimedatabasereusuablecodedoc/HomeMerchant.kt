@@ -25,6 +25,10 @@ class HomeMerchant : AppCompatActivity() {
     private lateinit var binding: ActivityHomeMerchantBinding
     private lateinit var profButton: ImageButton
 
+    private lateinit var locationButton: Button
+    private lateinit var menuButton: Button
+    private lateinit var menuItemButton: Button
+
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,12 +57,34 @@ class HomeMerchant : AppCompatActivity() {
             val intent = Intent(this, MerchantProfile::class.java)
             startActivity(intent)
         }
+
+        locationButton = findViewById(R.id.location_button)
+        locationButton.setOnClickListener {
+            val intent = Intent(this, RestaurantManagement::class.java)
+            startActivity(intent)
+        }
+
+        menuButton = findViewById(R.id.menu_button)
+        menuButton.setOnClickListener {
+            val intent = Intent(this, MenuManagement::class.java)
+            startActivity(intent)
+        }
+
+        menuItemButton = findViewById(R.id.menu_item_button)
+        menuItemButton.setOnClickListener {
+            val intent = Intent(this, MenuItemManagement::class.java)
+            startActivity(intent)
+        }
+
+
     }
 
+    /*
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.merchant_item,menu)
         return true
     }
+
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId){
@@ -86,4 +112,6 @@ class HomeMerchant : AppCompatActivity() {
             else -> super.onOptionsItemSelected(item)
         }
     }
+
+     */
 }

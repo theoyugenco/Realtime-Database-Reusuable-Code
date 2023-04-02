@@ -197,7 +197,7 @@
                 </TextView>
 
                 <Button
-                    android:id="@+id/coupon_comment2"
+                    android:id="@+id/coupon_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
@@ -250,7 +250,7 @@
                 </TextView>
 
                 <Button
-                    android:id="@+id/menu_comment_2"
+                    android:id="@+id/location_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
@@ -303,7 +303,7 @@
                 </TextView>
 
                 <Button
-                    android:id="@+id/location_comment_2"
+                    android:id="@+id/menu_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
@@ -356,7 +356,7 @@
                 </TextView>
 
                 <Button
-                    android:id="@+id/menu_item_comment_2"
+                    android:id="@+id/menu_item_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"

@@ -8,11 +8,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.cardview.widget.CardView
 import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 
-class MenuItemViewEditMultiselectAdapter (private val menuItemList : ArrayList<MenuItemDC>):RecyclerView.Adapter<MenuItemViewEditMultiselectAdapter.MultiselectViewHolder>() {
+class MenuItemViewEditMultiselectAdapter (
+    private val menuItemList : ArrayList<MenuItemDC>,
+    private val showMenuDelete: (Boolean) -> Unit,
+    ):RecyclerView.Adapter<MenuItemViewEditMultiselectAdapter.MultiselectViewHolder>() {
 
     private lateinit var database: DatabaseReference
     private var isEnable = false
@@ -21,19 +27,6 @@ class MenuItemViewEditMultiselectAdapter (private val menuItemList : ArrayList<M
     private var TAG: String? = null
     private lateinit var storage: StorageReference
     private lateinit var selectedImg: Uri
-
-    /*
-    private lateinit var mListener : onItemClickListener
-
-    interface onItemClickListener{
-        fun onItemClick(position: Int)
-    }
-
-    fun setOnItemClickListener(listener: onItemClickListener){
-        mListener = listener
-    }
-
-     */
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MultiselectViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.menu_item, parent, false)
@@ -60,16 +53,16 @@ class MenuItemViewEditMultiselectAdapter (private val menuItemList : ArrayList<M
                 holder.check.visibility = View.GONE
 
                 //It wouldn't make sense to show the options if nothing were to be selected
-                //if (itemSelectedList.isEmpty()) {
-                //showMenuDelete(false)
-                //}
+                if (itemSelectedList.isEmpty()) {
+                    showMenuDelete(false)
+                }
             }
             else{
                 holder.check.visibility = View.VISIBLE
                 //keyTBR = item.restaurantID //Change this code
                 itemSelectedList.add(keyTBR!!)
 
-                //showMenuDelete(true)
+                showMenuDelete(true)
             }
 
 
@@ -86,18 +79,35 @@ class MenuItemViewEditMultiselectAdapter (private val menuItemList : ArrayList<M
         val price : TextView = itemView.findViewById(R.id.tvPrice)
         val card: CardView = itemView.findViewById(R.id.card)
         val check: ImageView = itemView.findViewById(R.id.checkSelect)
-
-        /*
-        init{
-            itemView.setOnClickListener{
-                listener.onItemClick(adapterPosition)
-            }
-        }
-
-         */
     }
 
+    fun deleteSelectedItem(){
+        if(itemSelectedList.isNotEmpty()){
+            val size: Int = itemSelectedList.size
+            var i : Int = 0
+            for (i in 0..(size-1)){
+                keyTBR = itemSelectedList.get(i)
 
+                database = FirebaseDatabase.getInstance().getReference("Menu Items")
+                val key: String? = keyTBR
 
+                database.child(key!!).removeValue().addOnFailureListener(){
+                }.addOnSuccessListener {
+                    //Toast.makeText(this@RestaurantViewEdit, "Items deleted!", Toast.LENGTH_SHORT).show
+
+                    storage = FirebaseStorage.getInstance().getReference("Menu Items/" + key)
+
+                    storage.delete().addOnFailureListener(){
+                        Log.d(TAG, "Failed to delete image on Storage")
+                    }.addOnSuccessListener {
+                        Log.d(TAG, "Completely deleted Menu Item from both RTD and Storage")
+                    }
+                }.addOnFailureListener(){
+                    Log.d(TAG, "Failed to delete Menu Item on RTD")
+                }
+            }
+            itemSelectedList.clear()
+        }
+    }
 
 }
