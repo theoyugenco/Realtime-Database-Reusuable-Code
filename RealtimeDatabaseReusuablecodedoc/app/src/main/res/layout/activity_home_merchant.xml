@@ -173,14 +173,15 @@
             </LinearLayout>
 
             <!-- Section for merchant to create coupons -->
+
+            <!-- Section for merchant to Edit their restaurant locations -->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@drawable/add_rectangle"
                 android:layout_margin="10dp"
-                android:padding="10dp"
-                >
+                android:background="@drawable/add_rectangle"
+                android:orientation="vertical"
+                android:padding="10dp">
 
                 <TextView
                     android:id="@+id/coupon_comment1"
@@ -191,41 +192,38 @@
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="10dp"
                     android:text="Create Your Next MealSteal!"
+                    android:textColor="@color/black"
                     android:textSize="25sp"
-                    android:textStyle="italic"
-                    android:textColor="@color/black">
-                </TextView>
+                    android:textStyle="italic"></TextView>
 
                 <Button
                     android:id="@+id/coupon_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_below="@id/coupon_comment1"
+                    android:layout_centerHorizontal="true"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="10dp"
                     android:layout_marginRight="100dp"
                     android:layout_marginBottom="10dp"
-                    android:layout_below="@id/coupon_comment1"
-                    android:text="Create Coupons"
-                    android:textSize="12sp"
-                    android:textStyle="bold"
                     android:backgroundTint="#d0d3cf"
+                    android:text="Create Coupons"
                     android:textColor="@color/black"
-                    android:layout_centerHorizontal="true">
-                </Button>
+                    android:textSize="12sp"
+                    android:textStyle="bold"></Button>
 
                 <ImageView
                     android:id="@+id/coupon_image"
                     android:layout_width="180dp"
                     android:layout_height="110dp"
                     android:layout_centerHorizontal="true"
-                    android:src="@drawable/hamburger"
-                    android:layout_toEndOf="@id/coupon_comment1">
+                    android:layout_toEndOf="@id/coupon_comment1"
+                    android:src="@drawable/hamburger">
 
                 </ImageView>
             </RelativeLayout>
 
-            <!-- Section for merchant to Edit their restaurant locations -->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -259,7 +257,7 @@
                     android:layout_marginRight="100dp"
                     android:layout_marginBottom="10dp"
                     android:layout_below="@id/menu_comment_1"
-                    android:text="Edit Locations"
+                    android:text="Locations"
                     android:textSize="12sp"
                     android:textStyle="bold"
                     android:backgroundTint="#d0d3cf"
@@ -312,7 +310,7 @@
                     android:layout_marginRight="100dp"
                     android:layout_marginBottom="10dp"
                     android:layout_below="@id/location_comment_1"
-                    android:text="Edit Menus"
+                    android:text="Menus"
                     android:textSize="12sp"
                     android:textStyle="bold"
                     android:backgroundTint="#d0d3cf"
@@ -365,7 +363,7 @@
                     android:layout_marginRight="100dp"
                     android:layout_marginBottom="10dp"
                     android:layout_below="@id/menu_item_comment_1"
-                    android:text="Edit Menu Items"
+                    android:text="Menu Items"
                     android:textSize="12sp"
                     android:textStyle="bold"
                     android:backgroundTint="#d0d3cf"
