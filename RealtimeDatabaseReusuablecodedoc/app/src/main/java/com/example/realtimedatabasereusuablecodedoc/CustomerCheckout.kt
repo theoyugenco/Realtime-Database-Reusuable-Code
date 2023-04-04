@@ -90,6 +90,13 @@ class CustomerCheckout : AppCompatActivity() {
             startActivity(intent)
         }
 
+        /*
+        Kenneth Valero was responsible for setting the calculations for subtotal, tax,
+        grand total, and coupon discount
+         */
+        /*
+        Totalling up the prices of items for subtotal
+         */
         subtotalPrice = findViewById(R.id.cc_subtotal_price)
         var subtotal = 0.00
         for (i in itemPriceArrayList) {
@@ -99,10 +106,18 @@ class CustomerCheckout : AppCompatActivity() {
 
         subtotalPrice.setText(roundedsubtotal.toString())
 
+        /*
+        Kenneth Valero
+        Calculating the 10% tax
+         */
         taxPrice = findViewById(R.id.cc_fee_price)
         val tax = ((roundedsubtotal * 0.10) * 100.0).roundToInt()/100.0
         taxPrice.setText(tax.toString())
 
+        /*
+        Kenneth Valero
+        Initializing the coupon recyclerview
+         */
         couponRecyclerView = findViewById(R.id.cc_couponRecycler)
 
         couponList = mutableListOf<ListItem>()
@@ -114,13 +129,25 @@ class CustomerCheckout : AppCompatActivity() {
         val generalCoupon = GeneralCoupon(10.0, 20.0, 3, 2, "04-05-2023")
         val specificCoupon = SpecificCoupon("m8mi2", 3242.0, 2, 3, 2, "04-05-2023")
 
+        /*
+        Kenneth Valero
+        Setting up test coupons
+         */
         auth = FirebaseAuth.getInstance()
 
         database = FirebaseDatabase.getInstance().getReference()
 
-        database.child("GeneralCoupons").setValue(generalCoupon)
-        database.child("SpecificCoupons").setValue(specificCoupon)
+        val generalcouponID = database.child("GeneralCoupons").push().key
+        database.child("GeneralCoupons/" + generalcouponID).setValue(generalCoupon)
+        val specificcouponID = database.child("SpecificCoupons").push().key
+        database.child("SpecificCoupons/" + specificcouponID).setValue(specificCoupon)
 
+
+        /*
+        Kenneth Valero
+        Checking the current coupons in the database to see
+        which coupons are eligible for the current order
+         */
         database.child("GeneralCoupons").addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 for(coupon in couponList) {
@@ -169,7 +196,15 @@ class CustomerCheckout : AppCompatActivity() {
             }
         })
 
+        /*
+        Kenneth Valero
+        Calculating the discount price from the user's chosen coupon if applicable.
+         */
         var discount: Double = 0.0
+        /*
+        Kenneth Valero
+        Sets the discount to the chosen coupon's assigned discount
+         */
         couponAdapter.onItemClick = {
             if (it is GeneralCoupon) {
                 val selectedCoupon: GeneralCoupon = it
@@ -184,47 +219,61 @@ class CustomerCheckout : AppCompatActivity() {
         discountPrice = findViewById(R.id.cc_coupon_number)
         discountPrice.setText("-" + discount.toString())
 
+        /*
+        Kenneth Valero
+        Calculating the grand total of the order
+         */
         totalPrice = findViewById(R.id.cc_total_price)
         var grandTotal = subtotal + tax - discount
         totalPrice.setText("$" + grandTotal.toString())
 
-        val config = CheckoutConfig(
-            application,
-            clientId = "AbBw9JwhPcD0-5wZRCi_LpmDiHyGXuYK_FnfNZfVkQCuRk_PdscpI4VvgWz-D39JJV4re4E0V9rIYEP_",
-            environment = Environment.SANDBOX,
-            returnUrl = "com.example.realtimedatabasereusuablecodedoc://paypalpay",
-            currencyCode = CurrencyCode.USD,
-            userAction = UserAction.PAY_NOW,
-            settingsConfig = SettingsConfig(
-                loggingEnabled = true
-            )
-        )
-        PayPalCheckout.setConfig(config)
+        /*
+        Kenneth Valero
+        Setting the configuration for the paypal button to be linked to PayPal.
+         */
+//        paymentButtonContainer = findViewById(R.id.payPalButton)
+//        val config = CheckoutConfig(
+//            application,
+//            clientId = "AbBw9JwhPcD0-5wZRCi_LpmDiHyGXuYK_FnfNZfVkQCuRk_PdscpI4VvgWz-D39JJV4re4E0V9rIYEP_",
+//            environment = Environment.SANDBOX,
+//            returnUrl = "com.example.realtimedatabasereusuablecodedoc://paypalpay",
+//            currencyCode = CurrencyCode.USD,
+//            userAction = UserAction.PAY_NOW,
+//            settingsConfig = SettingsConfig(
+//                loggingEnabled = true
+//            )
+//        )
+//        PayPalCheckout.setConfig(config)
 
-        paymentButtonContainer.setup(
-            createOrder =
-            CreateOrder { createOrderActions ->
-                val order =
-                    Order(
-                        intent = OrderIntent.CAPTURE,
-                        appContext = AppContext(userAction = UserAction.PAY_NOW),
-                        purchaseUnitList =
-                        listOf(
-                            PurchaseUnit(
-                                amount =
-                                Amount(currencyCode = CurrencyCode.USD, value = grandTotal.toString())
-                            )
-                        )
-                    )
-                createOrderActions.create(order)
-            },
-            onApprove =
-            OnApprove { approval ->
-                approval.orderActions.capture { captureOrderResult ->
-                    Log.i("CaptureOrder", "CaptureOrderResult: $captureOrderResult")
-                }
-            }
-        )
+        /*
+        Kenneth Valero
+        Configuring the paypal button to setup an order that costs the total amount
+        of the order.
+         */
+//        paymentButtonContainer.setup(
+//            createOrder =
+//            CreateOrder { createOrderActions ->
+//                val order =
+//                    Order(
+//                        intent = OrderIntent.CAPTURE,
+//                        appContext = AppContext(userAction = UserAction.PAY_NOW),
+//                        purchaseUnitList =
+//                        listOf(
+//                            PurchaseUnit(
+//                                amount =
+//                                Amount(currencyCode = CurrencyCode.USD, value = grandTotal.toString())
+//                            )
+//                        )
+//                    )
+//                createOrderActions.create(order)
+//            },
+//            onApprove =
+//            OnApprove { approval ->
+//                approval.orderActions.capture { captureOrderResult ->
+//                    Log.i("CaptureOrder", "CaptureOrderResult: $captureOrderResult")
+//                }
+//            }
+//        )
     }
 
 

@@ -1,4 +1,3 @@
-/*
 package com.example.realtimedatabasereusuablecodedoc
 
 import androidx.appcompat.app.AppCompatActivity
@@ -12,6 +11,11 @@ import com.google.firebase.database.*
 import java.util.*
 import kotlin.collections.ArrayList
 
+/*
+Kenneth Valero
+Activity for searching for a restaurant the user wants to order from. Clicking on a restaurant
+will let the user order from that restaurant.
+ */
 class RestaurantSearch : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var searchView: SearchView
@@ -27,8 +31,8 @@ class RestaurantSearch : AppCompatActivity() {
         database = FirebaseDatabase.getInstance().getReference()
 
         //Initialize recyclerview, searchview, arraylist and adapter
-        recyclerView = findViewById(R.id.restaurantRecycler)
-        searchView = findViewById(R.id.restaurantSearchBar)
+        recyclerView = findViewById(R.id.restaurantSearchRecycler)
+        searchView = findViewById(R.id.reviewSearchBar)
         restaurantList = ArrayList()
         adapter = RestaurantSearchAdapter(this, restaurantList)
 
@@ -86,4 +90,3 @@ class RestaurantSearch : AppCompatActivity() {
         }
     }
 }
- */

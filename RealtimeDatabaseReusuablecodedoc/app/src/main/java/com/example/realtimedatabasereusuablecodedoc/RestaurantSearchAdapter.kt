@@ -1,4 +1,3 @@
-/*
 package com.example.realtimedatabasereusuablecodedoc
 
 import android.content.Context
@@ -17,7 +16,7 @@ import java.io.File
 
 /*
 Kenneth Valero
-This adapter will represent a compilation of restaurants that the user wants to review
+This adapter will represent a compilation of restaurants that the user wants to order from
  */
 class RestaurantSearchAdapter (val context: Context, var restaurantList: ArrayList<RestaurantDC>):
     RecyclerView.Adapter<RestaurantSearchAdapter.RestaurantSearchViewHolder>() {
@@ -75,7 +74,7 @@ class RestaurantSearchAdapter (val context: Context, var restaurantList: ArrayLi
         val full_address : String = currentRestaurant.streetAddress + ", " + currentRestaurant.city + ", " + currentRestaurant.state + ", " + currentRestaurant.zipcode
         holder.address.text = full_address
         holder.itemView.setOnClickListener {
-            val intent = Intent(context, Ordering::class.java)
+            val intent = Intent(context, MenuCustomerOrdering::class.java)
             intent.putExtra("name", currentRestaurant.name)
             intent.putExtra("address", full_address)
             intent.putExtra("restaurantID", currentRestaurant.restaurantID)
@@ -83,4 +82,3 @@ class RestaurantSearchAdapter (val context: Context, var restaurantList: ArrayLi
         }
     }
 }
-*/
