@@ -15,6 +15,8 @@ public class GeneralCoupon implements ListItem {
         this.expirationDate = expirationDate;
     }
 
+    public GeneralCoupon() {}
+
     public Double getDiscountedPrice() {
         return discountedPrice;
     }

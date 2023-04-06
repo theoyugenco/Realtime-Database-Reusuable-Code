@@ -137,12 +137,6 @@ class CustomerCheckout : AppCompatActivity() {
 
         database = FirebaseDatabase.getInstance().getReference()
 
-        val generalcouponID = database.child("GeneralCoupons").push().key
-        database.child("GeneralCoupons/" + generalcouponID).setValue(generalCoupon)
-        val specificcouponID = database.child("SpecificCoupons").push().key
-        database.child("SpecificCoupons/" + specificcouponID).setValue(specificCoupon)
-
-
         /*
         Kenneth Valero
         Checking the current coupons in the database to see

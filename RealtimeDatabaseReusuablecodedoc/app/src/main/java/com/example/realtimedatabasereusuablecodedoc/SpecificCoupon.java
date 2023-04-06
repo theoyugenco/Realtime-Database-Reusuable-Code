@@ -17,6 +17,8 @@ public class SpecificCoupon implements ListItem {
         this.expirationDate = expirationDate;
     }
 
+    public SpecificCoupon() {}
+
     public String getCouponFor() {
         return couponFor;
     }
