@@ -6,8 +6,9 @@ data class GeneralCoupon(var discountedPrice: Double? = null,
                          var currentUses: Int = 0,
                          var expirationDate: String? = null
 ) : ListItem {
-    fun getDiscountedPrice(): Double {
-        return discountedPrice!!
+    @JvmName("getDiscountedPrice1")
+    fun getDiscountedPrice(): Double? {
+        return discountedPrice
     }
     @JvmName("setDiscountedPrice1")
     fun setDiscountedPrice(discountedPrice: Double?) {
