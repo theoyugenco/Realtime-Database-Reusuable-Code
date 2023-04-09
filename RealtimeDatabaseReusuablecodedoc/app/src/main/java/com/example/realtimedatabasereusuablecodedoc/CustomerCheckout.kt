@@ -51,12 +51,13 @@ class CustomerCheckout : AppCompatActivity() {
     private lateinit var couponRecyclerView: RecyclerView
     private lateinit var msAdapterMenuItems: CustomerCheckoutAdapter
     private lateinit var couponAdapter: CouponAdapter
-    private lateinit var paymentButtonContainer: PaymentButtonContainer
+//    private lateinit var paymentButtonContainer: PaymentButtonContainer
     private var TAG: String? = null
     private lateinit var subtotalPrice: TextView
     private lateinit var taxPrice: TextView
     private lateinit var discountPrice: TextView
     private lateinit var totalPrice: TextView
+    private lateinit var checkoutButton: Button
 
     //Test
     private lateinit var receiptButton: Button
@@ -126,9 +127,6 @@ class CustomerCheckout : AppCompatActivity() {
         couponRecyclerView.layoutManager = LinearLayoutManager(this)
         couponRecyclerView.adapter = couponAdapter
 
-        val generalCoupon = GeneralCoupon(10.0, 20.0, 3, 2, "04-05-2023")
-        val specificCoupon = SpecificCoupon("m8mi2", 3242.0, 2, 3, 2, "04-05-2023")
-
         /*
         Kenneth Valero
         Setting up test coupons
@@ -137,6 +135,13 @@ class CustomerCheckout : AppCompatActivity() {
 
         database = FirebaseDatabase.getInstance().getReference()
 
+        val generalCoupon = GeneralCoupon(10.0, 20.0, 3, 2, "04-05-2023")
+        val specificCoupon = SpecificCoupon("m8mi2", 3242.0, 2, 3, 2, "04-05-2023")
+
+        val generalcouponID = database.child("GeneralCoupons").push().key
+        database.child("GeneralCoupons/" + generalcouponID).setValue(generalCoupon)
+        val specificcouponID = database.child("SpecificCoupons").push().key
+        database.child("SpecificCoupons/" + specificcouponID).setValue(specificCoupon)
         /*
         Kenneth Valero
         Checking the current coupons in the database to see
@@ -144,17 +149,17 @@ class CustomerCheckout : AppCompatActivity() {
          */
         database.child("GeneralCoupons").addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                for(coupon in couponList) {
-                    var currentCoupon: Any = coupon
-                    if (currentCoupon is GeneralCoupon) {
-                        couponList.remove(coupon)
-                    }
-                }
+//                for(coupon in couponList) {
+//                    var currentCoupon: Any = coupon
+//                    if (currentCoupon is GeneralCoupon) {
+//                        couponList.remove(coupon)
+//                    }
+//                }
                 //userList.clear()
                 for(postSnapshot in snapshot.children) {
-                    val currentCoupon = postSnapshot.getValue(GeneralCoupon::class.java)
+                    val currentCoupon: GeneralCoupon? = postSnapshot.getValue(GeneralCoupon::class.java)
                     if (currentCoupon != null) {
-                        if(subtotal >= currentCoupon.quantityNeeded) {
+                        if(subtotal >= currentCoupon.quantityNeeded!!) {
                             couponList.add(currentCoupon!! as ListItem)
                         }
                     }
@@ -168,15 +173,15 @@ class CustomerCheckout : AppCompatActivity() {
 
         database.child("SpecificCoupon").addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                for(coupon in couponList) {
-                    var currentCoupon: Any = coupon
-                    if (currentCoupon is SpecificCoupon) {
-                        couponList.remove(coupon)
-                    }
-                }
+//                for(coupon in couponList) {
+//                    var currentCoupon: Any = coupon
+//                    if (currentCoupon is SpecificCoupon) {
+//                        couponList.remove(coupon)
+//                    }
+//                }
                 //userList.clear()
                 for(postSnapshot in snapshot.children) {
-                    val currentCoupon = postSnapshot.getValue(SpecificCoupon::class.java)
+                    val currentCoupon: SpecificCoupon? = postSnapshot.getValue(SpecificCoupon::class.java)
                     val requiredItem: String? = currentCoupon?.couponFor
                     val predicate: (String) -> Boolean = {it == requiredItem}
                     if(itemNameArrayList.count(predicate) >= currentCoupon?.quantityNeeded!!) {
@@ -202,11 +207,11 @@ class CustomerCheckout : AppCompatActivity() {
         couponAdapter.onItemClick = {
             if (it is GeneralCoupon) {
                 val selectedCoupon: GeneralCoupon = it
-                discount = selectedCoupon.discountedPrice
+                discount = selectedCoupon.discountedPrice!!
             }
             else if (it is SpecificCoupon) {
                 val selectedCoupon: SpecificCoupon = it
-                discount = selectedCoupon.discountedPrice
+                discount = selectedCoupon.discountedPrice!!
             }
         }
 
@@ -220,6 +225,13 @@ class CustomerCheckout : AppCompatActivity() {
         totalPrice = findViewById(R.id.cc_total_price)
         var grandTotal = subtotal + tax - discount
         totalPrice.setText("$" + grandTotal.toString())
+
+        checkoutButton = findViewById((R.id.cc_checkout))
+        checkoutButton.setOnClickListener {
+            val intent = Intent(this, OrderPayment::class.java)
+            intent.putExtra("Total", grandTotal)
+            startActivity(intent)
+        }
 
         /*
         Kenneth Valero
