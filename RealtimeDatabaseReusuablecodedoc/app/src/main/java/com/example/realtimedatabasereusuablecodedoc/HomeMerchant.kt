@@ -29,6 +29,9 @@ class HomeMerchant : AppCompatActivity() {
     private lateinit var menuButton: Button
     private lateinit var menuItemButton: Button
 
+    private lateinit var QRButton: ImageButton
+
+
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -73,6 +76,12 @@ class HomeMerchant : AppCompatActivity() {
         menuItemButton = findViewById(R.id.menu_item_button)
         menuItemButton.setOnClickListener {
             val intent = Intent(this, MenuItemManagement::class.java)
+            startActivity(intent)
+        }
+
+        QRButton = findViewById(R.id.qr_btn)
+        QRButton.setOnClickListener {
+            val intent = Intent(this, QRCode::class.java)
             startActivity(intent)
         }
 
