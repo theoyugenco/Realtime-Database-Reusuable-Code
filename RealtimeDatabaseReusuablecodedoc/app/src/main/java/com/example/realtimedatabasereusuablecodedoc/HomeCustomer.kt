@@ -30,6 +30,8 @@ class HomeCustomer : AppCompatActivity() {
     private lateinit var reviewButton: ImageView
     private lateinit var homeButton: ImageButton
 
+    private lateinit var customerOrdering: Button
+
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,15 +62,19 @@ class HomeCustomer : AppCompatActivity() {
             startActivity(intent)
         }
 
-        /*
-        Theodore Yu
-         */
+
         orderButton = findViewById(R.id.ch_orders_btn)
-        orderButton.setOnClickListener(){
-            val intent = Intent(this, MenuCustomerOrdering::class.java)
+        orderButton.setOnClickListener() {
+            val intent = Intent(this, OrdersOptions::class.java)
             startActivity(intent)
         }
 
+
+        customerOrdering = findViewById(R.id.customer_order_btn)
+        customerOrdering.setOnClickListener() {
+            val intent = Intent(this, MenuCustomerOrdering::class.java)
+            startActivity(intent)
+        }
 
         homeButton = findViewById(R.id.home_btn)
         homeButton.setOnClickListener {

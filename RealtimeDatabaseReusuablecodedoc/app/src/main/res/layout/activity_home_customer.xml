@@ -161,6 +161,18 @@
                             android:backgroundTint="#d0d3cf"
                             android:textColor="@color/black"/>
 
+                        <Button
+                            android:id="@+id/customer_order_btn"
+                            android:includeFontPadding="false"
+                            android:layout_below="@id/mh_past_reviews_btn"
+                            android:layout_height="80dp"
+                            android:layout_width="wrap_content"
+                            android:text="Customer Order Test Button"
+                            android:textSize="14sp"
+                            android:layout_marginStart="10dp"
+                            android:backgroundTint="#d0d3cf"
+                            android:textColor="@color/black"/>
+
                     </RelativeLayout>
 
                 </com.google.android.material.card.MaterialCardView>
