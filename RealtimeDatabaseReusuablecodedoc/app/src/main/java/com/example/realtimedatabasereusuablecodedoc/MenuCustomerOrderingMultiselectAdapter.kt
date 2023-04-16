@@ -61,6 +61,12 @@ class MenuCustomerOrderingMultiselectAdapter (
             holder.price.text = currentMenuItem.price
         }
     */
+
+    /*
+    Unlike the previous recyclerviews/adapters, we will not be allowing the user to interact with the cards in such a way to delete or edit fields in them
+    EXCEPT the quantity field that will be interacted with by the plus and minus buttons
+    Therefore, this recycler view will not dynamically alter the set of cards themselves
+     */
     override fun onBindViewHolder(holder: MultiselectViewHolder, position: Int) {
 
         val item = currentMenuItemArrayList[position]

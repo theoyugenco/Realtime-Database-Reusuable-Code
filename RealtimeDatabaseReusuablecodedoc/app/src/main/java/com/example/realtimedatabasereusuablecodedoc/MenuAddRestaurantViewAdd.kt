@@ -14,7 +14,9 @@ import com.google.firebase.*
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
-
+/*
+this code follows closely with that of MenuAddMenuItemViewAdd, therefore the comments should be identical, save for the relevant differences in pathing and naming
+ */
 class MenuAddRestaurantViewAdd : AppCompatActivity() {
 
     private lateinit var database: DatabaseReference
@@ -106,6 +108,7 @@ class MenuAddRestaurantViewAdd : AppCompatActivity() {
         restaurantMenu?.findItem(R.id.cart)?.isVisible = show
     }
 
+    //This runs to confirm the list of Restaurants will use this menu as well.
     private fun add(){
         val alertDialog = AlertDialog.Builder(this)
         alertDialog.setTitle("Add the current Menu to Restaurants?")

@@ -8,7 +8,10 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import android.util.Log
 
-
+/*
+Unlike the previous recyclerviews/adapters, we are not pulling data from the realtime database
+instead we are displaying the items selected (uniquely) that the customer put into their cart and confirmed.
+ */
 
 class CustomerCheckoutAdapter(
     private var iNAL : ArrayList<String>,
@@ -57,6 +60,7 @@ class CustomerCheckoutAdapter(
     }
 
 
+    //This must never be 0, it will not show the items if it is
     override fun getItemCount(): Int {
         return itemNameDistinctArrayList.size
     }

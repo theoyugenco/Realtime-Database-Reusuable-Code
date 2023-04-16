@@ -19,6 +19,9 @@ import com.google.firebase.storage.StorageReference
 
 //class MenuAddMenuItemViewAddMultiselectAdapter (private val menuItemClickListener: ArrayList<MenuItemDC>):RecyclerView.Adapter<Menu>
 
+/*
+This adapter follows closely to that of MenuAddMenuItemViewAddMultiselectAdapter
+ */
 
 class MenuAddRestaurantViewAddMultiselectAdapter (
     private val restaurantList : ArrayList<RestaurantDC>,
@@ -100,8 +103,8 @@ class MenuAddRestaurantViewAddMultiselectAdapter (
 
     /*
     Instead of deleting items from the database, we are adding items to the database again
-    However, instead of adding the actual Menu Items to the database again (duplication),
-    we are merely adding the Menu Items' IDs/Keys
+    However, instead of adding the actual Restaurants to the database again (duplication),
+    we are merely adding the Restaurants' IDs/Keys
 
      */
     fun addSelectedItem(){

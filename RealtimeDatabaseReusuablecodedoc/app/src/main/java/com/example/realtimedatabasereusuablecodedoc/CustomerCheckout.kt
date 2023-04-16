@@ -69,6 +69,12 @@ class CustomerCheckout : AppCompatActivity() {
         recyclerv.layoutManager = LinearLayoutManager(this)
         recyclerv.setHasFixedSize(true)
 
+        /*
+        Theodore Yu
+        the item names and the prices, in the correct order objectively and relatively, that were stored within
+        the CustomerMenuOrdering activity is passed onto this activity so that Payment Processing and Reciept creation can proceed
+         */
+
         val bundle = intent.extras
         if (bundle != null){
             itemNameArrayList = bundle.getStringArrayList("itemName")!!

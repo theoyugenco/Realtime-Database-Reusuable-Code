@@ -65,11 +65,21 @@ class MenuCustomerOrdering : AppCompatActivity() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     //restaurantArrayList.clear()
+                    /*
+                        We now get the Menu Item IDs of the current/ACTIVE Menu of this restaurant
+                        The Menu ID of the current/ACTIVE Menu should already be provided.
+                    */
                     for (menuItemSnapshot in snapshot.children) {
                         val menuItem = menuItemSnapshot.getValue()
                         Log.d (TAG, "string is: " + menuItem.toString())
                         currentMenuArrayList.add(menuItem!!.toString())
                     }
+
+                    /*
+                    suboptimal O(n^2) searching algorithm
+                    However, the amount of Menu Items a merchant should have should be relatively low
+                    We cut down a LOT of items by honing in only the Menu Items the Merchant of the current Restaurant has
+                    */
                     for (i in menuItemArrayList){
                         //Log.d (TAG, "compare")
                         val iID : String = i.menuItemID.toString()
@@ -126,16 +136,7 @@ class MenuCustomerOrdering : AppCompatActivity() {
             TODO("Not yet implemented")
         }
         })
-        /*
-        We now get the Menu Item IDs of the current/ACTIVE Menu of this restaurant
-        The Menu ID of the current/ACTIVE Menu should already be provided.
-         */
 
-        /*
-        suboptimal O(n^2) searching algorithm
-        However, the amount of Menu Items a merchant should have should be relatively low
-        We cut down a LOT of items by honing in only the Menu Items the Merchant of the current Restaurant has
-        */
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
