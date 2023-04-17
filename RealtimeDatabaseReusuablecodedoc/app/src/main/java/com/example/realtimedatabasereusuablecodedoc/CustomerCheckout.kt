@@ -237,19 +237,18 @@ class CustomerCheckout : AppCompatActivity() {
         Kenneth Valero
         Setting the configuration for the paypal button to be linked to PayPal.
          */
-//        paymentButtonContainer = findViewById(R.id.payPalButton)
-//        val config = CheckoutConfig(
-//            application,
-//            clientId = "AbBw9JwhPcD0-5wZRCi_LpmDiHyGXuYK_FnfNZfVkQCuRk_PdscpI4VvgWz-D39JJV4re4E0V9rIYEP_",
-//            environment = Environment.SANDBOX,
-//            returnUrl = "com.example.realtimedatabasereusuablecodedoc://paypalpay",
-//            currencyCode = CurrencyCode.USD,
-//            userAction = UserAction.PAY_NOW,
-//            settingsConfig = SettingsConfig(
-//                loggingEnabled = true
-//            )
-//        )
-//        PayPalCheckout.setConfig(config)
+        val config = CheckoutConfig(
+            application,
+            clientId = "AbBw9JwhPcD0-5wZRCi_LpmDiHyGXuYK_FnfNZfVkQCuRk_PdscpI4VvgWz-D39JJV4re4E0V9rIYEP_",
+            environment = Environment.SANDBOX,
+            returnUrl = "com.example.realtimedatabasereusuablecodedoc://paypalpay",
+            currencyCode = CurrencyCode.USD,
+            userAction = UserAction.PAY_NOW,
+            settingsConfig = SettingsConfig(
+                loggingEnabled = true
+            )
+        )
+        PayPalCheckout.setConfig(config)
 
         /*
         Kenneth Valero

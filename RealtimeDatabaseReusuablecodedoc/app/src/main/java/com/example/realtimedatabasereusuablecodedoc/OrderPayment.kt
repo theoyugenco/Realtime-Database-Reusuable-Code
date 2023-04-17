@@ -31,87 +31,80 @@ import org.json.JSONObject
 import java.math.BigDecimal
 
 class OrderPayment : AppCompatActivity() {
-    private lateinit var totalAmount: TextView
-    private lateinit var payButton: Button
-    private var clientId: String = "AbBw9JwhPcD0-5wZRCi_LpmDiHyGXuYK_FnfNZfVkQCuRk_PdscpI4VvgWz-D39JJV4re4E0V9rIYEP_"
-    private var PAYPAL_REQUEST_CODE: Int = 123
-    private var paypalConfiguration: PayPalConfiguration = PayPalConfiguration().environment(PayPalConfiguration.ENVIRONMENT_SANDBOX)
-        .clientId(clientId)
+    private lateinit var paymentButtonContainer: PaymentButtonContainer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_order_payment)
 
 
-//        paymentButtonContainer = findViewById(R.id.payPalButton)
+        paymentButtonContainer = findViewById(R.id.payPalButton)
         val total = intent.getDoubleExtra("Total", 0.0)
-        totalAmount = findViewById(R.id.total_cost)
-        totalAmount.setText("Total: $" + total.toString())
-        payButton = findViewById(R.id.paymentButton)
+//        totalAmount = findViewById(R.id.total_cost)
+//        totalAmount.setText("Total: $" + total.toString())
+//        payButton = findViewById(R.id.paymentButton)
+//
+//        payButton.setOnClickListener {
+//            setPayment(total.toString())
+//        }
 
-        payButton.setOnClickListener {
-            setPayment()
-        }
 
-
-//        paymentButtonContainer.setup(
-//            createOrder =
-//            CreateOrder { createOrderActions ->
-//                val order =
-//                    Order(
-//                        intent = OrderIntent.CAPTURE,
-//                        appContext = AppContext(userAction = UserAction.PAY_NOW),
-//                        purchaseUnitList =
-//                        listOf(
-//                            PurchaseUnit(
-//                                amount =
-//                                Amount(currencyCode = CurrencyCode.USD, value = total.toString())
-//                            )
-//                        )
-//                    )
-//                createOrderActions.create(order)
-//            },
-//            onApprove =
-//            OnApprove { approval ->
-//                approval.orderActions.capture { captureOrderResult ->
-//                    Log.i("CaptureOrder", "CaptureOrderResult: $captureOrderResult")
-//                }
-//            }
-//        )
-    }
-    private fun setPayment() {
-        var total: String = totalAmount.text.toString()
-
-        var payment: PayPalPayment = PayPalPayment(BigDecimal(total), "USD", "MealStealOrder", PayPalPayment.PAYMENT_INTENT_SALE)
-        intent = Intent(this, PaymentActivity::class.java)
-        intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, paypalConfiguration)
-        intent.putExtra(PaymentActivity.EXTRA_PAYMENT, payment)
-
-        startActivityForResult(intent, PAYPAL_REQUEST_CODE)
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == PAYPAL_REQUEST_CODE) {
-            var config: PaymentConfirmation? = data?.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION)
-
-            if (config != null) {
-                try {
-                    var details: String = config.toJSONObject().toString()
-
-                    var paymentObject: JSONObject = JSONObject(details)
-                } catch (exception: JSONException) {
-                    exception.printStackTrace()
-
-                    Log.e("Error: ", "Something went wrong")
+        paymentButtonContainer.setup(
+            createOrder =
+            CreateOrder { createOrderActions ->
+                val order =
+                    Order(
+                        intent = OrderIntent.CAPTURE,
+                        appContext = AppContext(userAction = UserAction.PAY_NOW),
+                        purchaseUnitList =
+                        listOf(
+                            PurchaseUnit(
+                                amount =
+                                Amount(currencyCode = CurrencyCode.USD, value = total.toString())
+                            )
+                        )
+                    )
+                createOrderActions.create(order)
+            },
+            onApprove =
+            OnApprove { approval ->
+                approval.orderActions.capture { captureOrderResult ->
+                    Log.i("CaptureOrder", "CaptureOrderResult: $captureOrderResult")
                 }
             }
-            else if (requestCode == Activity.RESULT_CANCELED) {
-                Log.e("Error: ", "Action cancelled")
-            }
-            else if (requestCode == PaymentActivity.RESULT_EXTRAS_INVALID) {
-                Log.e("Error: ", "Payment rendered invalid")
-            }
-        }
+        )
     }
+//    private fun setPayment(total: String) {
+//        var payment: PayPalPayment = PayPalPayment(BigDecimal(total), "USD", "MealStealOrder", PayPalPayment.PAYMENT_INTENT_SALE)
+//        intent = Intent(this, PaymentActivity::class.java)
+//        intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, paypalConfiguration)
+//        intent.putExtra(PaymentActivity.EXTRA_PAYMENT, payment)
+//
+//        startActivityForResult(intent, PAYPAL_REQUEST_CODE)
+//    }
+//
+//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//        super.onActivityResult(requestCode, resultCode, data)
+//        if (requestCode == PAYPAL_REQUEST_CODE) {
+//            var config: PaymentConfirmation? = data?.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION)
+//
+//            if (config != null) {
+//                try {
+//                    var details: String = config.toJSONObject().toString()
+//
+//                    var paymentObject: JSONObject = JSONObject(details)
+//                } catch (exception: JSONException) {
+//                    exception.printStackTrace()
+//
+//                    Log.e("Error: ", "Something went wrong")
+//                }
+//            }
+//            else if (requestCode == Activity.RESULT_CANCELED) {
+//                Log.e("Error: ", "Action cancelled")
+//            }
+//            else if (requestCode == PaymentActivity.RESULT_EXTRAS_INVALID) {
+//                Log.e("Error: ", "Payment rendered invalid")
+//            }
+//        }
+//    }
 }
