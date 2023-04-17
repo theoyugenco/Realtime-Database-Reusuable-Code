@@ -38,6 +38,12 @@ class RestaurantManagement : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.btnActiveMenu.setOnClickListener() {
+            val intent = Intent(this, ActiveRestaurantRecycler::class.java)
+            //intent.putExtra("key",restaurantArrayList);
+            startActivity(intent)
+        }
+
 
     }
 

@@ -16,13 +16,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:orientation="vertical">
-            <ImageView
-                android:id="@+id/shape"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/shape"/>
-
+            android:orientation="vertical"
+            android:layout_marginTop="30dp">
 
             <TextView
                 android:id="@+id/title"
@@ -31,7 +26,7 @@
                 android:text="Restaurant Management"
                 android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textSize="18sp"
+                android:textSize="25sp"
                 android:textStyle="bold" />
 
             <!-- Section for merchant to Edit their restaurant locations -->
@@ -118,7 +113,34 @@
                     android:textColor="@color/black"
                     android:layout_centerHorizontal="true">
                 </Button>
+            </RelativeLayout>
 
+            <!-- Section for merchant to Edit their restaurant locations -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/add_rectangle"
+                android:layout_margin="10dp"
+                android:padding="10dp"
+                >
+
+            <Button
+                android:id="@+id/btnActiveMenu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="100dp"
+                android:layout_marginBottom="10dp"
+                android:text="Set Active Menu"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:backgroundTint="#d0d3cf"
+                android:textColor="@color/black"
+                android:layout_centerHorizontal="true">
+            </Button>
             </RelativeLayout>
         </LinearLayout>
     </ScrollView>
