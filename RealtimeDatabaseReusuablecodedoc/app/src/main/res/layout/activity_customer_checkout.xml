@@ -27,7 +27,7 @@ a subtotal, fees, and then all the possible coupons they could use -->
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
-                android:text="Your Order"
+                android:text="@string/your_order"
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="40sp"
@@ -52,10 +52,10 @@ a subtotal, fees, and then all the possible coupons they could use -->
 
                 <TextView
                     android:id="@+id/cc_subtotal_title"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="SubTotal:"
+                    android:text="@string/subtotal"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
@@ -63,7 +63,7 @@ a subtotal, fees, and then all the possible coupons they could use -->
                     android:id="@+id/cc_subtotal_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="$0"
+                    android:text="@string/_0"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
             </LinearLayout>
@@ -77,10 +77,10 @@ a subtotal, fees, and then all the possible coupons they could use -->
 
                 <TextView
                     android:id="@+id/cc_fee_title"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Fees:"
+                    android:text="@string/fees"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
@@ -88,7 +88,7 @@ a subtotal, fees, and then all the possible coupons they could use -->
                     android:id="@+id/cc_fee_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="$0"
+                    android:text="@string/_0"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
             </LinearLayout>
@@ -104,10 +104,10 @@ a subtotal, fees, and then all the possible coupons they could use -->
 
                 <TextView
                     android:id="@+id/cc_coupon_title"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Coupons"
+                    android:text="@string/coupons"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
@@ -140,10 +140,10 @@ a subtotal, fees, and then all the possible coupons they could use -->
 
                 <TextView
                     android:id="@+id/cc_total_title"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Total:"
+                    android:text="@string/total"
                     android:textColor="@color/black"
                     android:textSize="30sp"
                     android:textStyle="bold" />
@@ -176,9 +176,9 @@ a subtotal, fees, and then all the possible coupons they could use -->
                 android:layout_height="50dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
-                android:text="CheckOut"
+                android:text="@string/checkout"
                 android:textColor="@color/black"
-                app:backgroundTint="#d0d3cf"></Button>
+                app:backgroundTint="#d0d3cf"/>
 
 <!--            <com.paypal.checkout.paymentbutton.PaymentButtonContainer-->
 <!--                android:id="@+id/payPalButton"-->
@@ -201,7 +201,7 @@ a subtotal, fees, and then all the possible coupons they could use -->
                 android:layout_height="50dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
-                android:text="Receipt"
+                android:text="@string/receipt"
                 android:textColor="@color/black"
                 app:backgroundTint="#d0d3cf"/>
 

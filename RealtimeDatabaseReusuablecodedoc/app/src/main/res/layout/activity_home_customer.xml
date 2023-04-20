@@ -154,7 +154,7 @@
                             android:layout_below="@id/ch_orders_btn"
                             android:layout_height="80dp"
                             android:layout_width="140dp"
-                            android:text="Past Reviews"
+                            android:text="@string/past_reviews"
                             android:textSize="12sp"
                             android:layout_marginStart="10dp"
                             android:drawableTop="@drawable/star_half"
@@ -225,8 +225,8 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="10dp"
-                    android:text="Find Your Next MealSteal!"
-                    android:textSize="25dp"
+                    android:text="@string/find_your_next_mealsteal"
+                    android:textSize="25sp"
                     android:textStyle="italic"
                     android:textColor="@color/black">
                 </TextView>
@@ -238,11 +238,10 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="10dp"
-                    android:layout_marginRight="100dp"
                     android:layout_marginBottom="10dp"
                     android:layout_below="@id/comment1"
-                    android:text="Browse Coupons"
-                    android:textSize="12dp"
+                    android:text="@string/browse_coupons"
+                    android:textSize="12sp"
                     android:textStyle="bold"
                     android:backgroundTint="#d0d3cf"
                     android:textColor="@color/black"
@@ -272,10 +271,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Looking for some Local Options?"
+                    android:text="@string/looking_for_some_local_options"
                     android:textAllCaps="true"
                     android:textStyle="italic"
-                    android:textSize="20dp">
+                    android:textSize="20sp">
                 </TextView>
 
 

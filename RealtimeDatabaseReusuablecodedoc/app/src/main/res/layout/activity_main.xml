@@ -11,7 +11,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Welcome to MealSteal!"
+        android:text="@string/welcome_to_mealsteal"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="30sp"
@@ -32,7 +32,7 @@
         android:layout_height="50dp"
         android:layout_gravity="center_horizontal"
         android:paddingLeft="20dp"
-        android:hint="Email"
+        android:hint="@string/email"
         android:background="@drawable/input"/>
 
     <EditText
@@ -41,7 +41,7 @@
         android:layout_height="50dp"
         android:layout_gravity="center_horizontal"
         android:paddingLeft="20dp"
-        android:hint="Password"
+        android:hint="@string/password"
         android:layout_marginTop="15dp"
         android:background="@drawable/input"/>
 
@@ -51,7 +51,7 @@
         android:layout_height="60dp"
         android:background="@drawable/login_btn"
         android:layout_marginTop="15dp"
-        android:text="Login"
+        android:text="@string/login"
         android:layout_gravity="center_horizontal"
         app:backgroundTint="#d0d3cf"
         android:textColor="@color/black"/>
@@ -68,7 +68,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
-            android:text="Don't have an Account?"/>
+            android:text="@string/don_t_have_an_account"/>
 
         <TextView
             android:id="@+id/tvSignUp"
@@ -76,7 +76,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/signup"
             android:textStyle="bold"
-            android:text="Sign Up!"/>
+            android:text="@string/sign_up"/>
 
     </LinearLayout>
 

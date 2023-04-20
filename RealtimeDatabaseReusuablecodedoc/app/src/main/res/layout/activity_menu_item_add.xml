@@ -31,7 +31,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Create a New Dish"
+            android:text="@string/create_a_new_dish"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="18sp"
@@ -44,7 +44,7 @@
             android:layout_height="50dp"
             android:layout_gravity="center_horizontal"
             android:paddingLeft="20dp"
-            android:hint="Name of Dish"
+            android:hint="@string/name_of_dish"
             android:layout_marginTop="30dp"
             android:background="@drawable/input" />
 
@@ -55,7 +55,7 @@
             android:layout_height="50dp"
             android:layout_gravity="center_horizontal"
             android:paddingLeft="20dp"
-            android:hint="Price"
+            android:hint="@string/price"
             android:layout_marginTop="30dp"
             android:background="@drawable/input" />
 

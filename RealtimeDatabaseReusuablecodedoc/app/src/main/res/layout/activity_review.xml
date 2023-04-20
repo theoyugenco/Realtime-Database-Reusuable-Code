@@ -31,7 +31,7 @@
             android:layout_marginEnd="20dp"
             android:layout_toEndOf="@+id/location_image"
             android:gravity="center"
-            android:hint="Restaurant Name"
+            android:hint="@string/restaurant_name"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -59,7 +59,7 @@
             android:layout_below="@+id/location_image"
             android:layout_marginTop="20dp"
             android:layout_centerHorizontal="true"
-            android:hint="See Current Reviews"
+            android:hint="@string/see_current_reviews"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -75,7 +75,7 @@
             android:layout_marginEnd="20dp"
             android:layout_marginTop="45dp"
             android:gravity="center"
-            android:hint="Rate Restaurant"
+            android:hint="@string/rate_restaurant"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -99,7 +99,7 @@
 
         <!-- This card view will show the feedback the user can enter -->
         <com.google.android.material.textfield.TextInputLayout
-            android:hint="Feedback"
+            android:hint="@string/feedback"
             android:id="@+id/feedback_layout"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
@@ -128,7 +128,7 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:text="Submit"
+            android:text="@string/submit"
             android:textColor="@color/black"
             android:layout_below="@+id/review_upload"
             />
@@ -141,7 +141,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
-            android:text="Upload Images"
+            android:text="@string/upload_images"
             android:textColor="@color/black"
             android:layout_below="@+id/feedback_layout"
             />

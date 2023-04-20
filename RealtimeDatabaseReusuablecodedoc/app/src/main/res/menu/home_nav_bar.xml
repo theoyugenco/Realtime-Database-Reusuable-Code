@@ -4,25 +4,25 @@
     <item
         android:id="@+id/hn_messagingBtn"
         android:icon="@drawable/chat"
-        android:title="Messages" />
+        android:title="@string/messages" />
 
     <item
         android:id="@+id/hn_map"
         android:icon="@drawable/map"
-        android:title="Map" />
+        android:title="@string/map" />
 
     <item
         android:id="@+id/hn_home"
         android:icon="@drawable/home"
-        android:title="Home" />
+        android:title="@string/home" />
 
     <item
         android:id="@+id/hn_notifications"
         android:icon="@drawable/notifications"
-        android:title="Notifications" />
+        android:title="@string/notifications" />
 
     <item
         android:id="@+id/hn_profileBtn"
         android:icon="@drawable/person"
-        android:title="Profile" />
+        android:title="@string/profile" />
 </menu>

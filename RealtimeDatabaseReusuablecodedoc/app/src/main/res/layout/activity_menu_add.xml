@@ -31,7 +31,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Create a New Menu"
+            android:text="@string/create_a_new_menu"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="18sp"
@@ -44,7 +44,7 @@
             android:layout_height="50dp"
             android:layout_gravity="center_horizontal"
             android:paddingLeft="20dp"
-            android:hint="Name of Menu"
+            android:hint="@string/name_of_menu"
             android:layout_marginTop="30dp"
             android:background="@drawable/input" />
 
@@ -55,7 +55,7 @@
             android:layout_height="100dp"
             android:layout_gravity="center_horizontal"
             android:paddingLeft="20dp"
-            android:hint="Description"
+            android:hint="@string/description"
             android:layout_marginTop="30dp"
             android:background="@drawable/input"/>
 
@@ -65,7 +65,7 @@
             android:layout_height="60dp"
             android:background="@drawable/login_btn"
             android:layout_marginTop="15dp"
-            android:text="Create"
+            android:text="@string/create"
             android:layout_gravity="center_horizontal"/>
 
     </LinearLayout>

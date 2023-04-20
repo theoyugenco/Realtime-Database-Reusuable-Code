@@ -22,7 +22,7 @@
         android:layout_height="55dp"
         android:id="@+id/words"
         android:layout_marginTop="10dp"
-        android:hint="Enter Word"
+        android:hint="@string/enter_word"
         android:gravity="center"
         android:background="@null"
         app:layout_constraintTop_toBottomOf="@id/qrCode"
@@ -50,7 +50,7 @@
         android:layout_marginEnd="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="Generate QR Code"
+        android:text="@string/generate_qr_code"
         android:backgroundTint="#d0d3cf"
         android:textColor="@color/black"
         />

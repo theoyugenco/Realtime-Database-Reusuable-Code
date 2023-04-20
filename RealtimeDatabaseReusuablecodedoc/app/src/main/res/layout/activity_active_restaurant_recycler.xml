@@ -20,7 +20,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
-            android:text="Your Restaurants"
+            android:text="@string/your_restaurants"
             android:textColor="@color/black"
             android:textSize="30sp"
             android:textStyle="bold"

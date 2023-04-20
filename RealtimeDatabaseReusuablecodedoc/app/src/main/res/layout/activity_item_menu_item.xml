@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:layout_width="wrap_content"
-            android:text="Add" />
+            android:text="@string/add" />
 
         <Button
             android:id="@+id/btnEditItem"
@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:layout_width="wrap_content"
-            android:text="Edit" />
+            android:text="@string/edit" />
 
         <Button
             android:id="@+id/btnViewItem"
@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:layout_width="wrap_content"
-            android:text="View" />
+            android:text="@string/view" />
     </LinearLayout>
 
 

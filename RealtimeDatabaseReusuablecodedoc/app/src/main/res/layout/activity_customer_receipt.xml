@@ -22,7 +22,7 @@ tools:context=".CustomerReceipt">
             android:id="@+id/cr_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Receipt"
+            android:text="@string/receipt"
             android:layout_marginTop="25dp"
             android:textSize="40sp"
             android:textStyle="bold"
@@ -41,7 +41,7 @@ tools:context=".CustomerReceipt">
                 android:id="@+id/order_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Order #"
+                android:text="@string/order"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:textAlignment="center"
@@ -67,7 +67,7 @@ tools:context=".CustomerReceipt">
             android:id="@+id/cr_order_detail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Order Details"
+            android:text="@string/order_details"
             android:layout_marginTop="25dp"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
@@ -94,7 +94,7 @@ tools:context=".CustomerReceipt">
 
             <TextView
                 android:id="@+id/cc_subtotal_title"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="SubTotal:"
@@ -119,7 +119,7 @@ tools:context=".CustomerReceipt">
 
             <TextView
                 android:id="@+id/cc_fee_title"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Fees:"

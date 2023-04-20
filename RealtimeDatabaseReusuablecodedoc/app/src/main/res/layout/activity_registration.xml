@@ -25,7 +25,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Register!"
+        android:text="@string/register"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="18sp"
@@ -89,7 +89,7 @@
         android:layout_height="50dp"
         android:layout_gravity="center_horizontal"
         android:paddingLeft="20dp"
-        android:hint="Street Address"
+        android:hint="@string/street_address"
         android:layout_marginTop="30dp"
         android:background="@drawable/input"/>
 
@@ -99,7 +99,7 @@
         android:layout_height="50dp"
         android:layout_gravity="center_horizontal"
         android:paddingLeft="20dp"
-        android:hint="City"
+        android:hint="@string/city"
         android:layout_marginTop="30dp"
         android:background="@drawable/input"/>
 
@@ -109,7 +109,7 @@
         android:layout_height="50dp"
         android:layout_gravity="center_horizontal"
         android:paddingLeft="20dp"
-        android:hint="State"
+        android:hint="@string/state"
         android:layout_marginTop="30dp"
         android:background="@drawable/input"/>
 
@@ -119,7 +119,7 @@
         android:layout_height="50dp"
         android:layout_gravity="center_horizontal"
         android:paddingLeft="20dp"
-        android:hint="ZipCode"
+        android:hint="@string/zipcode"
         android:layout_marginTop="30dp"
         android:background="@drawable/input"/>
 
@@ -129,7 +129,7 @@
         android:layout_height="50dp"
         android:layout_gravity="center_horizontal"
         android:paddingLeft="20dp"
-        android:hint="ZipCode"
+        android:hint="Phone"
         android:layout_marginTop="30dp"
         android:background="@drawable/input"/>
 
@@ -161,7 +161,7 @@
         android:layout_gravity="center_horizontal"
         android:textColor="@color/signup"
         android:textStyle="bold"
-        android:text="Admin Mode"/>
+        android:text="@string/admin_mode"/>
 
     </LinearLayout>
 </ScrollView>
