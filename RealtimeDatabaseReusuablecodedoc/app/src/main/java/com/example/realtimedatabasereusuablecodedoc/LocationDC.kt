@@ -7,10 +7,13 @@ Theodore Yu
 This represents Merchants' specific locations of their restaurants
  */
 
-data class LocationDC(val name: String?,
-                      val ownerUID: String?,
-                      var address: String?,
-                      var description: String?,
-                      var picture : String?
+data class LocationDC(var name: String? = "",
+                      var streetAddress: String? = "",
+                      var city: String? = "",
+                      var state: String? = "",
+                      var zipcode: String? = "",
+                      var description: String? = "",
+                      var restaurantID: String? = "",
+                      var distanceFromUser: Float? = null
 )
 

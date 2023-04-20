@@ -135,13 +135,6 @@ class CustomerCheckout : AppCompatActivity() {
 
         database = FirebaseDatabase.getInstance().getReference()
 
-        val generalCoupon = GeneralCoupon(10.0, 20.0, 3, 2, "04-05-2023")
-        val specificCoupon = SpecificCoupon("m8mi2", 3242.0, 2, 3, 2, "04-05-2023")
-
-        val generalcouponID = database.child("GeneralCoupons").push().key
-        database.child("GeneralCoupons/" + generalcouponID).setValue(generalCoupon)
-        val specificcouponID = database.child("SpecificCoupons").push().key
-        database.child("SpecificCoupons/" + specificcouponID).setValue(specificCoupon)
         /*
         Kenneth Valero
         Checking the current coupons in the database to see
@@ -183,8 +176,14 @@ class CustomerCheckout : AppCompatActivity() {
                 for(postSnapshot in snapshot.children) {
                     val currentCoupon: SpecificCoupon? = postSnapshot.getValue(SpecificCoupon::class.java)
                     val requiredItem: String? = currentCoupon?.couponFor
-                    val predicate: (String) -> Boolean = {it == requiredItem}
-                    if(itemNameArrayList.count(predicate) >= currentCoupon?.quantityNeeded!!) {
+//                    val predicate: (String) -> Boolean = {it == requiredItem}
+                    var count: Int = 0
+                    for (i in itemNameArrayList) {
+                        if (requiredItem == i) {
+                            count += 1
+                        }
+                    }
+                    if(count >= currentCoupon?.quantityNeeded!!) {
                         couponList.add(currentCoupon!! as ListItem)
                     }
                 }
@@ -205,14 +204,14 @@ class CustomerCheckout : AppCompatActivity() {
         Sets the discount to the chosen coupon's assigned discount
          */
         couponAdapter.onItemClick = {
-            if (it is GeneralCoupon) {
-                val selectedCoupon: GeneralCoupon = it
-                discount = selectedCoupon.discountedPrice!!
+            discount = when(it) {
+                is GeneralCoupon -> it.discountedPrice!!
+                is SpecificCoupon -> it.discountedPrice!!
+                else -> 0.0
             }
-            else if (it is SpecificCoupon) {
-                val selectedCoupon: SpecificCoupon = it
-                discount = selectedCoupon.discountedPrice!!
-            }
+            discountPrice.setText("-" + discount.toString())
+            var grandTotal = subtotal + tax - discount
+            totalPrice.setText("$" + grandTotal.toString())
         }
 
         discountPrice = findViewById(R.id.cc_coupon_number)
