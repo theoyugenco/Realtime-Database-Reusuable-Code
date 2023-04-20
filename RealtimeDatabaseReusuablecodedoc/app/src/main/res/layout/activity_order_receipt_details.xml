@@ -21,7 +21,7 @@
                 android:id="@+id/cr_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Receipt"
+                android:text="@string/receipt"
                 android:layout_marginTop="25dp"
                 android:textSize="40sp"
                 android:textStyle="bold"
@@ -48,7 +48,7 @@
                     android:id="@+id/order_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Order #"
+                    android:text="@string/order"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:textAlignment="center"
@@ -74,7 +74,7 @@
                 android:id="@+id/cr_order_detail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Order Details"
+                android:text="@string/order_details"
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
@@ -104,7 +104,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="SubTotal:"
+                    android:text="@string/subtotal"
                     android:textSize="20sp"
                     android:textColor="@color/black"/>
 
@@ -129,7 +129,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Fees:"
+                    android:text="@string/fees"
                     android:textSize="20sp"
                     android:textColor="@color/black"/>
 
@@ -156,7 +156,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Coupons"
+                    android:text="@string/coupons"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
@@ -192,7 +192,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Total:"
+                    android:text="@string/total"
                     android:textSize="30sp"
                     android:textStyle="bold"
                     android:textColor="@color/black"/>

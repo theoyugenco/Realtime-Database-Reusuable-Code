@@ -28,7 +28,7 @@
                 android:id="@+id/tvName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Name"
+                android:hint="@string/name"
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="26sp"
@@ -46,7 +46,7 @@
                 android:id="@+id/price_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Price: "
+                android:text="@string/price"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"/>

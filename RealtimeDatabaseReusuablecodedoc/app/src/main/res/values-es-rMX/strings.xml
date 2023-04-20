@@ -102,4 +102,7 @@
     <string name="home">Hogar</string>
     <string name="notifications">Notificaciones</string>
     <string name="profile">Perfil</string>
+    <string name="create_reviews">crear reseñas</string>
+    <string name="orders">Pedidos</string>
+    <string name="name">Nombre</string>
 </resources>

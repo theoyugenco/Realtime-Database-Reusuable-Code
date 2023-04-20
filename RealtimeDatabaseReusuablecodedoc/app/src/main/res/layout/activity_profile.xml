@@ -69,12 +69,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:layout_width="match_parent"
-                android:text="Save"
+                android:text="@string/save"
                 android:visibility="gone"/>
 
             <!--Repetition of cards that display user's information that can be edited-->
             <com.google.android.material.textfield.TextInputLayout
-                android:hint="First Name"
+                android:hint="@string/first_name"
                 android:id="@+id/tvFName"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent">
@@ -88,7 +88,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:hint="Last Name"
+                android:hint="@string/last_name"
                 android:id="@+id/tvLName"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent">
@@ -102,7 +102,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:hint="User Name"
+                android:hint="@string/user_name"
                 android:id="@+id/tvUName"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent">
@@ -116,7 +116,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:hint="Password"
+                android:hint="@string/password"
                 android:id="@+id/tvPWord"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent">
@@ -130,7 +130,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:hint="Email"
+                android:hint="@string/email"
                 android:id="@+id/tvEmail"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent">
@@ -158,7 +158,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:hint="Address"
+                android:hint="@string/address"
                 android:id="@+id/tvAddress"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent">
@@ -172,7 +172,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:hint="Payment"
+                android:hint="@string/payment"
                 android:id="@+id/tvPayment"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent">
@@ -193,7 +193,7 @@
             android:layout_width="match_parent"
             app:backgroundTint="#d0d3cf"
             android:textColor="@color/black"
-            android:text="Edit" />
+            android:text="@string/edit" />
 
             <Button
                 android:id="@+id/btnSignout"
@@ -202,7 +202,7 @@
                 android:layout_width="match_parent"
                 android:backgroundTint="#d0d3cf"
                 android:textColor="@color/black"
-                android:text="Logout" />
+                android:text="@string/logout" />
 
         </LinearLayout>
     </LinearLayout>

@@ -15,7 +15,7 @@
         android:orientation="horizontal">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:padding="5dp"
@@ -66,9 +66,9 @@
                     android:layout_marginStart="20dp"
                     android:layout_below="@+id/text_username"
                     android:includeFontPadding="false"
-                    android:text="Feedback"
+                    android:text="@string/feedback"
                     android:textColor="#000"
-                    android:textSize="16dp"
+                    android:textSize="16sp"
                     android:paddingTop="10dp"/>
 
                 <!--Displays the user's profile image on screen -->
