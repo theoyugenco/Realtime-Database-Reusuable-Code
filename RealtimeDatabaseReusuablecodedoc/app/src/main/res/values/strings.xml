@@ -7,21 +7,21 @@
         <item>Customer</item>
         <item>Merchant</item>
     </string-array>
-    <string name="title_activity_brand_add">BrandAdd</string>
+    <string name="title_activity_brand_add" translatable="false">BrandAdd</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
+    <string name="first_fragment_label" translatable="false">First Fragment</string>
+    <string name="second_fragment_label" translatable="false">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="hello_first_fragment" translatable="false">Hello first fragment</string>
+    <string name="hello_second_fragment" translatable="false">Hello second fragment. Arg: %1$s</string>
     <string name="your_menus">Your Menus</string>
     <string name="your_restaurants">Your Restaurants</string>
     <string name="your_current_orders">Your Current Orders</string>
     <string name="your_order">Your Order</string>
     <string name="subtotal">SubTotal:</string>
-    <string name="_0">$0</string>
+    <string name="_0" translatable="false">$0</string>
     <string name="fees">Fees:</string>
     <string name="coupons">Coupons</string>
     <string name="total">Total:</string>
