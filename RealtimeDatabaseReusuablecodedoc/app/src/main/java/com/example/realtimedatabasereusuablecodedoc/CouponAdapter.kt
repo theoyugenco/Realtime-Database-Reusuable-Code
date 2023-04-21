@@ -11,7 +11,7 @@ Kenneth Valero
 An adapter that gathers all eligible coupons for an order.
  */
 class CouponAdapter (val items: MutableList<ListItem>) : RecyclerView.Adapter<BaseViewHolder>() {
-    var onItemClick: ((Any) -> Unit)? = null
+    var onItemClick: ((item: ListItem) -> Unit)? = null
     /*
     Retrieves the type of coupon of the current coupon
      */
@@ -25,11 +25,13 @@ class CouponAdapter (val items: MutableList<ListItem>) : RecyclerView.Adapter<Ba
     class ViewHolderA(itemView: View) : BaseViewHolder(itemView) {
         private val description: TextView = itemView.findViewById(R.id.textLocation)
         private val expDate: TextView = itemView.findViewById(R.id.textAddress)
-
         override fun bind(item: ListItem) {
             val itemA = item as GeneralCoupon
             description.text = itemA.quantityNeeded.toString()
             expDate.text = itemA.expirationDate
+            this.itemView.setOnClickListener {
+                onItemClick?.invoke(itemA)
+            }
         }
     }
 
@@ -39,11 +41,13 @@ class CouponAdapter (val items: MutableList<ListItem>) : RecyclerView.Adapter<Ba
     class ViewHolderB(itemView: View) : BaseViewHolder(itemView) {
         private val description: TextView = itemView.findViewById(R.id.textLocation)
         private val expDate: TextView = itemView.findViewById(R.id.textAddress)
-
         override fun bind(item: ListItem) {
             val itemB = item as SpecificCoupon
             description.text = itemB.couponFor
             expDate.text = itemB.expirationDate
+            this.itemView.setOnClickListener {
+                onItemClick?.invoke(itemB)
+            }
         }
     }
 
@@ -73,13 +77,14 @@ class CouponAdapter (val items: MutableList<ListItem>) : RecyclerView.Adapter<Ba
     parameters
      */
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
+        holder.onItemClick = onItemClick
         holder.bind(items[position])
-
-        val coupon = items[position]
-
-        holder.itemView.setOnClickListener {
-            onItemClick?.invoke(coupon)
-        }
+//
+//        val coupon = items[position]
+//
+//        holder.itemView.setOnClickListener {
+//            onItemClick?.invoke(coupon)
+//        }
     }
 
     /*
@@ -95,4 +100,5 @@ Abstract class to allow different bind functions for the two different coupon ty
  */
 abstract class BaseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     abstract fun bind(item: ListItem)
+    var onItemClick: ((item: ListItem) -> Unit)? = null
 }
