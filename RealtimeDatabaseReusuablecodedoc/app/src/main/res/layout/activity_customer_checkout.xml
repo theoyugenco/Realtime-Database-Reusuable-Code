@@ -13,8 +13,8 @@ a subtotal, fees, and then all the possible coupons they could use -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="-494dp">
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="70dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -31,7 +31,7 @@ a subtotal, fees, and then all the possible coupons they could use -->
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="40sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <!-- Recycler view that displays the menu items the customer chose -->
             <androidx.recyclerview.widget.RecyclerView
@@ -130,7 +130,7 @@ a subtotal, fees, and then all the possible coupons they could use -->
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:paddingTop="5dp"
-                tools:listitem="@layout/checkout_coupon_recycler"/>
+                tools:listitem="@layout/checkout_coupon_recycler" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -159,15 +159,15 @@ a subtotal, fees, and then all the possible coupons they could use -->
             </LinearLayout>
 
             <!-- This button will have a user checkout going to the payment section -->
-<!--            <Button-->
-<!--                android:id="@+id/cc_checkout"-->
-<!--                android:layout_width="200dp"-->
-<!--                android:layout_height="50dp"-->
-<!--                android:layout_gravity="center_horizontal"-->
-<!--                android:layout_marginTop="10dp"-->
-<!--                android:text="CheckOut"-->
-<!--                android:textColor="@color/black"-->
-<!--                app:backgroundTint="#d0d3cf"></Button>-->
+            <!--            <Button-->
+            <!--                android:id="@+id/cc_checkout"-->
+            <!--                android:layout_width="200dp"-->
+            <!--                android:layout_height="50dp"-->
+            <!--                android:layout_gravity="center_horizontal"-->
+            <!--                android:layout_marginTop="10dp"-->
+            <!--                android:text="CheckOut"-->
+            <!--                android:textColor="@color/black"-->
+            <!--                app:backgroundTint="#d0d3cf"></Button>-->
 
 
             <Button
@@ -180,20 +180,20 @@ a subtotal, fees, and then all the possible coupons they could use -->
                 android:textColor="@color/black"
                 app:backgroundTint="#d0d3cf"></Button>
 
-<!--            <com.paypal.checkout.paymentbutton.PaymentButtonContainer-->
-<!--                android:id="@+id/payPalButton"-->
-<!--                android:layout_width="200dp"-->
-<!--                android:layout_height="50dp"-->
-<!--                android:layout_gravity="center_horizontal"-->
-<!--                android:layout_marginTop="10dp"-->
-<!--                app:paypal_button_color="silver"-->
-<!--                app:paypal_button_label="pay"-->
-<!--                app:paypal_button_shape="rectangle"-->
-<!--                app:paypal_button_size="large"-->
-<!--                app:paypal_button_enabled="true"-->
-<!--                android:text="CheckOut"-->
-<!--                android:textColor="@color/black"-->
-<!--                app:backgroundTint="#d0d3cf"/>-->
+            <!--            <com.paypal.checkout.paymentbutton.PaymentButtonContainer-->
+            <!--                android:id="@+id/payPalButton"-->
+            <!--                android:layout_width="200dp"-->
+            <!--                android:layout_height="50dp"-->
+            <!--                android:layout_gravity="center_horizontal"-->
+            <!--                android:layout_marginTop="10dp"-->
+            <!--                app:paypal_button_color="silver"-->
+            <!--                app:paypal_button_label="pay"-->
+            <!--                app:paypal_button_shape="rectangle"-->
+            <!--                app:paypal_button_size="large"-->
+            <!--                app:paypal_button_enabled="true"-->
+            <!--                android:text="CheckOut"-->
+            <!--                android:textColor="@color/black"-->
+            <!--                app:backgroundTint="#d0d3cf"/>-->
 
             <Button
                 android:id="@+id/cc_receipt"
@@ -203,21 +203,20 @@ a subtotal, fees, and then all the possible coupons they could use -->
                 android:layout_marginTop="10dp"
                 android:text="Receipt"
                 android:textColor="@color/black"
-                app:backgroundTint="#d0d3cf"/>
+                app:backgroundTint="#d0d3cf" />
 
 
-<!--            <com.paypal.checkout.paymentbutton.PaymentButtonContainer-->
-<!--                android:id="@+id/paypal_button"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                app:paypal_button_color="silver"-->
-<!--                app:paypal_button_label="pay"-->
-<!--                app:paypal_button_shape="rectangle"-->
-<!--                app:paypal_button_size="large"-->
-<!--                app:paypal_button_enabled="true"-->
-<!--                >-->
-<!--            </com.paypal.checkout.paymentbutton.PaymentButtonContainer>-->
-
+            <!--            <com.paypal.checkout.paymentbutton.PaymentButtonContainer-->
+            <!--                android:id="@+id/paypal_button"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                app:paypal_button_color="silver"-->
+            <!--                app:paypal_button_label="pay"-->
+            <!--                app:paypal_button_shape="rectangle"-->
+            <!--                app:paypal_button_size="large"-->
+            <!--                app:paypal_button_enabled="true"-->
+            <!--                >-->
+            <!--            </com.paypal.checkout.paymentbutton.PaymentButtonContainer>-->
 
 
         </LinearLayout>

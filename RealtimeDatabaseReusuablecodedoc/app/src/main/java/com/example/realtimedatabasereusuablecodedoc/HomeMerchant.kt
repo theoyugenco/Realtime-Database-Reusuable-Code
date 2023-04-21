@@ -81,7 +81,7 @@ class HomeMerchant : AppCompatActivity() {
 
         QRButton = findViewById(R.id.qr_btn)
         QRButton.setOnClickListener {
-            val intent = Intent(this, QRCode::class.java)
+            val intent = Intent(this, QRCodeScanner::class.java)
             startActivity(intent)
         }
 

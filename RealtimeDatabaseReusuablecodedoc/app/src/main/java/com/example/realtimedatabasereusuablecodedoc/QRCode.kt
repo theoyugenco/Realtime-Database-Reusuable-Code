@@ -16,7 +16,7 @@ class QRCode : AppCompatActivity() {
     lateinit var qrCode : ImageView
     lateinit var word : EditText
     lateinit var generateCode : Button
-
+    lateinit var orderID : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +29,19 @@ class QRCode : AppCompatActivity() {
         generateCode.setOnClickListener{
             val data = word.text.toString().trim()
 
+            /*
+            perhaps have a check to see if the order is active
+             */
+
+            val bundle = intent.extras
+            if (bundle != null){
+                //orderID = bundle.getString("orderID")
+                //itemNameArrayList = bundle.getStringArrayList("itemName")!!
+                //itemPriceArrayList = bundle.getStringArrayList("itemPrice")!!
+
+            }
+
+            //val data =
             if (data.isEmpty()){
                 Toast.makeText(this, "Enter Data", Toast.LENGTH_SHORT).show()
             }else{

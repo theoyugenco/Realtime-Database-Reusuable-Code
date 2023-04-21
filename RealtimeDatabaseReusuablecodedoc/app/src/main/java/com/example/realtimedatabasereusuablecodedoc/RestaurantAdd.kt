@@ -110,7 +110,7 @@ class RestaurantAdd : AppCompatActivity() {
 
                 if ((!(key.isNullOrEmpty())) && (!(uid.isNullOrEmpty()))){
                     //At this point, we should have all fields filled out
-                    val newRestaurant: RestaurantDC = RestaurantDC(name, streetAddress, city, state, zip, description, key, uid)
+                    val newRestaurant: RestaurantDC = RestaurantDC(name, streetAddress, city, state, zip, description, key, uid, "")
                     //This is the portion that will upload the fields to RTD
                     database.child(key!!).setValue(newRestaurant).addOnSuccessListener {
                         binding.etName.text.clear()

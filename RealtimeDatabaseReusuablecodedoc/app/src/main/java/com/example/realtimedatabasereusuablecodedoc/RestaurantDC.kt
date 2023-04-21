@@ -11,7 +11,8 @@ data class RestaurantDC( var name: String? = "",
                          var zipcode: String? = "",
                          var description: String? = "",
                          var restaurantID: String? = "",
-                         var merchantID: String? = ""
+                         var merchantID: String? = "",
+                         var activeMenu: String? = null
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString(),
