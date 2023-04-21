@@ -43,6 +43,7 @@
         </com.google.android.material.card.MaterialCardView>
 
         <Button
+            android:id="@+id/distanceFilter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="#d0d3cf"

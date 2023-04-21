@@ -33,11 +33,11 @@ class RestaurantSearch : AppCompatActivity() {
     private lateinit var restaurantList: ArrayList<RestaurantDC>
     private lateinit var locationList: ArrayList<LocationDC>
     private lateinit var adapter: RestaurantSearchAdapter
-    //private lateinit var distanceAdapter: DistanceFilterAdapter
+    private lateinit var distanceAdapter: DistanceFilterAdapter
     private lateinit var searchDistanceButton: Button
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var database: DatabaseReference
-    //private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
+    private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     private var userLat: Double = 0.0
     private var userLong: Double = 0.0
     @SuppressLint("SuspiciousIndentation")
