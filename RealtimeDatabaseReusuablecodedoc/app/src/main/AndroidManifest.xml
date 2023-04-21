@@ -51,19 +51,18 @@
         <activity
             android:name=".MenuAddRestaurantViewAdd"
             android:exported="false" />
-        <!--
+
         <activity
             android:name=".RestaurantSearch"
             android:exported="false" />
-            -->
+
         <activity
             android:name=".CustomerCheckout"
             android:exported="false" />
-        <!--
+
         <activity
             android:name=".CheckoutActivity"
             android:exported="false" />
-            -->
         <!--
         <activity
             android:name=".RestaurantEdit"

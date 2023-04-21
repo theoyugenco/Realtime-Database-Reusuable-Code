@@ -32,6 +32,7 @@ class MenuCustomerOrdering : AppCompatActivity() {
     //private var rid: String =
     private var TAG: String? = null
     private var id: String = "-NRlZ5uQ6IJe8ogud6Fs"
+    private var rid: String? = null
     //private lateinit var menuItemArrayList: ArrayList<MenuItemDC>
     //private lateinit var menuItemAdapter: MultiselectAdapter
     //private lateinit var binding:
@@ -43,13 +44,21 @@ class MenuCustomerOrdering : AppCompatActivity() {
         menuItemRecyclerView.layoutManager = LinearLayoutManager(this)
         menuItemRecyclerView.setHasFixedSize(true)
 
-        /*
+
         val bundle = intent.extras
         //var id : String = ""
         if (bundle != null){
-            id = bundle.getString("key")!!
+            rid = bundle.getString("restaurantID")!!
         }
-        */
+
+        database = FirebaseDatabase.getInstance().getReference("Restaurants/")
+        database.child(rid!!).get().addOnSuccessListener {
+            if (it.exists()){
+                Log.d(TAG, "MENU RETRIEVED SUCCESSFULLY")
+                id = it.child("activeMenu").value.toString()
+            }
+        }
+
 
         //itemSelectedList = ArrayList<String>()
         menuItemArrayList = arrayListOf<MenuItemDC>()

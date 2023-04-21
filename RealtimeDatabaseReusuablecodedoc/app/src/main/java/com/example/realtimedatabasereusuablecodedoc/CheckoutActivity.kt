@@ -1,4 +1,4 @@
-/*package com.example.realtimedatabasereusuablecodedoc
+package com.example.realtimedatabasereusuablecodedoc
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -186,4 +186,3 @@ class CheckoutActivity : AppCompatActivity() {
         )
     }
 }
-*/
