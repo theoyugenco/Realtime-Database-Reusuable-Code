@@ -39,7 +39,6 @@ class HomeCustomer : AppCompatActivity() {
     private lateinit var homeButton: ImageButton
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var database: DatabaseReference
-    private lateinit var customerOrdering: Button
     private lateinit var recyclerView: RecyclerView
     private lateinit var searchView: SearchView
     private lateinit var restaurantList: ArrayList<RestaurantDC>
@@ -149,12 +148,6 @@ class HomeCustomer : AppCompatActivity() {
             startActivity(intent)
         }
 
-
-        customerOrdering = findViewById(R.id.customer_order_btn)
-        customerOrdering.setOnClickListener() {
-            val intent = Intent(this, MenuCustomerOrdering::class.java)
-            startActivity(intent)
-        }
 
         homeButton = findViewById(R.id.home_btn)
         homeButton.setOnClickListener {
