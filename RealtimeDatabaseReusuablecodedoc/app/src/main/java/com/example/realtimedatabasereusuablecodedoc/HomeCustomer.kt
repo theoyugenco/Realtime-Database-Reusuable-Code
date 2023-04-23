@@ -146,7 +146,7 @@ class HomeCustomer : AppCompatActivity() {
         favoriteButton= findViewById(R.id.favorite)
 
         favoriteButton.setOnClickListener{
-            val intent = Intent(this, FavoriteRestaurants::class.java)
+            val intent = Intent(this, ChooseFavorite::class.java)
             startActivity(intent)
         }
 

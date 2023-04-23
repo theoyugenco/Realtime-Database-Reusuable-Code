@@ -117,4 +117,7 @@
     <string name="orders">Orders</string>
     <string name="name">Name</string>
     <string name="filter_by_distance">Filter By Distance</string>
+    <string name="favorite_restaurants">Favorite Restaurants</string>
+    <string name="add_favorite_restaurants">Add Favorite Restaurants</string>
+    <string name="view_favorite_restaurants">View Favorite Restaurants</string>
 </resources>
