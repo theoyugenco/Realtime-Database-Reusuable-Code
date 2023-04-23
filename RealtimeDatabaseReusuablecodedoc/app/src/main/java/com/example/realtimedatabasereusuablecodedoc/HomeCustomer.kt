@@ -50,6 +50,7 @@ class HomeCustomer : AppCompatActivity() {
     private var userLat: Double = 0.0
     private var userLong: Double = 0.0
 
+    private lateinit var rollDice : Button
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -152,6 +153,12 @@ class HomeCustomer : AppCompatActivity() {
         homeButton = findViewById(R.id.home_btn)
         homeButton.setOnClickListener {
             val intent = Intent(this, HomeCustomer::class.java)
+            startActivity(intent)
+        }
+
+        rollDice = findViewById(R.id.ch_roll_dice)
+        rollDice.setOnClickListener {
+            val intent = Intent(this, DiceRoll::class.java)
             startActivity(intent)
         }
         /*
