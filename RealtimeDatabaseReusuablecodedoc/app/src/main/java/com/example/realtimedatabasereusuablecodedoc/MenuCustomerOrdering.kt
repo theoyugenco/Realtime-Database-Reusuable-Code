@@ -1,4 +1,3 @@
-
 package com.example.realtimedatabasereusuablecodedoc
 
 import android.content.Intent
@@ -31,8 +30,9 @@ class MenuCustomerOrdering : AppCompatActivity() {
     private var restaurantMenu: Menu? = null
     //private var rid: String =
     private var TAG: String? = null
-    private var id: String = "-NRlZ5uQ6IJe8ogud6Fs"
+    private var id: String = ""
     private var rid: String? = null
+    private var mid: String? = null
     //private lateinit var menuItemArrayList: ArrayList<MenuItemDC>
     //private lateinit var menuItemAdapter: MultiselectAdapter
     //private lateinit var binding:
@@ -44,20 +44,20 @@ class MenuCustomerOrdering : AppCompatActivity() {
         menuItemRecyclerView.layoutManager = LinearLayoutManager(this)
         menuItemRecyclerView.setHasFixedSize(true)
 
-
+        Log.d(TAG,"this shouldnt run before")
         val bundle = intent.extras
         //var id : String = ""
         if (bundle != null){
+
             rid = bundle.getString("restaurantID")!!
+            id = bundle.getString("activeMenuID")!!
+            mid = bundle.getString("merchantID")
+            Log.d(TAG, "2the menu id is:" + id)
+            Log.d(TAG, "2the merchant id is:" + mid)
+            Log.d(TAG,"proper place")
         }
 
-        database = FirebaseDatabase.getInstance().getReference("Restaurants/")
-        database.child(rid!!).get().addOnSuccessListener {
-            if (it.exists()){
-                Log.d(TAG, "MENU RETRIEVED SUCCESSFULLY")
-                id = it.child("activeMenu").value.toString()
-            }
-        }
+
 
 
         //itemSelectedList = ArrayList<String>()
@@ -68,6 +68,8 @@ class MenuCustomerOrdering : AppCompatActivity() {
     }
 
     private fun getMenuItems(){
+        Log.d(TAG, "get menu items")
+        Log.d(TAG, "the menu id is:" + id)
         //Toast.makeText( this@MenuCustomerOrdering, "at least!!", Toast.LENGTH_SHORT ).show()
         database = FirebaseDatabase.getInstance().getReference("Menus/"+id+"/Menu Items/")
         database.addValueEventListener(object : ValueEventListener {
@@ -120,6 +122,8 @@ class MenuCustomerOrdering : AppCompatActivity() {
     }
 
     private fun getAllMerchantMenuItems() {
+        Log.d(TAG, "get merchant menu items")
+        Log.d(TAG, "the merchant id is:" + mid)
         /*
         Unlike the Restaurant/Menu/Menu Item Add/View/Edit/Delete + Hierarchy for the Merchant
         There is a many to many relationship between Menu and Menu Items that we must be conscious of
@@ -127,9 +131,10 @@ class MenuCustomerOrdering : AppCompatActivity() {
         Then we must find which of those Menu Items are apart of the ACTIVE menu
          */
 
+
         database = FirebaseDatabase.getInstance().getReference("Menu Items/")
         auth = FirebaseAuth.getInstance()
-        database.orderByChild("ownerUID").equalTo("2T2gX0AVHPStGhVKoJd8lsEkcnB2").addValueEventListener(object : ValueEventListener{//
+        database.orderByChild("ownerUID").equalTo(mid).addValueEventListener(object : ValueEventListener{//
         override fun onDataChange(snapshot: DataSnapshot) {
             menuItemArrayList.clear()
             if (snapshot.exists()) {
@@ -141,9 +146,9 @@ class MenuCustomerOrdering : AppCompatActivity() {
                 }
             }
         }
-        override fun onCancelled(error: DatabaseError) {
-            TODO("Not yet implemented")
-        }
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
         })
 
     }
