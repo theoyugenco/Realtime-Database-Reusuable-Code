@@ -19,6 +19,10 @@
         <activity
             android:name=".DiceRoll"
             android:exported="false" />
+
+        <activity
+            android:name=".FavoriteRestaurants"
+            android:exported="false" />
         <activity
             android:name=".ActiveMenuRecycler"
             android:exported="false" />
@@ -58,9 +62,11 @@
         <activity
             android:name=".CustomerCheckout"
             android:exported="false" />
+
+        <!--
         <activity
             android:name=".CheckoutActivity"
-            android:exported="false" />
+            android:exported="false" /> -->
         <!--
         <activity
             android:name=".RestaurantEdit"

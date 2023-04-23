@@ -34,6 +34,7 @@ class HomeCustomer : AppCompatActivity() {
     private lateinit var chatButton: ImageButton
     private lateinit var binding: ActivityHomeCustomerBinding
     private lateinit var profButton: ImageButton
+    private lateinit var favoriteButton: Button
     private lateinit var orderButton: Button
     private lateinit var reviewButton: ImageView
     private lateinit var homeButton: ImageButton
@@ -139,6 +140,13 @@ class HomeCustomer : AppCompatActivity() {
 
         profButton.setOnClickListener {
             val intent = Intent(this, Profile::class.java)
+            startActivity(intent)
+        }
+
+        favoriteButton= findViewById(R.id.favorite)
+
+        favoriteButton.setOnClickListener{
+            val intent = Intent(this, FavoriteRestaurants::class.java)
             startActivity(intent)
         }
 
