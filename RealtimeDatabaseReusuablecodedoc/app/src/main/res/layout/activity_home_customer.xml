@@ -176,7 +176,7 @@
                             android:layout_marginEnd="10dp"/>
 
                         <Button
-                            android:id="@+id/favorite_restaurants"
+                            android:id="@+id/favorite"
                             android:layout_width="140dp"
                             android:layout_height="80dp"
                             android:layout_below="@id/ch_create_review_btn"
@@ -336,25 +336,7 @@
                     android:layout_marginTop="5dp">
 
                 </ImageView>
-
-                <Button
-                    android:id="@+id/favorite"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:text="@string/browse_coupons"
-                    android:textSize="12sp"
-                    android:textStyle="bold"
-                    android:backgroundTint="#d0d3cf"
-                    android:textColor="@color/black"
-                    android:layout_centerHorizontal="true">
-                </Button>
             </RelativeLayout>
-
-
 
             <!-- Buttons for local food options-->
             <LinearLayout
