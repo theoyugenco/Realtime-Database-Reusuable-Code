@@ -11,6 +11,6 @@
         android:id="@+id/delete"
         android:title="Delete"
         app:showAsAction="always"
-        android:icon="@drawable/delete"/>
+        android:icon="@drawable/delete_trash"/>
 
 </menu>
