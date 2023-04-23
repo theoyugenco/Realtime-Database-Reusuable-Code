@@ -17,6 +17,10 @@
         android:theme="@style/Theme.RealtimeDatabaseReusuableCodeDoc"
         tools:targetApi="31">
         <activity
+            android:name=".DiceRoll"
+            android:exported="false" />
+
+        <activity
             android:name=".FavoriteRestaurants"
             android:exported="false" />
         <activity
@@ -58,9 +62,11 @@
         <activity
             android:name=".CustomerCheckout"
             android:exported="false" />
+
+        <!--
         <activity
             android:name=".CheckoutActivity"
-            android:exported="false" />
+            android:exported="false" /> -->
         <!--
         <activity
             android:name=".RestaurantEdit"

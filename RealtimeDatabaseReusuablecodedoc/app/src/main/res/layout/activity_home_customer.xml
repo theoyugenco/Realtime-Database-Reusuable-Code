@@ -162,6 +162,34 @@
                             android:backgroundTint="#d0d3cf"
                             android:textColor="@color/black"/>
 
+                        <Button
+                            android:id="@+id/ch_roll_dice"
+                            android:layout_width="140dp"
+                            android:layout_height="80dp"
+                            android:layout_below="@id/ch_create_review_btn"
+                            android:backgroundTint="#d0d3cf"
+                            android:drawableTop="@drawable/square"
+                            android:includeFontPadding="false"
+                            android:text="Roll Dice"
+                            android:textColor="@color/black"
+                            android:textSize="12sp"
+                            android:layout_marginEnd="10dp"/>
+
+                        <Button
+                            android:id="@+id/favorite_restaurants"
+                            android:layout_width="140dp"
+                            android:layout_height="80dp"
+                            android:layout_below="@id/ch_create_review_btn"
+                            android:layout_toEndOf="@id/ch_roll_dice"
+                            android:backgroundTint="#d0d3cf"
+                            android:drawableTop="@drawable/heart"
+                            android:includeFontPadding="false"
+                            android:text="Favorite Restaurants"
+                            android:textColor="@color/black"
+                            android:textSize="12sp"
+                            android:layout_marginStart="10dp"
+                            />
+
                     </RelativeLayout>
 
                 </com.google.android.material.card.MaterialCardView>
@@ -208,7 +236,7 @@
                     android:backgroundTint="#d0d3cf"
                     android:textColor="@color/black"
                     android:text="@string/filter_by_distance"
-                    android:layout_marginEnd="5dp"
+                    android:layout_marginEnd="10dp"
                     android:layout_weight="2"
                     android:layout_gravity="center"/>
             </LinearLayout>
