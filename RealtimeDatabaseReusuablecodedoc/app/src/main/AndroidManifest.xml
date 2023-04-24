@@ -17,6 +17,9 @@
         android:theme="@style/Theme.RealtimeDatabaseReusuableCodeDoc"
         tools:targetApi="31">
         <activity
+            android:name=".ViewFavoriteRestaurants"
+            android:exported="false" />
+        <activity
             android:name=".ChooseFavorite"
             android:exported="false" />
         <activity
