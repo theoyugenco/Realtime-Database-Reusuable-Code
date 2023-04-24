@@ -1,28 +1,33 @@
 package com.example.realtimedatabasereusuablecodedoc
 
+//import com.example.realtimedatabasereusuablecodedoc.databinding.ActivityHomeCustomerBinding
+
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.location.Geocoder
+import android.location.Location
+import android.net.Uri
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.ImageView
-//import com.example.realtimedatabasereusuablecodedoc.databinding.ActivityHomeCustomerBinding
-import com.example.realtimedatabasereusuablecodedoc.databinding.ActivityHomeCustomerBinding
 import android.view.View
+import android.util.Log
 import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.realtimedatabasereusuablecodedoc.databinding.ActivityHomeCustomerBinding
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import com.google.firebase.ktx.Firebase
+import com.google.maps.GeoApiContext
+import com.google.maps.GeocodingApi
 import java.util.*
-import kotlin.collections.ArrayList
+
 
 /*
 Theodore Yu
@@ -112,16 +117,26 @@ class HomeCustomer : AppCompatActivity() {
                 if (recyclerView.adapter == adapter) {
                     filterList(p0)
                 }
-                /*
                 else if (recyclerView.adapter == distanceAdapter) {
                     filterDistanceList(p0)
                 }
-                 */
                 return true
 
             }
 
         })
+
+        searchDistanceButton.setOnClickListener {
+            recyclerView.adapter = distanceAdapter
+            locationList.clear()
+            for (i in restaurantList) {
+                var currentRestaurantLocation = i
+                retrieveDistance(currentRestaurantLocation)
+            }
+            Collections.sort(locationList, DistanceComparison())
+            distanceAdapter.notifyDataSetChanged()
+        }
+
         /*
         Theodore Yu
         Takes us to Chatting Functionality
@@ -193,7 +208,40 @@ class HomeCustomer : AppCompatActivity() {
             }
         }
     }
+    private fun filterDistanceList(query: String?) {
+        if (query != null) {
+            val filteredList = ArrayList<LocationDC>()
+            for (i in locationList) {
+                if (i.name.toString().lowercase(Locale.ROOT).contains(query.lowercase())) {
+                    filteredList.add(i)
+                }
+            }
+            if (filteredList.isEmpty()) {
+                Toast.makeText(this, "No data present", Toast.LENGTH_SHORT).show()
+            }
+            else {
+                distanceAdapter.setFilteredDistanceList(filteredList)
+            }
+        }
+    }
+    @Suppress("DEPRECATION")
+    private fun retrieveDistance(restaurant: RestaurantDC) {
+        var geocoder = Geocoder(this)
+        var userLocation = Location("User Location")
+        userLocation.latitude = userLat
+        userLocation.longitude = userLong
+        val geo: GeoApiContext = GeoApiContext.Builder()
+            .apiKey("AIzaSyBsE3izG69P7nzQa13Ne0CK8Tfl3SvobQw")
+            .build()
+        val result = GeocodingApi.geocode(geo, restaurant.streetAddress).await()
+        var restaurantLocation = Location("Restaurant Location")
+        restaurantLocation.latitude = result[0].geometry.location.lat
+        restaurantLocation.longitude = result[0].geometry.location.lng
+        var distance: Float = userLocation.distanceTo(restaurantLocation)
 
+        locationList.add(LocationDC(restaurant.name, restaurant.streetAddress, restaurant.city,
+            restaurant.state, restaurant.zipcode, restaurant.description, restaurant.restaurantID, distance))
+    }
 
 }
 
