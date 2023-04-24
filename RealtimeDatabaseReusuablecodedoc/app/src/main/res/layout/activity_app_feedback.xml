@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f29c45"
+    tools:context=".AppFeedback">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <!-- Just a title to rate restaurant -->
+        <TextView
+            android:id="@+id/app_rate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="45dp"
+            android:gravity="center"
+            android:hint="Rate our App!"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            />
+
+        <!-- Allows user to choose how many stars they rate a restaurant -->
+        <RatingBar
+            android:id="@+id/app_rating_bar"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/app_rate"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:numStars="5"
+            android:scaleX="2"
+            android:scaleY="2"
+            android:stepSize="1"
+            android:isIndicator="false"/>
+
+        <!-- This card view will show the feedback the user can enter -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:hint="@string/feedback"
+            android:id="@+id/app_feedback_layout"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:layout_below="@+id/app_rating_bar"
+            android:layout_marginTop="20dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:drawablePadding="10dp"
+                android:id="@+id/app_feedback_window"
+                android:layout_height="200dp"
+                android:layout_width="match_parent"
+                android:inputType="textMultiLine"
+                android:lines="6"
+                android:gravity="top"
+                android:overScrollMode="always"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
+                android:scrollHorizontally="false"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Submit button to create the review -->
+        <Button
+            android:id="@+id/submit_app_feedback"
+            android:backgroundTint="#d0d3cf"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="@string/submit"
+            android:textColor="@color/black"
+            android:layout_below="@+id/app_feedback_layout"
+            />
+
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
