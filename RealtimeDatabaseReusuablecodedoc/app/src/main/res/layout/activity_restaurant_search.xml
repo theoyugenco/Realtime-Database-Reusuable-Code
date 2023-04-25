@@ -42,6 +42,7 @@
 
         </com.google.android.material.card.MaterialCardView>
 
+        <!-- This button allows user to filter through restaurants depending on the distance -->
         <Button
             android:id="@+id/distanceFilter"
             android:layout_width="wrap_content"
@@ -54,6 +55,7 @@
             android:layout_gravity="center"/>
     </LinearLayout>
 
+    <!-- This is the recycler view for the possible restaurants -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/restaurantSearchRecycler"
         android:layout_width="0dp"

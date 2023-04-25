@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- This cars is used in the restaurant search recycler view -->
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -22,6 +24,7 @@
             android:orientation="vertical"
             android:background="@color/orange">
 
+            <!-- Displays the image used for the restaurant -->
             <ImageView
                 android:id="@+id/imgLocation"
                 android:layout_width="80dp"
@@ -33,8 +36,9 @@
                 android:layout_marginStart="15dp"
                 />
 
+            <!-- Declares the Name of the restaurant -->
             <TextView
-                android:id="@+id/textLocation"
+                android:id="@+id/textName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -42,12 +46,13 @@
                 android:layout_marginEnd="10dp"
                 android:layout_toEndOf="@+id/imgLocation"
                 android:gravity="center"
-                android:text="Restaurant Name"
+                android:text="@string/restaurant_name"
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 android:textStyle="bold" />
 
+            <!-- Declares the Address of the restaurant -->
             <TextView
                 android:id="@+id/textAddress"
                 android:layout_width="match_parent"
@@ -55,15 +60,16 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="10dp"
-                android:layout_below="@id/textLocation"
+                android:layout_below="@id/textName"
                 android:layout_toEndOf="@+id/imgLocation"
                 android:gravity="center"
-                android:text="Address"
+                android:text="@string/address"
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 />
 
+            <!-- Declares the Distance of the restaurant -->
             <TextView
                 android:id="@+id/textDistance"
                 android:layout_width="match_parent"
@@ -75,12 +81,11 @@
                 android:layout_below="@id/textAddress"
                 android:layout_toEndOf="@+id/imgLocation"
                 android:gravity="center"
-                android:text="Distance"
+                android:text="@string/distance"
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 />
-
 
         </RelativeLayout>
     </LinearLayout>

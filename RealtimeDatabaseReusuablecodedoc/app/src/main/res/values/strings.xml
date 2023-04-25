@@ -120,4 +120,22 @@
     <string name="favorite_restaurants">Favorite Restaurants</string>
     <string name="add_favorite_restaurants">Add Favorite Restaurants</string>
     <string name="view_favorite_restaurants">View Favorite Restaurants</string>
+    <string name="sushi" translatable="false">Sushi</string>
+    <string name="pizza" translatable="false">Pizza</string>
+    <string name="hamburger" translatable="false">Hamburger</string>
+    <string name="curry" translatable="false">Curry</string>
+    <string name="fried_chicken" translatable="false">Fried Chicken</string>
+    <string name="roll_dice">Roll Dice</string>
+    <string name="burrito" translatable="false">Burrito</string>
+    <string name="can_t_decide_what_to_eat">Can\'t Decide What To Eat?</string>
+    <string name="option_1">Option 1</string>
+    <string name="option_2">Option 2</string>
+    <string name="option_3">Option 3</string>
+    <string name="option_4">Option 4</string>
+    <string name="option_5">Option 5</string>
+    <string name="option_6">Option 6</string>
+    <string name="input_6_different_options_in_the_boxes_below">Input 6 Different Options in the Boxes Below</string>
+    <string name="input_6_different_options_into_the_boxes_below" translatable="false">Input 6 Different Options into the Boxes Below</string>
+    <string name="distance">Distance</string>
+    <string name="qr_code_generator">QR Code Generator</string>
 </resources>

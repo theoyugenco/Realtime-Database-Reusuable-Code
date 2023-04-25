@@ -106,4 +106,18 @@
     <string name="orders">Pedidos</string>
     <string name="name">Nombre</string>
     <string name="filter_by_distance">Filtrar por distancia</string>
+    <string name="favorite_restaurants">restaurantes favoritos</string>
+    <string name="add_favorite_restaurants">añadir restaurantes favoritos</string>
+    <string name="view_favorite_restaurants">ver restaurantes favoritos</string>
+    <string name="roll_dice">tirar el dado</string>
+    <string name="can_t_decide_what_to_eat">¿No puedes decidir qué comer?</string>
+    <string name="option_1">Opción 1</string>
+    <string name="option_2">Opción 2</string>
+    <string name="option_3">Opción 3</string>
+    <string name="option_4">Opción 4</string>
+    <string name="option_5">Opción 5</string>
+    <string name="option_6">Opción 6</string>
+    <string name="input_6_different_options_in_the_boxes_below">Ingrese 6 opciones diferentes en los cuadros a continuación</string>
+    <string name="distance">distancia</string>
+    <string name="qr_code_generator">Generador de códigos QR</string>
 </resources>

@@ -1,26 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- Layout for the the dice roll activity -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center_vertical"
+    android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".DiceRoll">
+    tools:context=".DiceRoll"
+    android:background="#f29c45">
 
+    <!-- Title of Activity -->
     <TextView
-        android:id="@+id/diceNum"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="1"
-        android:layout_gravity="center_horizontal"
-        android:textSize="25sp"/>
+        android:text="@string/can_t_decide_what_to_eat"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textAlignment="center"
+        android:layout_marginTop="10dp"/>
 
+    <!-- Tells customer what to do -->
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="@string/input_6_different_options_into_the_boxes_below"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:layout_gravity="center"
+        android:textSize="18sp"
+        />
+
+    <!-- Input Boxes for User to fill in options of what to eat -->
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+        <!--Repetition of cards that display user's information that can be edited-->
+        <com.google.android.material.textfield.TextInputLayout
+            android:hint="@string/option_1"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            >
+            <!-- Allows user to input text into the dedicated boxes -->
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/option1"
+                android:drawablePadding="10dp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:hint="@string/option_2"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/option2"
+                android:drawablePadding="10dp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:hint="@string/option_3"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/option3"
+                android:drawablePadding="10dp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:hint="@string/option_4"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/option4"
+                android:drawablePadding="10dp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:hint="@string/option_5"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/option5"
+                android:drawablePadding="10dp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:hint="@string/option_6"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/option6"
+                android:drawablePadding="10dp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+
+    <!-- Displays the image of the dice for user to see what number they rolled -->
+    <ImageView
+        android:id="@+id/diceNum"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/dice_1"
+        />
+
+    <!-- Button to roll the dice -->
     <Button
         android:id="@+id/roll_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Roll Dice"
+        android:text="@string/roll_dice"
         android:layout_gravity="center_horizontal"
         android:backgroundTint="#d0d3cf"
         android:textColor="@color/black"/>
