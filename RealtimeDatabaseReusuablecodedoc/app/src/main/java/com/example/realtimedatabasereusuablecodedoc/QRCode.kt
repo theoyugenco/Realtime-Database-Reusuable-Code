@@ -12,11 +12,16 @@ import com.google.zxing.BarcodeFormat
 import com.google.zxing.WriterException
 import com.google.zxing.qrcode.QRCodeWriter
 
+/*
+This generates a QR Code based on the order push id
+this is not fully implemented  yet
+ */
+
 class QRCode : AppCompatActivity() {
     lateinit var qrCode : ImageView
     lateinit var word : EditText
     lateinit var generateCode : Button
-
+    lateinit var orderID : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,27 +34,44 @@ class QRCode : AppCompatActivity() {
         generateCode.setOnClickListener{
             val data = word.text.toString().trim()
 
-            if (data.isEmpty()){
-                Toast.makeText(this, "Enter Data", Toast.LENGTH_SHORT).show()
-            }else{
-                val writer = QRCodeWriter()
-                try{
-                    val bitMatrix = writer.encode(data, BarcodeFormat.QR_CODE, 512, 512)
-                    val width = bitMatrix.width
-                    val height = bitMatrix.height
+            /*
+            perhaps have a check to see if the order is active
 
-                    val bmp = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565)
+            but we need to get the order ID from the previous activity, planned to be checkout
+             */
 
-                    for(x in 0 until width){
-                        for (y in 0 until height){
-                            bmp.setPixel(x, y, if(bitMatrix[x,y]) Color.BLACK else Color.WHITE)
-                        }
-                    }
-                    qrCode.setImageBitmap(bmp)
-                }catch (e: WriterException){
-                    e.printStackTrace()
-                }
+            val bundle = intent.extras
+            if (bundle != null){
+                orderID = bundle.getString("orderID")!!
+                //itemNameArrayList = bundle.getStringArrayList("itemName")!!
+                //itemPriceArrayList = bundle.getStringArrayList("itemPrice")!!
+
             }
+
+            /*
+            The QRCode is unique to the string (orderID) provided to it
+             */
+            val writer = QRCodeWriter()
+            try{
+                //We parametrize the QR code we create
+                val bitMatrix = writer.encode(data, BarcodeFormat.QR_CODE, 512, 512)
+                val width = bitMatrix.width
+                val height = bitMatrix.height
+
+                //This is the actual QR code
+                val bmp = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565)
+
+                //We populate the QR code with the proper pattern
+                for(x in 0 until width){
+                    for (y in 0 until height){
+                        bmp.setPixel(x, y, if(bitMatrix[x,y]) Color.BLACK else Color.WHITE)
+                    }
+                }
+                qrCode.setImageBitmap(bmp)
+            }catch (e: WriterException){
+                e.printStackTrace()
+            }
+
         }
 
 
