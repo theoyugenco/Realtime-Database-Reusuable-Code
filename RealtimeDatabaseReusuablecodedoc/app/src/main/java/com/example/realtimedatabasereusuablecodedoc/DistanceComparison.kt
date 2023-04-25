@@ -1,5 +1,10 @@
 package com.example.realtimedatabasereusuablecodedoc
 
+/*
+Kenneth Valero
+Comparator function used to sort location distances
+from the user's current location.
+ */
 class DistanceComparison : Comparator<LocationDC> {
     override fun compare(p0: LocationDC?, p1: LocationDC?) : Int {
         if (p0 != null && p1 != null) {

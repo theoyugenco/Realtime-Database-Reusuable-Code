@@ -14,11 +14,16 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import java.io.File
 
+/*
+Kenneth Valero
+Adapter used to sort a list of locations based on distance relative to
+the user.
+ */
 class DistanceFilterAdapter (val context: Context, var locationList: ArrayList<LocationDC>):
     RecyclerView.Adapter<DistanceFilterAdapter.DistanceFilterViewHolder>() {
     /*
     Values to be displayed in the view:
-    Restaurant name, restaurant picture, and the address
+    Restaurant name, restaurant picture, address, and distance
      */
     class DistanceFilterViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val name : TextView = itemView.findViewById<TextView>(R.id.textLocation)
@@ -36,7 +41,7 @@ class DistanceFilterAdapter (val context: Context, var locationList: ArrayList<L
     }
 
     /*
-    Sets up the layout for a card representing a restaurant in the recyclerview
+    Sets up the layout for a card representing a location in the recyclerview
      */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DistanceFilterViewHolder {
         val view: View = LayoutInflater.from(context).inflate(R.layout.restaurant_search_card, parent, false)
@@ -44,16 +49,16 @@ class DistanceFilterAdapter (val context: Context, var locationList: ArrayList<L
     }
 
     /*
-    Retrieve the total number of restaurants
+    Retrieve the total number of locations
      */
     override fun getItemCount(): Int {
         return locationList.size
     }
 
     /*
-    Binds the current restaurant's attributes to the viewholder:
-    restaurant name, restaurant picture, restaurant address.
-    Sends the name, image, address, and restaurant ID to next activity
+    Binds the current location's attributes to the viewholder:
+    restaurant name, restaurant picture, restaurant address, and distance
+    Sends the name, address, and restaurant ID to next activity
     when card is clicked.
      */
     override fun onBindViewHolder(holder: DistanceFilterViewHolder, position: Int) {

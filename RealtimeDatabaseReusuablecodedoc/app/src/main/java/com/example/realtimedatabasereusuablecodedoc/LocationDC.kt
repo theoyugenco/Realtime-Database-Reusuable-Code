@@ -3,8 +3,8 @@ package com.example.realtimedatabasereusuablecodedoc
 import android.net.Uri
 
 /*
-Theodore Yu
-This represents Merchants' specific locations of their restaurants
+Kenneth Valero
+This data class represents locations that are recorded based on distance.
  */
 
 data class LocationDC(var name: String? = "",

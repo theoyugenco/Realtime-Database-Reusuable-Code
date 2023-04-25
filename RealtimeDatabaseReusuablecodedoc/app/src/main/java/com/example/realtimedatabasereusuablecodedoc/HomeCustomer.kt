@@ -68,6 +68,10 @@ class HomeCustomer : AppCompatActivity() {
         firebaseAuth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance().getReference()
 
+        /*
+        Kenneth Valero
+        Retrieve the user's current location and record latitude and longitude.
+         */
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (applicationContext.checkSelfPermission(android.Manifest.permission.ACCESS_FINE_LOCATION)
@@ -80,7 +84,7 @@ class HomeCustomer : AppCompatActivity() {
                 }
             }
         }
-        //Initialize recyclerview, searchview, arraylist and adapter
+        //Kenneth Valero: Initialize recyclerview, searchview, arraylist and adapter
         recyclerView = findViewById(R.id.restaurantSearchRecycler)
         searchView = findViewById(R.id.restaurantSearchBar)
         restaurantList = ArrayList()
@@ -88,12 +92,19 @@ class HomeCustomer : AppCompatActivity() {
         adapter = RestaurantSearchAdapter(this, restaurantList)
         distanceAdapter = DistanceFilterAdapter(this, locationList)
 
+        /*
+        Kenneth Valero
+        Set button for search filter
+         */
         searchDistanceButton = findViewById(R.id.distanceFilter)
 
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
 
-        //Populates arraylist with restaurants in response to any database changes
+        /*
+        Kenneth Valero
+        Populates arraylist with restaurants in response to any database changes
+         */
         database.child("Restaurants").addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 restaurantList.clear()
@@ -107,7 +118,10 @@ class HomeCustomer : AppCompatActivity() {
             override fun onCancelled(error: DatabaseError) {
             }
         })
-
+        /*
+        Kenneth Valero
+        Filters restaurant list based on query
+         */
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(p0: String?): Boolean {
                 return false
@@ -126,6 +140,10 @@ class HomeCustomer : AppCompatActivity() {
 
         })
 
+        /*
+        Kenneth Valero
+        Sets up list based on distance upon clicking the filter button.
+         */
         searchDistanceButton.setOnClickListener {
             recyclerView.adapter = distanceAdapter
             locationList.clear()
@@ -133,6 +151,7 @@ class HomeCustomer : AppCompatActivity() {
                 var currentRestaurantLocation = i
                 retrieveDistance(currentRestaurantLocation)
             }
+            //Using the distancecomparison function
             Collections.sort(locationList, DistanceComparison())
             distanceAdapter.notifyDataSetChanged()
         }
@@ -192,6 +211,10 @@ class HomeCustomer : AppCompatActivity() {
         }
          */
     }
+    /*
+    Kenneth Valero
+    Function to sort the list based on query
+     */
     private fun filterList(query: String?) {
         if (query != null) {
             val filteredList = ArrayList<RestaurantDC>()
@@ -208,6 +231,10 @@ class HomeCustomer : AppCompatActivity() {
             }
         }
     }
+    /*
+    Kenneth Valero
+    Sort the distance filter list based on query
+     */
     private fun filterDistanceList(query: String?) {
         if (query != null) {
             val filteredList = ArrayList<LocationDC>()
@@ -224,6 +251,12 @@ class HomeCustomer : AppCompatActivity() {
             }
         }
     }
+
+    /*
+    Kenneth Valero
+    Function to retrieve the distance of the current location from
+    the user and record it in the location list.
+     */
     @Suppress("DEPRECATION")
     private fun retrieveDistance(restaurant: RestaurantDC) {
         var geocoder = Geocoder(this)
