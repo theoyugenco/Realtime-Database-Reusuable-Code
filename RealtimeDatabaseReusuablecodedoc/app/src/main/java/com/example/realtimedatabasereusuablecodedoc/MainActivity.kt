@@ -53,9 +53,9 @@ class MainActivity : AppCompatActivity() {
                         Responsible for testing the login and verifying that the correct
                         UID is retrieved during login
                          */
-                        Toast.makeText(baseContext, "Authentication successful! " + "Uid" + firebaseAuth.currentUser?.uid
-                                + firebaseAuth.currentUser?.email,
-                            Toast.LENGTH_SHORT).show()
+                        //Toast.makeText(baseContext, "Authentication successful! " + "Uid" + firebaseAuth.currentUser?.uid
+                        //        + firebaseAuth.currentUser?.email,
+                        //    Toast.LENGTH_SHORT).show()
                         val userid : String? = firebaseAuth.currentUser?.uid
                         /*
                         Theodore Yu

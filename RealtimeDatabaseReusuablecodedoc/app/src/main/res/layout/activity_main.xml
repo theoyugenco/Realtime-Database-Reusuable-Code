@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,83 +7,97 @@
     android:orientation="vertical"
     android:background="@color/design_default_color_background"
     tools:context=".MainActivity">
-    
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/welcome_to_mealsteal"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:paddingTop="110dp"/>
-
-    <ImageView
-        android:layout_width="220dp"
-        android:layout_height="220dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
-        android:src="@drawable/mealsteal" />
-
-
-    <EditText
-        android:id="@+id/etEmail"
-        android:layout_width="360dp"
-        android:layout_height="50dp"
-        android:layout_gravity="center_horizontal"
-        android:paddingLeft="20dp"
-        android:hint="@string/email"
-        android:background="@drawable/input"/>
-
-    <EditText
-        android:id="@+id/etPassWord"
-        android:layout_width="360dp"
-        android:layout_height="50dp"
-        android:layout_gravity="center_horizontal"
-        android:paddingLeft="20dp"
-        android:hint="@string/password"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/input"/>
-
-    <Button
-        android:id="@+id/btnLogin"
-        android:layout_width="360dp"
-        android:layout_height="60dp"
-        android:background="@drawable/login_btn"
-        android:layout_marginTop="15dp"
-        android:text="@string/login"
-        android:layout_gravity="center_horizontal"
-        app:backgroundTint="#d0d3cf"
-        android:textColor="@color/black"/>
-
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp">
-
+        android:orientation="vertical">
+    
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@string/welcome_to_mealsteal"
+            android:textAlignment="center"
             android:textColor="@color/black"
-            android:text="@string/don_t_have_an_account"/>
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:paddingTop="100dp"/>
 
-        <TextView
-            android:id="@+id/tvSignUp"
+        <ImageView
+            android:layout_width="220dp"
+            android:layout_height="220dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/mealsteal" />
+
+
+        <com.google.android.material.textfield.TextInputLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:hint="@string/email">
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            app:passwordToggleEnabled="true">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etPassWord"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:hint="@string/password">
+            </com.google.android.material.textfield.TextInputEditText>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="360dp"
+            android:layout_height="60dp"
+            android:background="@drawable/login_btn"
+            android:layout_marginTop="15dp"
+            android:text="@string/login"
+            android:layout_gravity="center_horizontal"
+            app:backgroundTint="#d0d3cf"
+            android:textColor="@color/black"/>
+
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/signup"
-            android:textStyle="bold"
-            android:text="@string/sign_up"/>
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="@string/don_t_have_an_account"/>
+
+            <TextView
+                android:id="@+id/tvSignUp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/signup"
+                android:textStyle="bold"
+                android:text="@string/sign_up"/>
+
+        </LinearLayout>
     </LinearLayout>
 
-
-
-
-
-
-
-</LinearLayout>
+</ScrollView>

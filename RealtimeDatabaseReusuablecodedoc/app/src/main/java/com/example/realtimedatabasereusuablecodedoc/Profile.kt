@@ -46,6 +46,11 @@ class Profile : AppCompatActivity() {
     private lateinit var tvPWordLabel: TextView
     private lateinit var img: ImageView
 
+    private lateinit var chatButton: ImageButton
+    private lateinit var profButton: ImageButton
+    private lateinit var homeButton: ImageButton
+
+
     private var uid: String? = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -127,6 +132,25 @@ class Profile : AppCompatActivity() {
                 Intent(this, MainActivity::class.java)
             )
             finish()
+        }
+
+        chatButton = findViewById(R.id.message_btn)
+        chatButton.setOnClickListener {
+            val intent = Intent(this, ChatSearch::class.java)
+            startActivity(intent)
+        }
+
+        profButton = findViewById(R.id.profile_btn)
+
+        profButton.setOnClickListener {
+            val intent = Intent(this, Profile::class.java)
+            startActivity(intent)
+        }
+
+        homeButton = findViewById(R.id.home_btn)
+        homeButton.setOnClickListener {
+            val intent = Intent(this, HomeCustomer::class.java)
+            startActivity(intent)
         }
 
 
@@ -245,12 +269,13 @@ class Profile : AppCompatActivity() {
                     streetAddress + ", " + city + ", " + state + " " + zipcode
 
 
-
+                /*
                 Toast.makeText(
                     this,
                     "Successfully retrieved and read User's data!",
                     Toast.LENGTH_SHORT
                 ).show()
+                 */
 
                 //We just want to ensure that none of the fields are blank.
                 //Otherwise, we want to retrieve their data here
@@ -324,7 +349,7 @@ class Profile : AppCompatActivity() {
         database = FirebaseDatabase.getInstance().getReference("Users/Customers")
         database.child(uid!!).get().addOnSuccessListener {
             if(it.exists()) {
-                Toast.makeText(this, "edit data ran", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(this, "edit data ran", Toast.LENGTH_SHORT).show()
                 //If a node/entry of that specific UserName exists
 
                 //Many of these fields are difficult to change or have external factors to consider
@@ -337,7 +362,7 @@ class Profile : AppCompatActivity() {
                     "phone" to newPhone!!
                 )
                 database.child(uid!!).updateChildren(updated_user).addOnSuccessListener {
-                    Toast.makeText(this, "Successfully updated the User's information\nUpdated Profile showcased below!", Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(this, "Successfully updated the User's information\nUpdated Profile showcased below!", Toast.LENGTH_SHORT).show()
                     readData()
                 }.addOnFailureListener(){
                     Toast.makeText(this, "Unsuccessfully in updating User's information", Toast.LENGTH_SHORT).show()

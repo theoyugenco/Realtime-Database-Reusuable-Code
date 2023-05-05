@@ -9,13 +9,10 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.Toast
+import android.widget.*
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.auth.FirebaseAuth
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.core.view.isVisible
 import com.google.android.material.textfield.TextInputLayout
 import com.example.realtimedatabasereusuablecodedoc.databinding.ActivityMerchantProfileBinding
@@ -47,6 +44,10 @@ class MerchantProfile : AppCompatActivity() {
     private lateinit var tvNameLabel: TextView
     private lateinit var tvPWordLabel: TextView
     private lateinit var img: ImageView
+
+    private lateinit var chatButton: ImageButton
+    private lateinit var profButton: ImageButton
+    private lateinit var homeButton: ImageButton
 
     private var uid: String? = ""
 
@@ -132,6 +133,25 @@ class MerchantProfile : AppCompatActivity() {
                 Intent(this, MainActivity::class.java)
             )
             finish()
+        }
+
+        chatButton = findViewById(R.id.message_btn)
+        chatButton.setOnClickListener {
+            val intent = Intent(this, ChatSearch::class.java)
+            startActivity(intent)
+        }
+
+        profButton = findViewById(R.id.profile_btn)
+
+        profButton.setOnClickListener {
+            val intent = Intent(this, MerchantProfile::class.java)
+            startActivity(intent)
+        }
+
+        homeButton = findViewById(R.id.home_btn)
+        homeButton.setOnClickListener {
+            val intent = Intent(this, HomeMerchant::class.java)
+            startActivity(intent)
         }
 
     }
@@ -222,12 +242,13 @@ class MerchantProfile : AppCompatActivity() {
                     streetAddress + ", " + city + ", " + state + " " + zipcode
 
 
-
+                /*
                 Toast.makeText(
                     this,
                     "Successfully retrieved and read User's data!",
                     Toast.LENGTH_SHORT
                 ).show()
+                 */
 
                 //We just want to ensure that none of the fields are blank.
                 //Otherwise, we want to retrieve their data here
@@ -301,7 +322,7 @@ class MerchantProfile : AppCompatActivity() {
         database = FirebaseDatabase.getInstance().getReference("Users/Merchants")
         database.child(uid!!).get().addOnSuccessListener {
             if(it.exists()) {
-                Toast.makeText(this, "edit data ran", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(this, "edit data ran", Toast.LENGTH_SHORT).show()
                 //If a node/entry of that specific UserName exists
 
                 //Many of these fields are difficult to change or have external factors to consider
@@ -314,7 +335,7 @@ class MerchantProfile : AppCompatActivity() {
                     "phone" to newPhone!!
                 )
                 database.child(uid!!).updateChildren(updated_user).addOnSuccessListener {
-                    Toast.makeText(this, "Successfully updated the User's information\nUpdated Profile showcased below!", Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(this, "Successfully updated the User's information\nUpdated Profile showcased below!", Toast.LENGTH_SHORT).show()
                     readData()
                 }.addOnFailureListener(){
                     Toast.makeText(this, "Unsuccessfully in updating User's information", Toast.LENGTH_SHORT).show()
