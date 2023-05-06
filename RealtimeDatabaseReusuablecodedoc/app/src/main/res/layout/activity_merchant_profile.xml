@@ -50,10 +50,10 @@
             </ImageButton>
 
             <ImageButton
-                android:id="@+id/notif_btn"
+                android:id="@+id/qr_btn"
                 android:layout_width="0dp"
                 android:layout_height="55dp"
-                android:src="@drawable/notifications"
+                android:src="@drawable/qr_code"
                 android:layout_weight = "1">
 
             </ImageButton>
@@ -91,7 +91,7 @@
         to other items-->
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="200dp"
             android:padding="20dp"
             android:background="#f29c45">
 
@@ -100,34 +100,8 @@
                 android:id="@+id/user_image"
                 android:layout_width="180dp"
                 android:layout_height="180dp"
-                android:src="@drawable/addimage"
-                android:layout_marginLeft="95dp"
-                />
-
-            <!--Displays name on screen-->
-            <TextView
-                android:id="@+id/name_field"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/user_image"
                 android:layout_centerInParent="true"
-                android:layout_marginLeft="10dp"
-                android:layout_marginBottom="-35dp"
-                android:includeFontPadding="false"
-                android:text="Johnny's Hamburgers"
-                android:textColor="#000"
-                android:textSize="30sp"
-                android:textStyle="bold" />
-
-            <Button
-                android:id="@+id/btnSave"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:layout_width="match_parent"
-                android:layout_alignBottom="@+id/name_field"
-                android:layout_marginBottom="-50dp"
-                android:text="@string/save"
-                android:visibility="gone"/>
+                android:src="@drawable/addimage" />
         </RelativeLayout>
 
 
@@ -136,7 +110,7 @@
             android:layout_width="match_parent"
             android:orientation="vertical"
             android:padding="20dp"
-            android:background="#f29c45">
+            >
 
             <!--Displays title on screen-->
             <TextView
@@ -259,11 +233,20 @@
                     android:focusable="false"/>
             </com.google.android.material.textfield.TextInputLayout>
 
+            <Button
+                android:id="@+id/btnSave"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_marginBottom="10dp"
+                android:text="@string/save"
+                android:visibility="gone"/>
+
             <!--Displays edit button on screen-->
             <Button
                 android:id="@+id/btnEdit"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:backgroundTint="#d0d3cf"
                 android:textColor="@color/black"
@@ -272,7 +255,7 @@
             <Button
                 android:id="@+id/btnLogout"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:backgroundTint="#d0d3cf"
                 android:textColor="@color/black"

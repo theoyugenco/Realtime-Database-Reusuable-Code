@@ -99,41 +99,25 @@
             <!--Displays the user's profile image on screen -->
             <ImageView
                 android:id="@+id/user_image"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
                 android:src="@drawable/empty_user"
-                android:layout_centerVertical="true"/>
-
-            <!--Displays user's name on screen-->
-            <TextView
-                android:id="@+id/name_field"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@+id/user_image"
-                android:includeFontPadding="false"
-                android:text="John Greene"
-                android:textColor="#000"
-                android:textSize="20sp" />
-
-            <!--Displays user's username on screen-->
-            <TextView
-                android:id="@+id/username_field"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/name_field"
-                android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@+id/user_image"
-                android:includeFontPadding="false"
-                android:text="john_greene"
-                android:textSize="14sp" />
+                android:layout_centerInParent="true"/>
         </RelativeLayout>
         <LinearLayout
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:orientation="vertical"
             android:padding="20dp">
+
+            <!--Displays title on screen-->
+            <TextView
+                android:id="@+id/AccountTitle"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="@string/account_info"
+                android:textColor="#000"
+                android:textSize="30sp" />
 
             <Button
                 android:id="@+id/btnSave"
