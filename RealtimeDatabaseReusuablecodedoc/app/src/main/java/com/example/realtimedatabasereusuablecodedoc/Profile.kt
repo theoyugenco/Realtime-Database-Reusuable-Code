@@ -49,6 +49,8 @@ class Profile : AppCompatActivity() {
     private lateinit var chatButton: ImageButton
     private lateinit var profButton: ImageButton
     private lateinit var homeButton: ImageButton
+    private lateinit var QRButton: ImageButton
+
 
 
     private var uid: String? = ""
@@ -150,6 +152,12 @@ class Profile : AppCompatActivity() {
         homeButton = findViewById(R.id.home_btn)
         homeButton.setOnClickListener {
             val intent = Intent(this, HomeCustomer::class.java)
+            startActivity(intent)
+        }
+
+        QRButton = findViewById(R.id.qr_btn)
+        QRButton.setOnClickListener {
+            val intent = Intent(this, QRCode::class.java)
             startActivity(intent)
         }
 

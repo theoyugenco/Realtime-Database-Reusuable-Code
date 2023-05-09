@@ -57,6 +57,8 @@ class HomeCustomer : AppCompatActivity() {
     private var userLong: Double = 0.0
 
     private lateinit var rollDice : Button
+    private lateinit var QRButton: ImageButton
+
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -201,6 +203,12 @@ class HomeCustomer : AppCompatActivity() {
         rollDice = findViewById(R.id.ch_roll_dice)
         rollDice.setOnClickListener {
             val intent = Intent(this, DiceRoll::class.java)
+            startActivity(intent)
+        }
+
+        QRButton = findViewById(R.id.qr_btn)
+        QRButton.setOnClickListener {
+            val intent = Intent(this, QRCode::class.java)
             startActivity(intent)
         }
         /*
