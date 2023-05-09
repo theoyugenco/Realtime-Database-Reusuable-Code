@@ -60,7 +60,7 @@
             android:id="@+id/see_review_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/location_image"
+            android:layout_below="@+id/restaurant_address"
             android:layout_marginTop="20dp"
             android:layout_centerHorizontal="true"
             android:hint="@string/see_current_reviews"
