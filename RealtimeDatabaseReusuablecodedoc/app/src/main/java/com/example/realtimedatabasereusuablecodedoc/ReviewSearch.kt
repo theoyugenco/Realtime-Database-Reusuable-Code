@@ -1,4 +1,4 @@
-/*
+
 package com.example.realtimedatabasereusuablecodedoc
 
 import androidx.appcompat.app.AppCompatActivity
@@ -41,7 +41,7 @@ class ReviewSearch : AppCompatActivity() {
         recyclerView.adapter = adapter
 
         //Populates arraylist with restaurants in response to any database changes
-        database.child("Users/Restaurants").addValueEventListener(object: ValueEventListener {
+        database.child("Restaurants").addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 restaurantList.clear()
                 for(postSnapshot in snapshot.children) {
@@ -90,4 +90,3 @@ class ReviewSearch : AppCompatActivity() {
         }
     }
 }
-*/

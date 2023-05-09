@@ -41,7 +41,7 @@ class HomeCustomer : AppCompatActivity() {
     private lateinit var profButton: ImageButton
     private lateinit var favoriteButton: Button
     private lateinit var orderButton: Button
-    private lateinit var reviewButton: ImageView
+    private lateinit var reviewButton: Button
     private lateinit var homeButton: ImageButton
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var database: DatabaseReference
@@ -211,13 +211,12 @@ class HomeCustomer : AppCompatActivity() {
             val intent = Intent(this, QRCode::class.java)
             startActivity(intent)
         }
-        /*
-        reviewButton = findViewById(R.id.reviewButton)
+
+        reviewButton = findViewById(R.id.ch_create_review_btn)
         reviewButton.setOnClickListener {
             val intent = Intent(this, ReviewSearch::class.java)
             startActivity(intent)
         }
-         */
     }
     /*
     Kenneth Valero

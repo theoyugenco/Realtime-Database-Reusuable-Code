@@ -1,4 +1,4 @@
-/*
+
 package com.example.realtimedatabasereusuablecodedoc
 
 import android.content.Context
@@ -80,11 +80,9 @@ class ReviewRestaurantAdapter (val context: Context, var restaurantList: ArrayLi
         holder.itemView.setOnClickListener {
             val intent = Intent(context, Review::class.java)
             intent.putExtra("name", currentRestaurant.name)
-            intent.putExtra("logo", currentRestaurant.downloadURL)
             intent.putExtra("address", full_address)
             intent.putExtra("restaurantID", currentRestaurant.restaurantID)
             context.startActivity(intent)
         }
     }
 }
-*/
